@@ -6,7 +6,8 @@ const HtmlWebpackPlugin    = require('html-webpack-plugin');
 const autoprefixer         = require('autoprefixer');
 const CleanWebpackPlugin   = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const {VueLoaderPlugin}    = require('vue-loader');
+const { VueLoaderPlugin }    = require('vue-loader');
+const WebpackUploadPlugin  = require('jdf2e-webpack-upload-plugin');
 
 const curDate = new Date();
 const curTime = curDate.getFullYear() + '/' + (curDate.getMonth() + 1) + '/' + curDate.getDate() + ' ' + curDate.getHours() + ':' + curDate.getMinutes() + ':' + curDate.getSeconds();
@@ -117,7 +118,12 @@ module.exports = (env,argv)=> {
     
     }else if(argv.mode === 'upload'){
         webpackConfig.plugins = (webpackConfig.plugins || []).concat([
-            
+            new WebpackUploadPlugin({
+                host: '',
+                source: 'build',
+                serverDir: config.ftpServer,
+                target: config.ftpTarget
+            })
         ]);
     }else{
         webpackConfig.output.publicPath = '/';
