@@ -8,6 +8,9 @@ const CleanWebpackPlugin   = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { VueLoaderPlugin }    = require('vue-loader');
 const WebpackUploadPlugin  = require('jdf2e-webpack-upload-plugin');
+const htmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
+const AddAssetHtmlPlugin   = require('add-asset-html-webpack-plugin');
+const CopyWebpackPlugin    = require('copy-webpack-plugin');
 
 const curDate = new Date();
 const curTime = curDate.getFullYear() + '/' + (curDate.getMonth() + 1) + '/' + curDate.getDate() + ' ' + curDate.getHours() + ':' + curDate.getMinutes() + ':' + curDate.getSeconds();
@@ -24,6 +27,10 @@ module.exports = (env,argv)=> {
             publicPath: config.publicPath + '/'+config.version+'/',
             filename: 'js/[name].js'
         },
+        stats: {
+            entrypoints: false,
+            children: false
+        },
         resolve:{
             extensions:['.js','.vue','json'],
         },
@@ -35,7 +42,9 @@ module.exports = (env,argv)=> {
                         MinicssExtractPlugin.loader,
                         "css-loader",
                         "postcss-loader"
-                    ]
+                    ],
+                    exclude:/node_modules/,
+                    include:path.resolve(__dirname,'src')
 
                 },
                 {
@@ -45,7 +54,9 @@ module.exports = (env,argv)=> {
                         "css-loader",
                         "sass-loader",
                         "postcss-loader"
-                    ]
+                    ],
+                    exclude:/node_modules/,
+                    include:path.resolve(__dirname,'src')
                 },
                 {
                     test: /\.(png|jpg|gif|webp|woff|eot|ttf)$/,
@@ -55,11 +66,15 @@ module.exports = (env,argv)=> {
                             name:'img/[name].[ext]',
                             limit:3000
                         }
-                    }
+                    },
+                    exclude:/node_modules/,
+                    include:path.resolve(__dirname,'src')
                 },
                 {
                     test: /\.svg$/,
-                    loader: 'svg-sprite-loader'
+                    loader: 'svg-sprite-loader',
+                    exclude:/node_modules/,
+                    include:path.resolve(__dirname,'src')
                 },
                 {
                     test:/\.vue$/,
@@ -78,7 +93,9 @@ module.exports = (env,argv)=> {
                                 postcss: [autoprefixer()]
                             }
                         }
-                    ]
+                    ],
+                    exclude:/node_modules/,
+                    include:path.resolve(__dirname,'src')
                 },
                 {
                     test:/\.js$/,
@@ -106,28 +123,52 @@ module.exports = (env,argv)=> {
                     autoprefixer: false,
                 },
     
-            }),
-            new webpack.BannerPlugin(bannerTxt),
+            })
         ],
     }
     
-    if(argv.mode === 'production' || argv.mode ==='upload'){
+    if(argv.mode === 'production'){
         webpackConfig.plugins = (webpackConfig.plugins || []).concat([
-            
+            new webpack.DllReferencePlugin({
+                context:__dirname,
+                manifest:require('./static/vendor-manifest.json')
+            }),
+            new htmlWebpackIncludeAssetsPlugin({
+                assets:['/lib/vendor.dll.js'],
+                publicPath:config.publicPath,
+                append:false
+                
+            }),
+            new CopyWebpackPlugin([
+                { from: path.join(__dirname, "./static/vendor.dll.js"), to: path.join(__dirname, "./build/lib/vendor.dll.js") }
+            ]),
+            new webpack.BannerPlugin(bannerTxt)
         ]);
+        if(env && env.upload){
+            webpackConfig.plugins = (webpackConfig.plugins || []).concat([
+                new WebpackUploadPlugin({
+                    host: '',
+                    source: 'build',
+                    serverDir: config.ftpServer,
+                    target: config.ftpTarget
+                })
+            ]);
+        }
     
-    }else if(argv.mode === 'upload'){
-        webpackConfig.plugins = (webpackConfig.plugins || []).concat([
-            new WebpackUploadPlugin({
-                host: '',
-                source: 'build',
-                serverDir: config.ftpServer,
-                target: config.ftpTarget
-            })
-        ]);
     }else{
         webpackConfig.output.publicPath = '/';
         webpackConfig.devtool = '#cheap-module-eval-source-map';
+        webpackConfig.plugins = (webpackConfig.plugins || []).concat([
+            new webpack.DllReferencePlugin({
+                context:__dirname,
+                manifest:require('./static/vendordev-manifest.json')
+            }),
+            new AddAssetHtmlPlugin({
+                filepath: require.resolve('./static/vendordev.dll.js'),
+                includeSourcemap: false
+    
+            })
+        ]);
         webpackConfig.devServer = {
             contentBase:path.resolve(__dirname,'build'),
             //host:'192.168.191.2',
@@ -136,7 +177,7 @@ module.exports = (env,argv)=> {
             historyApiFallback:true
         }
     }
-
+    
     return webpackConfig;
  
 }
