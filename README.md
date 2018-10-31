@@ -5,16 +5,16 @@
  - dev     gaea-cli 模版代码 （用于合成最终模版）
 
 ## 开发分支
-- trunk.master    gaea-cli 构建工具node脚本代码
-- trunk.dev       gaea-cli 模版代码 （用于合成最终模版)
-- trunk.dev.vuex  vuex webpack 模版demo代码
-- trunk.dev.vue   vue webpack 模版demo代码
-- trunk.dev.ts    typescript webpack 模版demo代码
-- trunk.dev.smock  smock  webpack 模版demo代码
+- trunk.master      gaea-cli 构建工具node脚本代码
+- trunk.dev         gaea-cli 模版代码 （用于合成最终模版)
+- trunk.dev.vuex    vuex webpack 模版demo代码
+- trunk.dev.vue     vue webpack 模版demo代码
+- trunk.dev.ts      typescript webpack 模版demo代码
+- trunk.dev.smock   smock  webpack 模版demo代码
 
 
 ## 功能点
-- 1. webpack4.0 + Babel7
+-  webpack4.0 + Babel7
 
 
 
