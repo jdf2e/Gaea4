@@ -7,7 +7,7 @@ const curDate = new Date();
 const curTime = curDate.getFullYear() + '/' + (curDate.getMonth() + 1) + '/' + curDate.getDate() + ' ' + curDate.getHours() + ':' + curDate.getMinutes() + ':' + curDate.getSeconds();
 const bannerTxt = config.name + ' ' + config.version + ' ' + curTime; 
 
-const vendorStr = "qs,axios,vue-router";
+const vendorStr = "qs,axios,vue-router,vuex";
 let vendor = ['vue'];
 vendor = vendor.concat(vendorStr.split(','));
 let vendordev=['vue/dist/vue.esm.js'];
