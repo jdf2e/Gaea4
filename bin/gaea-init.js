@@ -5,7 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
 const download = require('../lib/download');
-//const generator = require('../lib/generator');
+const generator = require('../lib/generator');
 const logSymbols = require('log-symbols');
 const chalk = require('chalk');
 
@@ -97,21 +97,53 @@ function go(){
                 },{
                     name:'qs',
                     checked:true
-                },{
-                    name:'vuex',
-                    checked:false
-                },{
-                    name:'TypeScript',
-                    checked:false,
                 }]
+            },{
+                name:'features',
+                type:'checkbox',
+                message:'支持的功能选择',
+                choices:[
+                    {
+                        name:'NutUI2.0',
+                        checked:true,
+                    },{
+                        name:'TypeScript',
+                        checked:false,
+                    },{
+                        name:'SMOCK',
+                        checked:false,
+                    },{
+                        name:'PWA',
+                        checked:false
+                    }
+                ]
             }
         ]).then(answer =>{
-            
             return download(projectRoot).then(target=>{
-                console.log(target);
+               return {
+                   name:projectName,
+                   root:projectName,
+                   downloadTemp:target,
+                   metadata:{
+                       ...answer
+                   }
+               }
             })
+        }).then(context =>{
+            //根据answer 判断什么模版路径
+            return generator(context.metadata,context.downloadTemp,path.parse(context.downloadTemp).dir);
+        
+        }).then((res) => {
+            console.log('');
+            console.log(logSymbols.success,chalk.green('创建成功:)'));
+            console.log('');
+            console.log(logSymbols.info,'1.先编译第三方依赖库 npm run dll');
+            console.log(logSymbols.info,'2.开发 npm run dev');
+            console.log(logSymbols.info,'2.编译和上传 npm run build/npm run upload');
         }).catch(err=>{
-            return Promise.reject(err);
+            console.log('');
+            console.log(logSymbols.error,chalk.red(`创建失败：${err.message}`));
+            console.log('');
         })
     })
 }
