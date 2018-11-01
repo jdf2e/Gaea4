@@ -104,7 +104,7 @@ function go(){
                 message:'支持的功能选择',
                 choices:[
                     {
-                        name:'NutUI2.0',
+                        name:'NutUI2',
                         checked:true,
                     },{
                         name:'TypeScript',
@@ -119,6 +119,13 @@ function go(){
                 ]
             }
         ]).then(answer =>{
+            
+            for(let a of answer.bucket){
+                answer[a] = true;
+            }
+            for(let b of answer.features){
+                answer[b] = true;
+            }
             return download(projectRoot).then(target=>{
                return {
                    name:projectName,
