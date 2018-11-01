@@ -11,10 +11,7 @@ const WebpackUploadPlugin  = require('jdf2e-webpack-upload-plugin');
 const htmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 const AddAssetHtmlPlugin   = require('add-asset-html-webpack-plugin');
 const CopyWebpackPlugin    = require('copy-webpack-plugin');
-
-const curDate = new Date();
-const curTime = curDate.getFullYear() + '/' + (curDate.getMonth() + 1) + '/' + curDate.getDate() + ' ' + curDate.getHours() + ':' + curDate.getMinutes() + ':' + curDate.getSeconds();
-const bannerTxt = config.name + ' ' + config.version + ' ' + curTime; 
+const moment               = require('moment');
 
 module.exports = (env,argv)=> {
 
@@ -142,7 +139,9 @@ module.exports = (env,argv)=> {
             new CopyWebpackPlugin([
                 { from: path.join(__dirname, "./static/vendor.dll.js"), to: path.join(__dirname, "./build/lib/vendor.dll.js") }
             ]),
-            new webpack.BannerPlugin(bannerTxt)
+            new webpack.BannerPlugin({
+                banner:`${config.name} ${config.version} ${moment().format()}` 
+            })
         ]);
         if(env && env.upload){
             webpackConfig.plugins = (webpackConfig.plugins || []).concat([
