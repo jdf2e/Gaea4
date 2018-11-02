@@ -5,7 +5,6 @@ const fs = require('fs');
 const glob = require('glob');
 const logSymbols = require('log-symbols');
 const chalk = require('chalk');
-const inquirer = require('inquirer');
 const donwload = require('download-git-repo');
 const ora = require('ora');
 const path = require('path');
@@ -13,7 +12,6 @@ const rm = require('rimraf').sync;
 
 program.version(package.version,'-V,--version')
        .option('-U,--update <template-name>','指定更新模板')
-       .option('-S,--select','选择更新模板')
        .parse(process.argv)
 
 const list = glob.sync('*')
@@ -30,31 +28,44 @@ if(program.update){
         }).length !==0 ){
             //删除该目录
             rm(templateName);
-        }else{
-            next = Promise.resolve(templateName)
+             
         }
+        next = Promise.resolve(templateName)
+        
     }else if(rootName === templateName){
 
     }else{
         next = Promise.resolve(templateName);
     }
-    next && go()
+    next.then(target =>{
 
+        go(target)
+    })
 
-}else if(program.select){
 
 }else{
     program.help()
     return
 }
 
-function go(){
+//下载
+function go(targetName){
     //从各个分支下载 最新的模板代码
-    let target = path.join(target||'.','.donwload-temp')
+    let target = path.join(targetName||'.','.donwload-temp')
     return new Promise((resolve,reject) =>{
-        const url = `direct:https://github.com/jdf2e/Gaea4.git#trunk.dev.${target}`
-        const spinner = ora(`正在下载最新${target}模板`)
-        
+        const url = `direct:https://github.com/jdf2e/Gaea4.git#trunk.dev.${targetName}`
+        const spinner = ora(`正在下载最新${targetName}模板`)
+        spinner.start()
+        donwload(url,target,{clone:true},(err)=>{
+            if(err){
+                spinner.fail()
+                reject(err)
+            }else{
+                spinner.succeed()
+                resolve(target)
+            }
+        })
 
     })
 }
+//处理模板
