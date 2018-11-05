@@ -1,7 +1,7 @@
 {
   "name": "{{projectName}}",
   "version": "{{projectVersion}}",
-  "description": "gaea webpack template",
+  "description": "{{projectDescription}}",
   "publicPath": "//static.360buyimg.com/exploit/gaea",
   "ftpServer": "static.360buyimg.com",
   "ftpTarget": "exploit/gaea",
@@ -18,7 +18,7 @@
   "keywords": [
     "vue"
   ],
-  "author": "wangnan31",
+  "author": "{{author}}",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jdf2e/Gaea4/issues"
