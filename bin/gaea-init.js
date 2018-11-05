@@ -97,6 +97,9 @@ function go(){
                 },{
                     name:'qs',
                     checked:true
+                },{
+                    name:'vuex',
+                    checked:false
                 }]
             },{
                 name:'features',
@@ -137,6 +140,7 @@ function go(){
                }
             })
         }).then(context =>{
+            
             //根据answer 判断什么模版路径
             return generator(context.metadata,context.downloadTemp,path.parse(context.downloadTemp).dir);
         
