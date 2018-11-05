@@ -16,6 +16,8 @@ if(!projectName){
     return
 }
 
+
+
 const inquirer = require('inquirer');
 const list = glob.sync('*');
 let rootName = path.basename(process.cwd());
@@ -148,9 +150,10 @@ function go(){
             console.log('');
             console.log(logSymbols.success,chalk.green('创建成功:)'));
             console.log('');
-            console.log(logSymbols.info,'1.先编译第三方依赖库 npm run dll');
-            console.log(logSymbols.info,'2.开发 npm run dev');
-            console.log(logSymbols.info,'2.编译和上传 npm run build/npm run upload');
+            console.log(logSymbols.info,'先编译第三方依赖库 npm run dll');
+            console.log(logSymbols.info,'开发 npm run dev');
+            console.log(logSymbols.info,'编译和上传 npm run build/npm run upload');
+            console.log('');
         }).catch(err=>{
             console.log('');
             console.log(logSymbols.error,chalk.red(`创建失败：${err.message}`));
