@@ -1,0 +1,5 @@
+{{#if vuex}}
+vuex/
+{{else if vue}}
+vue/
+{{/if}}
