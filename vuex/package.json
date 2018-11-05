@@ -1,6 +1,6 @@
 {
-  "name": "gaea",
-  "version": "1.0.0",
+  "name": "{{projectName}}",
+  "version": "{{projectVersion}}",
   "description": "gaea webpack template",
   "publicPath": "//static.360buyimg.com/exploit/gaea",
   "ftpServer": "static.360buyimg.com",
@@ -57,7 +57,7 @@
     "vue-router": "3.0.1",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.17",
-    "vuex": "3.0.1",
+    "vuex": "^3.0.1",
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"

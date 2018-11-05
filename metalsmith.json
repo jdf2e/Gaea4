@@ -1,0 +1,19 @@
+{
+    "**/**":[{
+        "find":"\"name\": \"gaea\"",
+        "replace":"\"name\": \"{{projectName}}\""
+    },{
+        "find":"\"version\": \"1.0.0\"",
+        "replace":"\"version\": \"{{projectVersion}}\""
+    },{
+        "find":"\"description\": \"description\"",
+        "replace":"\"description\": \"{{projectDescription}}\""
+        
+    },{
+        "find":"\"author\": \"author\"",
+        "replace":"\"author\": \"{{author}}\""
+    },{
+        "find":"测试服务器地址",
+        "replace":"{{uploadHost}}"
+    }]
+}
