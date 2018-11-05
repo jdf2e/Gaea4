@@ -146,7 +146,7 @@ module.exports = (env,argv)=> {
         if(env && env.upload){
             webpackConfig.plugins = (webpackConfig.plugins || []).concat([
                 new WebpackUploadPlugin({
-                    host: '',
+                    host: '测试服务器地址',
                     source: 'build',
                     serverDir: config.ftpServer,
                     target: config.ftpTarget
