@@ -20,7 +20,7 @@ module.exports = (env,argv)=> {
 
     let  webpackConfig = {
         entry:{
-            app:'./src/app.js'
+            app:'./src/app.ts'
         },
         output:{
             path: path.resolve(__dirname, 'build' + '/' + config.version),
@@ -32,7 +32,7 @@ module.exports = (env,argv)=> {
             children: false
         },
         resolve:{
-            extensions:['.js','.vue','json'],
+            extensions:['.js','.vue','json','.ts', '.tsx'],
         },
         module:{
            rules:[
@@ -81,7 +81,7 @@ module.exports = (env,argv)=> {
                     use:[
                         {
                             loader:'vue-loader',
-                            options:{
+                            options: {
                                 loaders:{
                                     scss:[
                                         'vue-style-loader',
@@ -91,7 +91,7 @@ module.exports = (env,argv)=> {
                                     ]
                                 },
                                 postcss: [autoprefixer()]
-                            }
+                            },
                         }
                     ],
                     exclude:/node_modules/,
@@ -102,6 +102,20 @@ module.exports = (env,argv)=> {
                     use:'babel-loader',
                     exclude:/node_modules/,
                     include:path.resolve(__dirname,'src')
+                },
+                {
+                    test: /\.tsx?$/,
+                    exclude: /node_modules/,
+                    use: [
+                      "babel-loader",
+                      {
+                        loader: "ts-loader",
+                        options: { appendTsxSuffixTo: [/\.vue$/] }
+                      },
+                      {
+                        loader: 'tslint-loader'
+                      }
+                    ]
                 }
            ]
         },

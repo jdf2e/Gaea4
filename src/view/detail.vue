@@ -7,29 +7,15 @@
         </div>
     </div>
 </template>
+<script lang = "ts" >
+import Vue from 'vue'
+import Component from 'vue-class-component'
 
-<script>
-import axios from 'axios';
-import Qs from 'qs';
-export default {
-    data(){
-        return{
-            
-        }
-    },
-    components: {
-    },
-    methods:{
-       
-    },
-    created(){
-
-    },
-    mounted(){
-       
-    },
-    destroyed(){
-
+@Component
+export default class Detail extends Vue {
+    // 生命周期
+    mounted () {
+        console.log('detail1')
     }
 }
 </script>

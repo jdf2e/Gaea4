@@ -1,0 +1,18 @@
+{
+    "extends": "tslint-config-standard",
+    "globals": {
+        "require": true
+    },
+    "rules": {
+        "space-before-function-paren": false,
+        "whitespace": [false],
+        "no-consecutive-blank-lines": false,
+        "no-angle-bracket-type-assertion": false,
+        "no-empty-character-class": false,
+        "no-trailing-whitespace": false,
+        "ter-indent": [
+            true,
+            4
+        ]
+    }
+}

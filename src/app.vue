@@ -3,8 +3,14 @@
         <router-view v-cloak></router-view>
 	</div>
 </template>
-<script>
-	//引用外部css
-    import './asset/css/common.scss';
-    export default {}
+<script lang="ts">
+    import Vue from 'vue'
+    import Component from 'vue-class-component'
+	
+    @Component({})
+    export default class App extends Vue {
+    }
 </script>
+<style lang="scss" >
+    @import url('./asset/css/common.scss');
+</style>
