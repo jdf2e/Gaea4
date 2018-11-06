@@ -16,7 +16,8 @@ if(!projectName){
     return
 }
 
-
+// const list = glob.sync('test/vue/{**,.*}')
+// console.log(list)
 
 const inquirer = require('inquirer');
 const list = glob.sync('*');
