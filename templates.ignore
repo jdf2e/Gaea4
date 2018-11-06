@@ -1,7 +1,7 @@
 {{#if vuex}}
 vuex/**
-vuex/*
+vuex/.*
 {{else if vue}}
 vue/**
-vue/*
+vue/.*
 {{/if}}
