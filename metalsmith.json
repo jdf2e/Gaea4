@@ -21,5 +21,8 @@
     },{
         "find":"\"dll\": \"webpack --config ./webpack.dll.config.js --mode production --hide-modules --progress\",",
         "replace":"\"dll\": \"webpack --config ./webpack.dll.config.js --mode production --hide-modules --progress\"{{#Carefree}},{{/Carefree}}"
+    },{
+        "find":"\"@nutui/carefree\": \"^0.2.0\",",
+        "replace":"{{#Carefree}}\"@nutui/carefree\": \"{{carefreeVersion}}\",{{/Carefree}}"
     }]
 }
