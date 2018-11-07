@@ -36,16 +36,17 @@ if(list.length){
         next  = Promise.resolve(projectName);
     }
 }else if(rootName  === projectName){
-    next = inquirer.prompt([
-        {
-            name:'buildInCurrent',
-            message:'当前目录为空，且目录名称和项目名称相同，不需要在当前目录下创建新项目',
-            type:'confirm',
-            default:true
-        }
-    ]).then(answer =>{
-        return Promise.resolve(answer.buildInCurrent ?'.':projectName);
-    })
+    // next = inquirer.prompt([
+    //     {
+    //         name:'buildInCurrent',
+    //         message:'当前目录为空，且目录名称和项目名称相同，不需要在当前目录下创建新项目',
+    //         type:'confirm',
+    //         default:true
+    //     }
+    // ]).then(answer =>{
+    //     return Promise.resolve(answer.buildInCurrent ?'.':projectName);
+    // })
+    next = Promise.resolve(projectName);
 
 }else{
     next = Promise.resolve(projectName);
