@@ -12,9 +12,10 @@ const htmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plug
 const AddAssetHtmlPlugin   = require('add-asset-html-webpack-plugin');
 const CopyWebpackPlugin    = require('copy-webpack-plugin');
 const moment               = require('moment');
+{{#Carefree}}const Carefree             = require('@nutui/carefree');{{/Carefree}}
 
 module.exports = (env,argv)=> {
-
+    
     let  webpackConfig = {
         entry:{
             app:'./src/app.js'
@@ -146,7 +147,7 @@ module.exports = (env,argv)=> {
         if(env && env.upload){
             webpackConfig.plugins = (webpackConfig.plugins || []).concat([
                 new WebpackUploadPlugin({
-                    host: '{{uploadHost}}',
+                    host: '测试服务器地址',
                     source: 'build',
                     serverDir: config.ftpServer,
                     target: config.ftpTarget
@@ -155,8 +156,6 @@ module.exports = (env,argv)=> {
         }
     
     }else{
-        webpackConfig.output.publicPath = '/';
-        webpackConfig.devtool = '#cheap-module-eval-source-map';
         webpackConfig.plugins = (webpackConfig.plugins || []).concat([
             new webpack.DllReferencePlugin({
                 context:__dirname,
@@ -168,6 +167,25 @@ module.exports = (env,argv)=> {
     
             })
         ]);
+        if(env && env.carefree){
+            webpackConfig.plugins = (webpackConfig.plugins || []).concat([
+                new Carefree({
+                    justUseWifi: false,
+                    publicPath: '//page.jd.com/exploit/carefree-test/'+config.version+'/',
+                    ftp: {
+                        host: '测试服务器地址',
+                        port: 3000,
+                        source: 'build',
+                        target: '/var/www/html/page.jd.com/exploit/carefree-test/'
+                    }
+                    
+                })
+            ]);
+            webpackConfig.devtool = false;
+            return webpackConfig;
+        }
+        webpackConfig.output.publicPath = '/';
+        webpackConfig.devtool = '#cheap-module-eval-source-map';
         webpackConfig.devServer = {
             contentBase:path.resolve(__dirname,'build'),
             //host:'192.168.191.2',
