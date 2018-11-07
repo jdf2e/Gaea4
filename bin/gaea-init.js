@@ -116,7 +116,7 @@ function go(){
                         name:'TypeScript',
                         checked:false,
                     },{
-                        name:'SMOCK',
+                        name:'Smock',
                         checked:false,
                     },{
                         name:'PWA',
