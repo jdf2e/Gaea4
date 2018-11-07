@@ -18,7 +18,7 @@
 -  支持 TypeScript ✔️ songchenglin3
 -  支持 Smock
 -  支持 NutUI2.0
--  支持 CareFree  
+-  支持 CareFree  ✔️ lifeifan3 hufeng10
 
 
 
