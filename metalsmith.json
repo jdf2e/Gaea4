@@ -18,5 +18,8 @@
     },{
         "find":"\"carefree\": \"cross-env NODE_ENV=carefree carefree_env=dev webpack  --mode development --env.carefree -w --colors --progress\"",
         "replace":"{{#Carefree}}\n\"carefree\": \"cross-env NODE_ENV=carefree carefree_env=dev webpack  --mode development --env.carefree -w --colors --progress\"\n{{/Carefree}}"
+    },{
+        "find":"\"dll\": \"webpack --config ./webpack.dll.config.js --mode production --hide-modules --progress\",",
+        "replace":"\"dll\": \"webpack --config ./webpack.dll.config.js --mode production --hide-modules --progress\"{{#Carefree}},{{/Carefree}}"
     }]
 }

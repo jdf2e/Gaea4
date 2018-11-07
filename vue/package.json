@@ -9,7 +9,7 @@
     "dev": " webpack-dev-server --mode development   -d --open --hide-modules --progress",
     "build": "webpack --mode production --hide-modules --progress",
     "upload": "webpack --mode production --env.upload --hide-modules --progress",
-    "dll": "webpack --config ./webpack.dll.config.js --mode production --hide-modules --progress",
+    "dll": "webpack --config ./webpack.dll.config.js --mode production --hide-modules --progress"{{#Carefree}},{{/Carefree}}
     {{#Carefree}}
 "carefree": "cross-env NODE_ENV=carefree carefree_env=dev webpack  --mode development --env.carefree -w --colors --progress"
 {{/Carefree}}
