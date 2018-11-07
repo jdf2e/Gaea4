@@ -13,7 +13,10 @@
         "find":"\"author\": \"author\"",
         "replace":"\"author\": \"{{author}}\""
     },{
-        "find":"测试服务器地址",
+        "find":"/测试服务器地址/g",
         "replace":"{{uploadHost}}"
+    },{
+        "find":"\"carefree\": \"cross-env NODE_ENV=carefree carefree_env=dev webpack  --mode development --env.carefree -w --colors --progress\"",
+        "replace":"{{#Carefree}}\n\"carefree\": \"cross-env NODE_ENV=carefree carefree_env=dev webpack  --mode development --env.carefree -w --colors --progress\"\n{{/Carefree}}"
     }]
 }
