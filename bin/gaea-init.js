@@ -8,6 +8,7 @@ const download = require('../lib/download');
 const generator = require('../lib/generator');
 const logSymbols = require('log-symbols');
 const chalk = require('chalk');
+const latestVersion = require('latest-version');
 
 program.usage('<name>').parse(process.argv)
 let projectName = program.args[0]
@@ -135,6 +136,23 @@ function go(){
             for(let b of answer.features){
                 answer[b] = true;
             }
+            if(answer.Carefree){
+                return latestVersion('@nutui/carefree').then(version=>{
+                    answer.carefreeVersion = version
+                    return download(projectRoot).then(target=>{
+                        return {
+                            name:projectName,
+                            root:projectName,
+                            downloadTemp:target,
+                            metadata:{
+                                ...answer
+                            }
+                        }
+                     })
+                }).catch(err=>{
+                    return Promise.reject(err)
+                })
+            }
             return download(projectRoot).then(target=>{
                return {
                    name:projectName,
@@ -154,7 +172,7 @@ function go(){
             console.log('');
             console.log(logSymbols.success,chalk.green('创建成功:)'));
             console.log(logSymbols.info,`cd ${projectRoot}`);
-            console.log(logSymbols.info,'先编译第三方依赖库 npm run dll');
+            console.log(logSymbols.info,`安装npm install`);
             console.log(logSymbols.info,'先编译第三方依赖库 npm run dll');
             console.log(logSymbols.info,'开发 npm run dev');
             console.log(logSymbols.info,'编译和上传 npm run build/npm run upload');
