@@ -13,8 +13,8 @@ import Vue from 'vue'
 import Component, { mixins } from 'vue-class-component'
 import TestMixin from '../mixins/test'
 import TestComponent from '../components/test.vue'
-// import axios from 'axios';
-// import Qs from 'qs';
+import axios from 'axios'
+import Qs from 'qs'
 
 @Component({
     components: {
