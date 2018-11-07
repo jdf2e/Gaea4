@@ -1,11 +1,11 @@
-{{#if vuex}}
+
+{{#if ts}}
+ts/**
+ts/.*
+{{else if vuex}}
 vuex/**
 vuex/.*
 {{else if vue}}
 vue/**
 vue/.*
-{{/if}}
-{{else if ts}}
-ts/**
-ts/.*
 {{/if}}
