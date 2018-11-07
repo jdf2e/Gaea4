@@ -1,7 +1,7 @@
 {
   "name": "gaea",
   "version": "1.0.0",
-  "description": "gaea webpack template",
+  "description": "description",
   "publicPath": "//static.360buyimg.com/exploit/gaea",
   "ftpServer": "static.360buyimg.com",
   "ftpTarget": "exploit/gaea",
@@ -19,7 +19,7 @@
   "keywords": [
     "vue"
   ],
-  "author": "wangnan31",
+  "author": "author",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jdf2e/Gaea4/issues"
@@ -47,6 +47,7 @@
     "html-webpack-plugin": "^3.2.0",
     "jdf2e-webpack-upload-plugin": "^1.4.1",
     "mini-css-extract-plugin": "^0.4.4",
+    "moment": "^2.22.2",
     "node-sass": "^4.9.4",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
