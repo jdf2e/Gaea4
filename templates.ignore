@@ -5,3 +5,7 @@ vuex/.*
 vue/**
 vue/.*
 {{/if}}
+{{else if ts}}
+ts/**
+ts/.*
+{{/if}}

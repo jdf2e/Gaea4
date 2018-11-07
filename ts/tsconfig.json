@@ -1,0 +1,29 @@
+{
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true, //允许从没有设置默认导出的模块中默认导入。这并不影响代码的显示，仅为了类型检查。
+        "experimentalDecorators": true, //启用实验性的ES装饰器。
+        "allowJs": true, //	允许编译javascript文件。
+        "module": "esnext",
+        "jsx": "preserve",
+        "jsxFactory": "h",
+        "target": "es2015", //指定ECMAScript目标版本
+        "noImplicitAny": false,
+        "moduleResolution": "node", //决定如何处理模块
+        "isolatedModules": true, //将每个文件作为单独的模块
+        "lib": [
+          "dom",
+          "es5",
+          "es6",
+          "es7",
+          "es2015.promise"
+        ],
+        "sourceMap": true, //把 ts 文件编译成 js 文件的时候，同时生成对应的 map 文件
+        "pretty": true //给错误和消息设置样式，使用颜色和上下文。
+    }
+}
