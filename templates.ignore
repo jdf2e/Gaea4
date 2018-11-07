@@ -1,5 +1,5 @@
 
-{{#if ts}}
+{{#if TypeScript}}
 ts/**
 ts/.*
 {{else if vuex}}
