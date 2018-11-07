@@ -19,6 +19,8 @@
 -  支持 Smock
 -  支持 NutUI2.0
 -  支持 CareFree  ✔️ lifeifan3 hufeng10
+-  支持 Skeleton  
+-  支持 PWA      
 
 
 
