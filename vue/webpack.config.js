@@ -12,7 +12,7 @@ const htmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plug
 const AddAssetHtmlPlugin   = require('add-asset-html-webpack-plugin');
 const CopyWebpackPlugin    = require('copy-webpack-plugin');
 const moment               = require('moment');
-const Carefree             = require('@nutui/carefree');
+{{#Carefree}}const Carefree             = require('@nutui/carefree');{{/Carefree}}
 
 module.exports = (env,argv)=> {
     

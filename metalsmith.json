@@ -24,5 +24,8 @@
     },{
         "find":"\"@nutui/carefree\": \"^0.2.0\",",
         "replace":"{{#Carefree}}\"@nutui/carefree\": \"{{carefreeVersion}}\",{{/Carefree}}"
+    },{
+        "find":"const Carefree             = require('@nutui/carefree');",
+        "replace":"{{#Carefree}}const Carefree             = require('@nutui/carefree');{{/Carefree}}"
     }]
 }
