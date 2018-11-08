@@ -183,6 +183,9 @@ module.exports = (env,argv)=> {
         ]);
         if(env && env.carefree){
             webpackConfig.plugins = (webpackConfig.plugins || []).concat([
+                new webpack.DefinePlugin({
+                    'process.env.NODE_ENV': JSON.stringify('carefree')
+                }),
                 new Carefree({
                     justUseWifi: false,
                     publicPath: '//page.jd.com/exploit/carefree-test/'+config.version+'/',

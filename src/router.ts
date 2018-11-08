@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import Index from './view/index.vue'
 import Detail from './view/detail.vue'
 
-const carefree = process.env.NODE_ENV === 'development'
+const carefree = process.env.NODE_ENV === 'carefree'
 // 懒加载（按需加载）
 const Detail2 = () => import('./view/detail2.vue')
 
