@@ -1,6 +1,6 @@
 {
   "name": "gaea-cli",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "gaea-cli",
   "dependencies": {
     "chalk": "^2.4.1",
@@ -30,7 +30,7 @@
   "keywords": [
     "vue",
     "webpack",
-    "jdc"
+    "jdcfe"
   ],
   "author": "jdc-fe",
   "license": "ISC",
