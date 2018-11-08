@@ -40,10 +40,7 @@ module.exports = (env,argv)=> {
                         MinicssExtractPlugin.loader,
                         "css-loader",
                         "postcss-loader"
-                    ],
-                    exclude:/node_modules/,
-                    include:path.resolve(__dirname,'src')
-
+                    ]
                 },
                 {
                     test: /\.scss$/,
@@ -53,8 +50,7 @@ module.exports = (env,argv)=> {
                         "sass-loader",
                         "postcss-loader"
                     ],
-                    exclude:/node_modules/,
-                    include:path.resolve(__dirname,'src')
+                
                 },
                 {
                     test: /\.(png|jpg|gif|webp|woff|eot|ttf)$/,
@@ -65,14 +61,11 @@ module.exports = (env,argv)=> {
                             limit:3000
                         }
                     },
-                    exclude:/node_modules/,
-                    include:path.resolve(__dirname,'src')
+                   
                 },
                 {
                     test: /\.svg$/,
                     loader: 'svg-sprite-loader',
-                    exclude:/node_modules/,
-                    include:path.resolve(__dirname,'src')
                 },
                 {
                     test:/\.vue$/,
@@ -91,15 +84,11 @@ module.exports = (env,argv)=> {
                                 postcss: [autoprefixer()]
                             }
                         }
-                    ],
-                    exclude:/node_modules/,
-                    include:path.resolve(__dirname,'src')
+                    ]
                 },
                 {
                     test:/\.js$/,
-                    use:'babel-loader',
-                    exclude:/node_modules/,
-                    include:path.resolve(__dirname,'src')
+                    use:'babel-loader'
                 }
            ]
         },
