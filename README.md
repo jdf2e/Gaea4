@@ -12,15 +12,17 @@
 
 
 ## 功能点
--  webpack4.0 + Babel7 ✔️ wangnan31
--  支持 vuex ✔️      wangnan31
+-  webpack4.0 + Babel7 ✔️ 
+-  支持 vuex ✔️      
 -  支持 一键上传 ✔️
--  支持 TypeScript ✔️ songchenglin3
+-  支持 TypeScript ✔️ 
 -  支持 Smock
 -  支持 NutUI2.0
--  支持 CareFree  ✔️ lifeifan3 hufeng10
+-  支持 CareFree  ✔️ 
 -  支持 Skeleton  
--  支持 PWA      
+-  支持 PWA   
+
+
 
 
 
