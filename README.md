@@ -1,6 +1,9 @@
 # 欢迎使用Gaea
 ### vue 单页面脚手架 node>8.9.0
-## 执行命令
+
+## 安装步骤
+- 安装Gaea-cli  npm install gaea-cli -g
+- 初始化项目     gaea init projectName
 - 安装依赖 npm install
 - 编译第三依赖方包 npm run dll
 - 开发  npm run dev
