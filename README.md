@@ -1,5 +1,12 @@
 # 欢迎使用Gaea
 ### vue 单页面脚手架 node>8.9.0
+## 执行命令
+- 安装依赖 npm install
+- 编译第三依赖方包 npm run dll
+- 开发  npm run dev
+- 编译  npm run build
+- 上传  npm run upload
+
 ## cli脚手架分支
  - master  构建工具脚本代码
  - dev     生成模版代码文件集合

@@ -176,7 +176,8 @@ function go(){
             console.log(logSymbols.info,`安装npm install`);
             console.log(logSymbols.info,'先编译第三方依赖库 npm run dll');
             console.log(logSymbols.info,'开发 npm run dev');
-            console.log(logSymbols.info,'编译和上传 npm run build/npm run upload');
+            console.log(logSymbols.info,'编译 npm run build');
+            console.log(logSymbols.info,'上传 npm run upload');
             console.log('');
         }).catch(err=>{
             console.log('');
