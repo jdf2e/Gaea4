@@ -3,7 +3,6 @@ import App from './app.vue';
 import router from './router.js';
 import store from './store';
 
-
  new Vue({
   router,
   store,
