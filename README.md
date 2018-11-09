@@ -9,6 +9,7 @@
 - 开发  npm run dev
 - 编译  npm run build
 - 上传  npm run upload
+- 真机调试 npm run carefree
 
 ## cli脚手架分支
  - master  构建工具脚本代码
