@@ -1,5 +1,5 @@
 # 欢迎使用Gaea
-### vue 单页面脚手架 node>8.11.0
+### vue 单页面脚手架 node>8.9.0
 
 ## 安装步骤
 - 安装Gaea-cli  npm install gaea-cli -g
