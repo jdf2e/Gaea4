@@ -2,10 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const config = require('./package.json');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
-const curDate = new Date();
-const curTime = curDate.getFullYear() + '/' + (curDate.getMonth() + 1) + '/' + curDate.getDate() + ' ' + curDate.getHours() + ':' + curDate.getMinutes() + ':' + curDate.getSeconds();
-const bannerTxt = config.name + ' ' + config.version + ' ' + curTime; 
+const moment   = require('moment');
 
 const vendorStr = "qs,axios,vue-router,vuex";
 let vendor = ['vue'];
@@ -35,6 +32,8 @@ module.exports = {
 			name:'[name]_library',
 			context:__dirname
 		}),
-        new webpack.BannerPlugin(bannerTxt)
+		new webpack.BannerPlugin({
+			banner:`${config.name} ${config.version} ${moment().format()}` 
+		})
 	]
 }
