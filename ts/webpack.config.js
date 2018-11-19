@@ -7,12 +7,12 @@ const autoprefixer         = require('autoprefixer');
 const CleanWebpackPlugin   = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { VueLoaderPlugin }    = require('vue-loader');
-const WebpackUploadPlugin  = require('jdf2e-webpack-upload-plugin');
 const htmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 const AddAssetHtmlPlugin   = require('add-asset-html-webpack-plugin');
 const CopyWebpackPlugin    = require('copy-webpack-plugin');
 const moment               = require('moment');
 {{#Carefree}}const Carefree             = require('@nutui/carefree');{{/Carefree}}
+const WebpackUploadPlugin         = require('@nutui/upload/webpackUploadPlugin');
 
 module.exports = (env,argv)=> {
     
@@ -151,10 +151,15 @@ module.exports = (env,argv)=> {
         if(env && env.upload){
             webpackConfig.plugins = (webpackConfig.plugins || []).concat([
                 new WebpackUploadPlugin({
-                    host: '测试服务器地址',
-                    source: 'build',
-                    serverDir: config.ftpServer,
-                    target: config.ftpTarget
+                    source:'build',
+                    ignoreRegexp:/node_moudles/,
+                    httpOption:{
+                        host:'测试服务器地址',
+                        port:3000,
+                        username:'',
+                        password:'',
+                        target:`/var/www/html/${config.ftpServer}/${config.ftpTarget}`
+                    }
                 })
             ]);
         }
