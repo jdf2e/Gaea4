@@ -6,6 +6,7 @@
   "ftpServer": "static.360buyimg.com",
   "ftpTarget": "exploit/gaea",
   "typings": "./types/index.d.ts",
+  "vendorVersion":"",
   "scripts": {
     "dev": " webpack-dev-server --mode development   -d --open --hide-modules --progress",
     "build": "webpack --mode production --hide-modules --progress",
