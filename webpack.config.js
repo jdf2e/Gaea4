@@ -115,19 +115,25 @@ module.exports = (env,argv)=> {
     }
     
     if(argv.mode === 'production'){
+
+        let vendorVersion = config.vendorVersion;
+        let vendorTarget ='/lib/vendor.dll.js';
+        if(vendorVersion!=''){
+            vendorTarget = '/lib/'+vendorVersion+'/vendor.dll.js';
+        }
         webpackConfig.plugins = (webpackConfig.plugins || []).concat([
             new webpack.DllReferencePlugin({
                 context:__dirname,
                 manifest:require('./static/vendor-manifest.json')
             }),
             new htmlWebpackIncludeAssetsPlugin({
-                assets:['/lib/vendor.dll.js'],
+                assets:[vendorTarget],
                 publicPath:config.publicPath,
                 append:false
                 
             }),
             new CopyWebpackPlugin([
-                { from: path.join(__dirname, "./static/vendor.dll.js"), to: path.join(__dirname, "./build/lib/vendor.dll.js") }
+                { from: path.join(__dirname, "./static/vendor.dll.js"), to: path.join(__dirname, "./build"+vendorTarget) }
             ]),
             new webpack.BannerPlugin({
                 banner:`${config.name} ${config.version} ${moment().format()}` 
