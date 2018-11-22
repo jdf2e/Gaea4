@@ -12,7 +12,7 @@ const AddAssetHtmlPlugin   = require('add-asset-html-webpack-plugin');
 const CopyWebpackPlugin    = require('copy-webpack-plugin');
 const moment               = require('moment');
 const Carefree             = require('@nutui/carefree');
-const WebpackUploadPlugin         = require('@nutui/upload/webpackUploadPlugin');
+const WebpackUploadPlugin  = require('@nutui/upload/webpackUploadPlugin');
 
 module.exports = (env,argv)=> {
     
@@ -37,7 +37,7 @@ module.exports = (env,argv)=> {
                 {
                     test:/\.css$/,
                     use: [
-                        MinicssExtractPlugin.loader,
+                        argv.mode==='development'?'style-loader': MinicssExtractPlugin.loader,
                         "css-loader",
                         "postcss-loader"
                     ]
@@ -45,7 +45,7 @@ module.exports = (env,argv)=> {
                 {
                     test: /\.scss$/,
                     use: [
-                        MinicssExtractPlugin.loader,
+                        argv.mode==='development'?'style-loader': MinicssExtractPlugin.loader,
                         "css-loader",
                         "sass-loader",
                         "postcss-loader"
