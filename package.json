@@ -5,6 +5,7 @@
   "publicPath": "//static.360buyimg.com/exploit/gaea",
   "ftpServer": "static.360buyimg.com",
   "ftpTarget": "exploit/gaea",
+  "vendorVersion":"",
   "scripts": {
     "dev": " webpack-dev-server --mode development   -d --open --hide-modules --progress",
     "build": "webpack --mode production --hide-modules --progress",
