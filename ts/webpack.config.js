@@ -30,8 +30,9 @@ module.exports = (env,argv)=> {
             children: false
         },
         resolve:{
-            extensions:['.js','.vue','json','.ts', '.tsx'],
+            extensions:['.js','.vue','.json','.ts', '.tsx'],
         },
+        
         module:{
            rules:[
                 {
@@ -75,8 +76,7 @@ module.exports = (env,argv)=> {
                             options: {
                                 loaders:{
                                     scss:[
-                                        'vue-style-loader',
-                                        MinicssExtractPlugin.loader,
+                                         argv.mode==='development'?'vue-style-loader': MinicssExtractPlugin.loader,
                                         'css-loader',
                                         'sass-loader'
                                     ]
@@ -115,7 +115,7 @@ module.exports = (env,argv)=> {
     
             }),
             new MinicssExtractPlugin({
-                filename: 'css/[name].css'
+                filename: 'css/[name].css',
             }),
             new OptimizeCssAssetsPlugin({
                 assetNameRegExp: /\.css\.*(?!.*map)$/g,
