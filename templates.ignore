@@ -1,5 +1,7 @@
-
-{{#if TypeScript}}
+{{#if Skeleton}}
+skeleton/**
+skeleton/.*
+{{else if TypeScript}}
 ts/**
 ts/.*
 {{else if vuex}}
@@ -8,7 +10,4 @@ vuex/.*
 {{else if vue}}
 vue/**
 vue/.*
-{{else if skeleton}}
-skeleton/**
-skeleton/.*
 {{/if}}
