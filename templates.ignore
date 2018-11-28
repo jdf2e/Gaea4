@@ -8,4 +8,7 @@ vuex/.*
 {{else if vue}}
 vue/**
 vue/.*
+{{else if skeleton}}
+skeleton/**
+skeleton/.*
 {{/if}}
