@@ -19,7 +19,8 @@
 - trunk.dev.vuex    
 - trunk.dev.vue     
 - trunk.dev.ts      
-- trunk.dev.smock   
+- trunk.dev.smock
+- trunk.dev.skeleton(手写骨架屏html注入)      
 
 
 ## 功能点
@@ -30,7 +31,7 @@
 -  支持 Smock
 -  支持 NutUI2.0
 -  支持 CareFree  ✔️ 
--  支持 Skeleton  
+-  支持 Skeleton  ✔️ 
 -  支持 PWA   
 
 
