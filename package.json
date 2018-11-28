@@ -5,11 +5,14 @@
   "publicPath": "//static.360buyimg.com/exploit/gaea",
   "ftpServer": "static.360buyimg.com",
   "ftpTarget": "exploit/gaea",
-  "vendorVersion":"",
+  "vendorVersion": "",
   "scripts": {
     "dev": " webpack-dev-server --mode development   -d --open --hide-modules --progress",
     "build": "webpack --mode production --hide-modules --progress",
     "upload": "webpack --mode production --env.upload --hide-modules --progress",
+    "skeleton-json":"webpack --config ./src/skeleton/webpack.skeleton.config.js --mode production --hide-modules --progress",
+    "skeleton-html":"node ./src/skeleton/skeleton.js",
+    "skeleton":"npm run skeleton-json && npm run skeleton-html ",
     "dll": "webpack --config ./webpack.dll.config.js --mode production --hide-modules --progress",
     "carefree": "cross-env NODE_ENV=carefree carefree_env=dev webpack  --mode development --env.carefree -w --colors --progress"
   },
@@ -60,11 +63,13 @@
     "vue": "2.5.17",
     "vue-loader": "^15.4.2",
     "vue-router": "3.0.1",
+    "vue-server-renderer": "^2.5.17",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.17",
     "vuex": "3.0.1",
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.10",
+    "webpack-node-externals": "^1.7.2"
   }
 }
