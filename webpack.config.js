@@ -110,10 +110,6 @@ module.exports = (env,argv)=> {
         plugins:[
             new CleanWebpackPlugin('build'),
             new VueLoaderPlugin(),
-            new HtmlWebpackPlugin({
-                template:'./src/index.html'
-    
-            }),
             new MinicssExtractPlugin({
                 filename: 'css/[name].css',
             }),
@@ -137,6 +133,10 @@ module.exports = (env,argv)=> {
             vendorTarget = '/lib/'+vendorVersion+'/vendor.dll.js';
         }
         webpackConfig.plugins = (webpackConfig.plugins || []).concat([
+            new HtmlWebpackPlugin({
+                template:'./src/index.html',
+                filename:path.resolve(__dirname,'build/index.html')
+            }),
             new webpack.DllReferencePlugin({
                 context:__dirname,
                 manifest:require('./static/vendor-manifest.json')
@@ -172,6 +172,9 @@ module.exports = (env,argv)=> {
     
     }else{
         webpackConfig.plugins = (webpackConfig.plugins || []).concat([
+            new HtmlWebpackPlugin({
+                template:'./src/index.html'
+            }),
             new webpack.DllReferencePlugin({
                 context:__dirname,
                 manifest:require('./static/vendordev-manifest.json')
