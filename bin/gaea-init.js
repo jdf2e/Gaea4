@@ -114,7 +114,16 @@ function go(){
                     {
                         name:'NutUI2',
                         checked:true,
-                    },{
+                    },
+                    {
+                        name:'Carefree',
+                        checked:true
+                    },
+                    {
+                        name:'Skeleton',
+                        checked:false,
+                    },
+                    {
                         name:'TypeScript',
                         checked:false,
                     },{
@@ -122,9 +131,6 @@ function go(){
                         checked:false,
                     },{
                         name:'PWA',
-                        checked:false
-                    },{
-                        name:'Carefree',
                         checked:false
                     }
                 ]
