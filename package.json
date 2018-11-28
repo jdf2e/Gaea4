@@ -17,7 +17,12 @@
     "ora": "^3.0.0",
     "rimraf": "^2.6.2"
   },
-  "scripts": {},
+  "scripts": {
+    "vue":"node index.js -U vue",
+    "vuex":"node index.js -U vuex",
+    "ts":"node index.js -U ts",
+    "all":"npm run vue && npm run vuex && npm run ts"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jdf2e/Gaea4.git"
