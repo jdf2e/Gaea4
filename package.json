@@ -21,7 +21,8 @@
     "vue":"node index.js -U vue",
     "vuex":"node index.js -U vuex",
     "ts":"node index.js -U ts",
-    "all":"npm run vue && npm run vuex && npm run ts"
+    "skeleton":"node index.js -U skeleton",
+    "all":"npm run vue && npm run vuex && npm run ts && npm run skeleton"
   },
   "repository": {
     "type": "git",
