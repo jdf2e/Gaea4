@@ -1,6 +1,6 @@
 {
   "name": "gaea-cli",
-  "version": "0.5.8",
+  "version": "0.6.0",
   "description": "gaea-cli",
   "dependencies": {
     "chalk": "^2.4.1",
@@ -20,7 +20,8 @@
   },
   "devDependencies": {},
   "bin": {
-    "gaea": "./bin/gaea.js"
+    "gaea": "./bin/gaea.js",
+    "g2": "./bin/gaea.js"
   },
   "scripts": {},
   "repository": {

@@ -2,15 +2,15 @@
 ### vue 单页面脚手架 node>8.9.0
 
 ## 安装步骤
-- 安装Gaea-cli  npm install gaea-cli -g
-- 初始化项目     gaea init projectName
-- 安装依赖 npm install
-- 编译第三依赖方包 npm run dll
-- 开发  npm run dev
-- 编译  npm run build
-- 上传  npm run upload
-- 真机调试 npm run carefree
-- 骨架屏html注入 npm run skeleton
+- [安装Gaea-cli]   npm install gaea-cli -g
+- [初始化项目]      gaea init projectName 或者 g2 init projectName
+- [安装依赖]        npm install
+- [编译第三依赖方包]  npm run dll
+- [开发]            npm run dev
+- [编译]           npm run build
+- [上传]           npm run upload
+- [真机调试]        npm run carefree
+- [骨架屏html注入]   npm run skeleton
 
 ## cli脚手架分支
  - master  构建工具脚本代码
