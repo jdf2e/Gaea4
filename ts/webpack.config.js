@@ -48,8 +48,9 @@ module.exports = (env,argv)=> {
                     use: [
                         argv.mode==='development'?'style-loader': MinicssExtractPlugin.loader,
                         "css-loader",
-                        "sass-loader",
-                        "postcss-loader"
+                        "postcss-loader",
+                        "sass-loader"
+                       
                     ],
                 
                 },
@@ -192,12 +193,12 @@ module.exports = (env,argv)=> {
                 }),
                 new Carefree({
                     justUseWifi: false,
-                    publicPath: '//page.jd.com/exploit/carefree-test/'+config.version+'/',
+                    publicPath: '//page.jd.com/exploit/'+config.ftpTarget+'/'+config.version+'/',
                     ftp: {
                         host: '测试服务器地址',
                         port: 3000,
                         source: 'build',
-                        target: '/var/www/html/page.jd.com/exploit/carefree-test/'
+                        target: '/var/www/html/page.jd.com/'+config.ftpTarget+'/'
                     }
                     
                 })
