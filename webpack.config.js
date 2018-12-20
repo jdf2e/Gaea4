@@ -197,7 +197,7 @@ module.exports = (env,argv)=> {
                         host: '测试服务器地址',
                         port: 3000,
                         source: 'build',
-                        target: '/var/www/html/page.jd.com/exploit/carefree-test/'
+                        target: '/var/www/html/page.jd.com/'+config.ftpTarget+'/'
                     }
                     
                 })
