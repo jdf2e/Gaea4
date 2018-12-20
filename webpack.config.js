@@ -48,8 +48,9 @@ module.exports = (env,argv)=> {
                     use: [
                         argv.mode==='development'?'style-loader': MinicssExtractPlugin.loader,
                         "css-loader",
-                        "sass-loader",
-                        "postcss-loader"
+                        "postcss-loader",
+                        "sass-loader"
+                       
                     ],
                 
                 },
