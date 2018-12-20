@@ -192,7 +192,7 @@ module.exports = (env,argv)=> {
                 }),
                 new Carefree({
                     justUseWifi: false,
-                    publicPath: '//page.jd.com/exploit/carefree-test/'+config.version+'/',
+                    publicPath: '//page.jd.com/exploit/'+config.ftpTarget+'/'+config.version+'/',
                     ftp: {
                         host: '测试服务器地址',
                         port: 3000,
