@@ -6,6 +6,11 @@
   "ftpServer": "static.360buyimg.com",
   "ftpTarget": "exploit/gaea",
   "vendorVersion": "",
+  "smock": {
+    "host":"",
+    "domain":"",
+    "projectName":""
+  },
   "scripts": {
     "dev": " webpack-dev-server --mode development   -d --open --hide-modules --progress",
     "build": "webpack --mode production --hide-modules --progress",
@@ -55,6 +60,7 @@
     "progress-bar-webpack-plugin": "1.11.0",
     "qs": "6.5.2",
     "sass-loader": "7.1.0",
+    "smock-webpack-plugin": "^1.0.1",
     "style-loader": "0.23.1",
     "svg-sprite-loader": "3.7.3",
     "url-loader": "1.1.2",
