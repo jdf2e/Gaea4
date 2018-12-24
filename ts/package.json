@@ -17,6 +17,11 @@
 "carefree": "cross-env NODE_ENV=carefree carefree_env=dev webpack  --mode development --env.carefree -w --colors --progress"
 {{/Carefree}}
   },
+  "smock":{
+    "host":"",
+    "domain":"",
+    "projectName":""
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jdf2e/Gaea4.git"
@@ -64,6 +69,7 @@
     "progress-bar-webpack-plugin": "1.11.0",
     "qs": "6.5.2",
     "sass-loader": "7.1.0",
+    {{#Smock}}"smock-webpack-plugin": "{{smockVersion}}",{{/Smock}}
     "style-loader": "0.23.1",
     "ts-loader": "5.3.0",
     "tslint": "5.11.0",
