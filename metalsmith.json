@@ -29,7 +29,7 @@
         "replace":"{{#Carefree}}const Carefree             = require('@nutui/carefree');{{/Carefree}}"
     },{
         "find":"const Smock                = require('smock-webpack-plugin');",
-        "replace":"{{#Smock}const Smock                = require('smock-webpack-plugin');{{/Smock}}"
+        "replace":"{{#Smock}}const Smock                = require('smock-webpack-plugin');{{/Smock}}"
     },{
         "find":"\"smock-webpack-plugin\": \"^1.0.1\",",
         "replace":"{{#Smock}}\"smock-webpack-plugin\": \"^{{SmockVersion}}\",{{/Smock}}"
