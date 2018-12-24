@@ -32,7 +32,7 @@
         "replace":"{{#Smock}}const Smock                = require('smock-webpack-plugin');{{/Smock}}"
     },{
         "find":"\"smock-webpack-plugin\": \"^1.0.1\",",
-        "replace":"{{#Smock}}\"smock-webpack-plugin\": \"^{{SmockVersion}}\",{{/Smock}}"
+        "replace":"{{#Smock}}\"smock-webpack-plugin\": \"{{smockVersion}}\",{{/Smock}}"
     },{
         "find":"new Smock(config.smock)",
         "replace":"{{#Smock}}new Smock(config.smock){{/Smock}}"

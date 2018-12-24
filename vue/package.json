@@ -62,7 +62,7 @@
     "progress-bar-webpack-plugin": "1.11.0",
     "qs": "6.5.2",
     "sass-loader": "7.1.0",
-    {{#Smock}}"smock-webpack-plugin": "^{{SmockVersion}}",{{/Smock}}
+    {{#Smock}}"smock-webpack-plugin": "{{smockVersion}}",{{/Smock}}
     "style-loader": "0.23.1",
     "svg-sprite-loader": "3.7.3",
     "url-loader": "1.1.2",
