@@ -9,6 +9,7 @@ const generator = require('../lib/generator');
 const logSymbols = require('log-symbols');
 const chalk = require('chalk');
 const latestVersion = require('latest-version');
+const inquirer = require('inquirer');
 
 program.usage('<name>').parse(process.argv)
 let projectName = program.args[0]
@@ -17,49 +18,50 @@ if(!projectName){
     return
 }
 
-// const list = glob.sync('test/vue/{**,.*}')
-// console.log(list)
 
-const inquirer = require('inquirer');
-const list = glob.sync('*');
-let rootName = path.basename(process.cwd());
-let next;
-//判断是否存在该目录
-if(list.length){
-    if(list.filter(name =>{
-        const fileName = path.resolve(process.cwd(),path.join('.',name));
-        const isDir = fs.statSync(fileName).isDirectory();
-        return  name.indexOf(projectName) != -1 && isDir
-    }).length !== 0){
-        console.error(logSymbols.error,chalk.red(`项目${projectName}已经存在`));
-    }else{
-        next  = Promise.resolve(projectName);
-    }
-}else if(rootName  === projectName){
-    // next = inquirer.prompt([
-    //     {
-    //         name:'buildInCurrent',
-    //         message:'当前目录为空，且目录名称和项目名称相同，不需要在当前目录下创建新项目',
-    //         type:'confirm',
-    //         default:true
-    //     }
-    // ]).then(answer =>{
-    //     return Promise.resolve(answer.buildInCurrent ?'.':projectName);
-    // })
-    next = Promise.resolve(projectName);
 
-}else{
-    next = Promise.resolve(projectName);
-}
+ go().then(()=>{
+    console.log(logSymbols.success,chalk.green('创建成功:)'));
+    console.log(logSymbols.info,`cd ${projectRoot}`);
+    console.log(logSymbols.info,`安装npm install`);
+    console.log(logSymbols.info,'先编译第三方依赖库 npm run dll');
+    console.log(logSymbols.info,'开发 npm run dev');
+    console.log(logSymbols.info,'编译 npm run build');
+    console.log(logSymbols.info,'上传 npm run upload');
+    console.log(logSymbols.info,'真机调试 npm run carefree');
+    console.log('');
+}).catch((err)=>{
+    console.log(logSymbols.error,chalk.red(`创建失败：${err.message}`));
+    console.log('');
+});
 
-next && go();
+async function go(){
+    const projectRoot = await  new Promise((resolve,reject)=>{
+            const list = glob.sync('*');
+            //let rootName = path.basename(process.cwd());
+            let next;
+            //判断是否存在该目录
+            if(list.length){
+                if(list.filter(name =>{
+                    const fileName = path.resolve(process.cwd(),path.join('.',name));
+                    const isDir = fs.statSync(fileName).isDirectory();
+                    return  name.indexOf(projectName) != -1 && isDir
+                }).length !== 0){
+                    console.error(logSymbols.error,chalk.red(`项目${projectName}已经存在`));
+                }else{
+                     resolve(projectName);
+                }
+            }else{
+                resolve(projectName);
+            }
+        })
+        
 
-function go(){
-    next.then(projectRoot =>{
+    const answer = await  new Promise((resolve,reject)=>{
         if(projectRoot != '.'){
             fs.mkdirSync(projectRoot);
         }
-        return inquirer.prompt([
+        return resolve( inquirer.prompt([
             {
                 name:'projectName',
                 message:'项目名称',
@@ -135,60 +137,36 @@ function go(){
                     }
                 ]
             }
-        ]).then(answer =>{
-            
-            for(let a of answer.bucket){
-                answer[a] = true;
-            }
-            for(let b of answer.features){
-                answer[b] = true;
-            }
-            if(answer.Carefree){
-                return latestVersion('@nutui/carefree').then(version=>{
-                    answer.carefreeVersion = version
-                    return download(projectRoot).then(target=>{
-                        return {
-                            name:projectName,
-                            root:projectName,
-                            downloadTemp:target,
-                            metadata:{
-                                ...answer
-                            }
-                        }
-                     })
-                }).catch(err=>{
-                    return Promise.reject(err)
-                })
-            }
-            return download(projectRoot).then(target=>{
-               return {
-                   name:projectName,
-                   root:projectName,
-                   downloadTemp:target,
-                   metadata:{
-                       ...answer
-                   }
-               }
-            })
-        }).then(context =>{
-            
-            //根据answer 判断什么模版路径
-            return generator(context.metadata,context.downloadTemp,path.parse(context.downloadTemp).dir);
-        
-        }).then((res) => {
-            console.log('');
-            console.log(logSymbols.success,chalk.green('创建成功:)'));
-            console.log(logSymbols.info,`cd ${projectRoot}`);
-            console.log(logSymbols.info,`安装npm install`);
-            console.log(logSymbols.info,'先编译第三方依赖库 npm run dll');
-            console.log(logSymbols.info,'开发 npm run dev');
-            console.log(logSymbols.info,'编译 npm run build');
-            console.log(logSymbols.info,'上传 npm run upload');
-            console.log('');
-        }).catch(err=>{
-            console.log('');
-            console.log(logSymbols.error,chalk.red(`创建失败：${err.message}`));
-            console.log('');
-        })
+        ]))
     })
+    
+    const carefreeVersion = await latestVersion('@nutui/carefree');
+    const smockVersion = await latestVersion('smock-webpack-plugin');
+    if(answer.Carefree){
+        answer.carefreeVersion = carefreeVersion;
+    }
+    if(answer.Smock){
+        answer.smockVersion = smockVersion;
+    }
+    
+    const target = await new Promise((resolve,reject)=> {
+        for(let a of answer.bucket){
+            answer[a] = true;
+        }
+        for(let b of answer.features){
+            answer[b] = true;
+        }
+        return resolve(download(projectRoot));
+    })
+    const context = {
+        name:projectName,
+        root:projectName,
+        downloadTemp:target,
+        metadata:{
+            ...answer
+        }
+    }
+
+    const res = await generator(context.metadata,context.downloadTemp,path.parse(context.downloadTemp).dir);
+     return res;
 }
