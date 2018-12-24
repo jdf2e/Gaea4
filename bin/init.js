@@ -22,7 +22,7 @@ if(!projectName){
 
  go().then(()=>{
     console.log(logSymbols.success,chalk.green('创建成功:)'));
-    console.log(logSymbols.info,`cd ${projectRoot}`);
+    console.log(logSymbols.info,`cd ${projectName}`);
     console.log(logSymbols.info,`安装npm install`);
     console.log(logSymbols.info,'先编译第三方依赖库 npm run dll');
     console.log(logSymbols.info,'开发 npm run dev');
