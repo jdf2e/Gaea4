@@ -10,9 +10,9 @@
     "dev": " webpack-dev-server --mode development   -d --open --hide-modules --progress",
     "build": "webpack --mode production --hide-modules --progress",
     "upload": "webpack --mode production --env.upload --hide-modules --progress",
-    "skeleton-json":"webpack --config ./src/skeleton/webpack.skeleton.config.js --mode production --hide-modules --progress",
-    "skeleton-html":"node ./src/skeleton/skeleton.js",
-    "skeleton":"npm run skeleton-json && npm run skeleton-html ",
+    "skeleton-json": "webpack --config ./src/skeleton/webpack.skeleton.config.js --mode production --hide-modules --progress",
+    "skeleton-html": "node ./src/skeleton/skeleton.js",
+    "skeleton": "npm run skeleton-json && npm run skeleton-html ",
     "dll": "webpack --config ./webpack.dll.config.js --mode production --hide-modules --progress",
     "carefree": "cross-env NODE_ENV=carefree carefree_env=dev webpack  --mode development --env.carefree -w --colors --progress"
   },
@@ -80,6 +80,5 @@
     "webpack-cli": "3.1.2",
     "webpack-dev-server": "3.1.10",
     "webpack-node-externals": "1.7.2"
-
   }
 }
