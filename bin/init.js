@@ -140,21 +140,21 @@ async function go(){
         ]))
     })
     
-    const carefreeVersion = await latestVersion('@nutui/carefree');
-    const smockVersion = await latestVersion('smock-webpack-plugin');
-    const nutuiVersion = await latestVersion('@nutui/nutui');
-    const nutuiSeparateVersion = await latestVersion('@nutui/babel-plugin-separate-import');
-
+    const version = await Promise.all([latestVersion('@nutui/carefree'),
+        latestVersion('smock-webpack-plugin'),
+        latestVersion('@nutui/nutui'),
+        latestVersion('@nutui/babel-plugin-separate-import')
+    ])
+   
     if(answer.Carefree){
-        answer.carefreeVersion = carefreeVersion;
+        answer.carefreeVersion = version[0];
     }
     if(answer.Smock){
-        answer.smockVersion = smockVersion;
+        answer.smockVersion =version[1];
     }
-    if(answer.NutUI2){
-        answer.nutuiVersion = nutuiVersion;
-        answer.nutuiSeparateVersion = nutuiSeparateVersion;
-    }
+    answer.nutuiVersion = version[2];
+    answer.nutuiSeparateVersion =version[3];
+    
     
     const target = await new Promise((resolve,reject)=> {
         for(let a of answer.bucket){
