@@ -30,7 +30,7 @@
 -  支持 一键上传 ✔️
 -  支持 TypeScript ✔️ 
 -  支持 Smock     ✔️ 
--  支持 NutUI2.0
+-  支持 NutUI2.0  ✔️ 
 -  支持 CareFree  ✔️ 
 -  支持 Skeleton  ✔️ 
 -  支持 PWA   
