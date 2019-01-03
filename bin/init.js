@@ -142,11 +142,18 @@ async function go(){
     
     const carefreeVersion = await latestVersion('@nutui/carefree');
     const smockVersion = await latestVersion('smock-webpack-plugin');
+    const nutuiVersion = await latestVersion('@nutui/nutui');
+    const nutuiSeparateVersion = await latestVersion('@nutui/babel-plugin-separate-import');
+
     if(answer.Carefree){
         answer.carefreeVersion = carefreeVersion;
     }
     if(answer.Smock){
         answer.smockVersion = smockVersion;
+    }
+    if(answer.NutUI2){
+        answer.nutuiVersion = nutuiVersion;
+        answer.nutuiSeparateVersion = nutuiSeparateVersion;
     }
     
     const target = await new Promise((resolve,reject)=> {
