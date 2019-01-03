@@ -4,6 +4,7 @@
             <div class="box">我是首页</div>
             <router-link to="/detail"><h3>去详情页1</h3></router-link>
             <router-link to="/detail2"><h3>去详情页2（懒加载）</h3></router-link>
+            <router-link to="/nutui"><h3>去Nutui 使用的Demo 页</h3></router-link>
         </div>
         <div>vuex demo</div>
         <div>a:{{aNum}}</div>

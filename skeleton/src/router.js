@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 import Index from './view/index.vue';
 import Detail from './view/detail.vue';
+import Nutui from './view/nutui.vue';
 
 const carefree = process.env.NODE_ENV === 'carefree'
 
@@ -14,7 +15,8 @@ Vue.use(VueRouter);
 const routes = [
   { path: '/', component: Index },
   { path: '/detail', component: Detail },
-  { path: '/detail2', component: Detail2 }
+  { path: '/detail2', component: Detail2 },
+  { path: '/nutui',component:Nutui}
 ];
 
 const router = new VueRouter({

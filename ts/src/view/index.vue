@@ -5,6 +5,7 @@
             <router-link to="/detail"><h3>去详情页1</h3></router-link>
             <router-link to="/detail2"><h3>去详情页2（懒加载）</h3></router-link>
             <TC :param="`测试jsx`"></TC>
+            <router-link to="/nutui"><h3>去Nutui 使用的Demo 页</h3></router-link>
         </div>
     </div>
 </template>

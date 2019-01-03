@@ -12,6 +12,8 @@
     ],
     "plugins": [
             "transform-vue-jsx",
+            ["@nutui/babel-plugin-separate-import",{"style":"css"}],
             "@babel/plugin-syntax-dynamic-import"
+            
         ]
 }
