@@ -36,5 +36,11 @@
     },{
         "find":"new Smock(config.smock)",
         "replace":"{{#Smock}}new Smock(config.smock){{/Smock}}"
+    },{
+        "find":"\"@nutui/nutui\": \"^2.0.0-beta.2\",",
+        "replace":"\"@nutui/nutui\": \"{{nutuiVersion}}\","
+    },{
+        "find":"\"@nutui/babel-plugin-separate-import\": \"^0.1.8\",",
+        "replace":"\"@nutui/babel-plugin-separate-import\": \"{{nutuiSeparateVersion}}\""
     }]
 }

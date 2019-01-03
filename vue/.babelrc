@@ -11,9 +11,8 @@
         }]
     ],
     "plugins": [
-            "@babel/plugin-syntax-dynamic-import",
-            ["@nutui/babel-plugin-separate-import",{
-                "style":"css"
-            }]
+            ["@nutui/babel-plugin-separate-import",{"style":"css"}],
+            "@babel/plugin-syntax-dynamic-import"
+            
         ]
 }
