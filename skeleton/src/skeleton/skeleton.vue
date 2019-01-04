@@ -39,8 +39,7 @@
 </template>
 
 <script>
-import {skeleton} from '@nutui/nutui';
-const {nutskeleton,skeletonCircle,skeletonSquare,row,column} = skeleton;
+
 export default {
     data(){
         return{
@@ -48,11 +47,7 @@ export default {
         }
     },
     components:{
-        'nut-skeleton':nutskeleton,
-        'skeleton-square':skeletonSquare,
-        'skeleton-circle':skeletonCircle,
-        'row':row,
-        'column':column
+        
     }
     
 }
