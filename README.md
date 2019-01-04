@@ -4,7 +4,7 @@
 ## 安装步骤
 
 * [安装Gaea-cli]   npm install gaea-cli -g
-* [初始化项目]      gaea init projectName 或者 g2 init projectName
+* [初始化项目]      gaea init projectName 或者 g2 init projectName （如果项目名字和目录一致，可以在当前目录生成模版代码）
 * [安装依赖]        npm install
 * [编译第三依赖方包]  npm run dll
 * [开发]            npm run dev

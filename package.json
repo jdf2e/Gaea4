@@ -1,6 +1,6 @@
 {
   "name": "gaea-cli",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "gaea-cli",
   "dependencies": {
     "chalk": "^2.4.1",
