@@ -1,33 +1,21 @@
-import skeleton from './_skeleton.js';
+import skeleton from './skeleton.vue';
+import skeletonCircle from './basic/skeleton-circle.vue';
+import skeletonSquare from './basic/skeleton-square.vue';
+import skeletonRow from './layout/skeleton-row.vue';
+import skeletonColumn from './layout/skeleton-column.vue';
 import './skeleton.scss';
 
-const {
-    skeletonCircle,
-    skeletonSquare,
-    skeletonRow,
-    skeletonColumn
-} = skeleton;
 
-skeleton.install = function(Vue){
+
+function install(Vue){
     Vue.component(skeleton.name,skeleton);
-}
-skeletonCircle.install = function(Vue){
+    Vue.component(skeletonRow.name,skeletonRow);
+    Vue.component(skeletonColumn.name,skeletonColumn);
+    Vue.component(skeletonSquare.name,skeletonSquare);
     Vue.component(skeletonCircle.name,skeletonCircle);
 }
-skeletonSquare.install = function(Vue){
-    Vue.component(skeletonSquare.name,skeletonSquare);
+
+const skeletonLoading = {
+    install
 }
-skeletonRow.install = function(Vue){
-    Vue.component(skeletonRow.name,skeletonRow);
-}
-skeletonColumn.install = function(Vue){
-    Vue.component(skeletonColumn.name,skeletonColumn);
-}
-    
-export default {
-    skeleton,
-    skeletonCircle,
-    skeletonSquare,
-    skeletonRow,
-    skeletonColumn
-};
+export default skeletonLoading;
