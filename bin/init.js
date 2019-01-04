@@ -38,7 +38,7 @@ if(!projectName){
 async function go(){
     const projectRoot = await  new Promise((resolve,reject)=>{
             const list = glob.sync('*');
-            //let rootName = path.basename(process.cwd());
+            let rootName = path.basename(process.cwd());
             let next;
             //判断是否存在该目录
             if(list.length){
@@ -51,6 +51,15 @@ async function go(){
                 }else{
                      resolve(projectName);
                 }
+            }else if(projectName == rootName){
+                next = inquirer.prompt({
+                    name:'buildInCurrent',
+                    message:'当前目录为空，且项目名称和目录名称相同，在当前目录下创建新项目？',
+                    type:'confirm',
+                    default:true
+                }).then(answer=>{
+                    resolve(answer.buildInCurrent ? '.': projectName);
+                })
             }else{
                 resolve(projectName);
             }
@@ -173,7 +182,10 @@ async function go(){
             ...answer
         }
     }
-
-    const res = await generator(context.metadata,context.downloadTemp,path.parse(context.downloadTemp).dir);
+    let dest = '.';
+    if(projectRoot != '.'){
+        dest =  path.parse(context.downloadTemp).dir;
+    }
+    const res = await generator(context.metadata,context.downloadTemp,dest);
      return res;
 }
