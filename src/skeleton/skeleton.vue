@@ -52,7 +52,7 @@ export default {
         'skeleton-square':skeletonSquare,
         'skeleton-circle':skeletonCircle,
         'row':row,
-        'column'column
+        'column':column
     }
     
 }
