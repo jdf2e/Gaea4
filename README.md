@@ -38,21 +38,7 @@ npm run carefree
 骨架屏html注入   
 ```bash
 npm run skeleton
-```
-
-## cli脚手架分支
-
- * master  构建工具脚本代码
- * dev     生成模版代码文件集合
-
-## 模板demo分支
-
-* trunk.dev.vuex    
-* trunk.dev.vue     
-* trunk.dev.ts      
-* trunk.dev.smock
-* trunk.dev.skeleton(手写骨架屏html注入)      
-
+```  
 
 ## 功能点
 * webpack4.0 + Babel7 ✔️ 
@@ -86,7 +72,7 @@ new WebpackUploadPlugin({
 })
 ```
 
-[配置carefree真机调试，具体可[参看](https://carefree.jd.com/)，例如：我们将开发阶段的代码打包上传至测试域名page.jd.com，用于真机扫二维码调试
+配置carefree真机调试，具体可[参看](https://carefree.jd.com/)，例如：我们将开发阶段的代码打包上传至测试域名page.jd.com，用于真机扫二维码调试
 
 ```bash
 new Carefree({
@@ -144,7 +130,7 @@ src/skeleton/skeleton.vue 文件就是手写的骨架屏组件，推荐只渲染
 npm run skeleton 就会将src/skeleton/index.html  生成到外层src/index.html
 注入完成后，就可以后续正常开发
 
-## SMOCK篇
+### SMOCK篇
 
 smock 是开发阶段基于swagger的自动化mock假数据工具，需要配置参数如下：
 修改package.json 中字段，具体可以[参看](https://smock.jd.com/)
@@ -157,6 +143,18 @@ smock 是开发阶段基于swagger的自动化mock假数据工具，需要配置
 }
 ```
 
+## cli脚手架分支
+
+ * master  构建工具脚本代码
+ * dev     生成模版代码文件集合
+
+## 模板demo分支
+
+* trunk.dev.vuex    
+* trunk.dev.vue     
+* trunk.dev.ts      
+* trunk.dev.smock
+* trunk.dev.skeleton(手写骨架屏html注入)    
 
 ## 注意事项
 * 上线逻辑，前后端分离上线，lib/vendor.js 属于第三方库会发生变动机会比较小，所以在后续迭代可以不需要上线，只需要上线1.0.0/或者1.0.1/版本的文件
