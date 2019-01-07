@@ -3,39 +3,39 @@
 
 ## 安装步骤
 
-* [安装Gaea-cli]   
+[安装Gaea-cli]   
 ```bash
 npm install gaea-cli -g
 ```
-* [初始化项目]（如果项目名字和目录一致，可以在当前目录生成模版代码）
+[初始化项目]（如果项目名字和目录一致，可以在当前目录生成模版代码）
 ```bash      
 gaea init projectName 或者 g2 init projectName 
 ```
-* [安装依赖]        
+[安装依赖]        
 ```bash
 npm install
 ```
-* [编译第三依赖方包]
+[编译第三依赖方包]
 ```bash  
 npm run dll
 ```
-* [开发] 
+[开发] 
 ```bash             
 npm run dev
 ```
-* [编译]
+[编译]
 ```bash              
 npm run build
 ```
-* [上传]           
+[上传]           
 ```bash   
 npm run upload
 ```
-* [真机调试]        
+[真机调试]        
 ```bash   
 npm run carefree
 ```
-* [骨架屏html注入]   
+[骨架屏html注入]   
 ```bash
 npm run skeleton
 ```
