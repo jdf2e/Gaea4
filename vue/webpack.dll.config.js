@@ -4,12 +4,9 @@ const config = require('./package.json');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const moment   = require('moment');
 
-const vendorStr = "qs,axios,vue-router";
-let vendor = ['vue'];
-vendor = vendor.concat(vendorStr.split(','));
-let vendordev=['vue/dist/vue.esm.js'];
-vendordev =vendordev.concat(vendorStr.split(','));
-
+let vendorStr = "{{bucket}}".replace('vue,','');//模版生成占位
+let vendor = ['vue'].concat(vendorStr.split(','));
+let vendordev =['vue/dist/vue.esm.js'].concat(vendorStr.split(','));//集成开发版本vue
 
 module.exports = {
 	//你想要打包的模块数组
