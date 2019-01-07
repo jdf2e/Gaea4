@@ -89,7 +89,7 @@ async function go(){
             {
                 name:'uploadHost',
                 message:'上传服务器地址',
-                default:`放静态资源的测试服务器地址`
+                default:`测试服务器host地址`
             },
             {
                 name:'author',
@@ -100,6 +100,15 @@ async function go(){
                 name:'bucket',
                 type:'checkbox',
                 message:'第三方依赖库(多选)',
+                validate:(bucketstr)=>{
+                    return new Promise((resolve,reject)=>{
+                        if(bucketstr.indexOf('vue') === -1){
+                            reject('vue 必选！');
+                        }else{
+                            resolve(true);
+                        }
+                    })
+                },
                 choices:
                 [{
                     name:'vue',
@@ -140,10 +149,11 @@ async function go(){
                     },{
                         name:'Smock',
                         checked:false,
-                    },{
-                        name:'PWA',
-                        checked:false
                     }
+                    // ,{
+                    //     name:'PWA',
+                    //     checked:false
+                    // }
                 ]
             }
         ]))
