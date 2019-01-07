@@ -103,16 +103,16 @@ new Carefree({
 
 ### 修改打包第三方库webpack.dll.config.js
 
-    目前的第三方库有 vue、qs、axios、vue-router ，如果增加和删除的话，可以更改字符串："vue,qs,axios,vue-router" ; 重新执行npm run dll 
+目前的第三方库有 vue、qs、axios、vue-router ，如果增加和删除的话，可以更改字符串："vue,qs,axios,vue-router" ; 重新执行npm run dll 
 
 ### 修改package.json
 
 * name 项目名称
-* version 项目版本，控制上线静态资源版本 例如： https://static.360buyimg.com/exploit/mtelink/1.0.0/js/app.js
-* publicPath  项目上线 html 中静态资源的路径地址前缀 例如：//static.360buyimg.com/exploit/mtelink 如果是html和静态资源都交给后端，那么这个值设置成空就行。
+* version 项目版本，控制上线静态资源版本 例如： `https://static.360buyimg.com/exploit/mtelink/1.0.0/js/app.js`
+* publicPath  项目上线 html 中静态资源的路径地址前缀 例如：`//static.360buyimg.com/exploit/mtelink` 如果是html和静态资源都交给后端，那么这个值设置成空就行。
 * ftpServer  项目上传根目录 例如：misc.360buyimg.com |  static.360buyimg.com
 * ftpTarget 项目上传的文件目录 例如：exploit/test | exploit/mtelink 不要以 / 开头，否则会被认为是服务器的根目录。
-* vendorVersion  第三方依赖库的版本控制，提供第三库在上线后，也需要加版本号上线兜底方案 例如：https://static.360buyimg.com/exploit/mtelink/lib/vendor.dll.js |  https://static.360buyimg.com/exploit/mtelink/lib/1.0.0/vendor.dll.js
+* vendorVersion  第三方依赖库的版本控制，提供第三库在上线后，也需要加版本号上线兜底方案 例如：`https://static.360buyimg.com/exploit/mtelink/lib/vendor.dll.js` |  `https://static.360buyimg.com/exploit/mtelink/lib/1.0.0/vendor.dll.js`
 
 
 ## 目录结构
@@ -138,7 +138,7 @@ new Carefree({
 
 脚手架提供了vue的骨架屏注入方案，在命令行工具选择骨架屏，就会下载骨架屏相对应的模板。
 
-src/skeleton 就是基于vue-server-renderer（https://github.com/vuejs/vue/tree/dev/packages/vue-server-renderer）服务端渲染，抽取手写骨架屏的css 和 html 注入到 打包的html中。
+src/skeleton 就是基于[vue-server-renderer](https://github.com/vuejs/vue/tree/dev/packages/vue-server-renderer)服务端渲染，抽取手写骨架屏的css 和 html 注入到 打包的html中。
 
 src/skeleton/skeleton.vue 文件就是手写的骨架屏组件，推荐只渲染入口页首屏骨架
 npm run skeleton 就会将src/skeleton/index.html  生成到外层src/index.html
@@ -147,7 +147,7 @@ npm run skeleton 就会将src/skeleton/index.html  生成到外层src/index.html
 ## SMOCK篇
 
 smock 是开发阶段基于swagger的自动化mock假数据工具，需要配置参数如下：
-修改package.json 中字段，具体可以参看(https://smock.jd.com/)
+修改package.json 中字段，具体可以[参看](https://smock.jd.com/)
 
 ```bash
 "smock": {
