@@ -86,7 +86,7 @@ new WebpackUploadPlugin({
 })
 ```
 
-[配置carefree真机调试，具体可[参看]((https://carefree.jd.com/)，例如：我们将开发阶段的代码打包上传至测试域名page.jd.com，用于真机扫二维码调试
+[配置carefree真机调试，具体可[参看](https://carefree.jd.com/)，例如：我们将开发阶段的代码打包上传至测试域名page.jd.com，用于真机扫二维码调试
 
 ```bash
 new Carefree({
