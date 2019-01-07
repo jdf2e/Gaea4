@@ -70,7 +70,7 @@ npm run skeleton
 
 ### 修改webpack.config.js 配置上传、真机调试
 
-配置上传测试服务器地址和路径，具体可参看(https://www.npmjs.com/package/@nutui/upload)，配置上传的host、用户名username、密码password、上传地址target，
+配置上传测试服务器地址和路径，具体可[参看](https://www.npmjs.com/package/@nutui/upload)，配置上传的host、用户名username、密码password、上传地址target，
 例如：
 ```bash
 new WebpackUploadPlugin({
@@ -86,7 +86,7 @@ new WebpackUploadPlugin({
 })
 ```
 
-配置carefree真机调试，具体可参看((https://carefree.jd.com/)，例如：我们将开发阶段的代码打包上传至测试域名page.jd.com，用于真机扫二维码调试
+[配置carefree真机调试，具体可[参看]((https://carefree.jd.com/)，例如：我们将开发阶段的代码打包上传至测试域名page.jd.com，用于真机扫二维码调试
 
 ```bash
 new Carefree({
