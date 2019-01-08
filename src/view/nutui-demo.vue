@@ -1,18 +1,17 @@
 <template>
     <div>
         <div class="wrapper" >
-            <div class="box">我是NutUI2.0 DEMO 页面，推荐使用按需加载方式使用NUTUI2.0组件,推荐使用组件挂载NUTUI，通用组件，可以选择全局挂载</div>
-            <router-link to="/detail"><h3>去详情页1</h3></router-link>
-            <router-link to="/detail2"><h3>去详情页2（懒加载）</h3></router-link>
-
-            <div class="">日历组件</div>
-            <nut-button 
-                @click="openDatePicker"
-                >
-            打开日历选择组件
-            </nut-button>
-
-            <div class="">评分组件</div>
+            <h4>NUTUI2.0 DEMO 页</h4>
+            <p class="sub-title">推荐使用按需加载方式</p>
+            <nut-cell title="打开日历组件" :showIcon = "true" @click.native="openDatePicker">
+                
+            </nut-cell>
+            <nut-cell title="跳转按需加载方式(NPM版本)" :isLink="true" linkUrl="https://www.npmjs.com/package/@nutui/babel-plugin-separate-import"  :showIcon = "true"></nut-cell>
+            <nut-cell title="跳转更多的NutUI2.0 DEMO" :isLink="true" linkUrl="https://nutui.jd.com/demo.html#/index"  :showIcon = "true"></nut-cell>
+             <nut-cell title="跳转NutUI2.0 使用指南(PC版本)" :isLink="true" linkUrl="https://nutui.jd.com"  :showIcon = "true"></nut-cell>
+           
+            
+            <div class="sub-title">评分组件</div>
             <nut-rating 
                 @click="onRating"
             >
@@ -77,10 +76,21 @@ export default {
 
 <style lang="scss" scoped>
     .wrapper{
-        font-size:12px;
-        .box{
-            font-size:18px;
-            padding:10px 10px;
-        }
+        color:#333;
+        font-size:0.24rem;
+    }
+    h4{
+       text-align: center;
+       padding:0.4rem 0.1rem 0.1rem;
+       font-size:0.36rem;
+       color:#848689;
+    }
+    .sub-title{
+        color:#333;
+        font-size:0.24rem;
+        line-height:0.48rem;
+        text-align: center;
+        
+
     }
 </style>
