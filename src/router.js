@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 
 import Index from './view/index.vue';
 import Detail from './view/detail.vue';
-import Nutui from './view/nutui.vue';
+import Nutui from './view/nutui-demo.vue';
 
 const carefree = process.env.NODE_ENV === 'carefree'
 
