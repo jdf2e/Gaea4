@@ -12,5 +12,5 @@
     }
 </script>
 <style lang="scss" >
-    @import url('./asset/css/common.scss');
+    @import url('./asset/css/common.scss')
 </style>
