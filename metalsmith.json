@@ -22,7 +22,7 @@
         "find":"\"dll\": \"webpack --config ./webpack.dll.config.js --mode production --hide-modules --progress\",",
         "replace":"\"dll\": \"webpack --config ./webpack.dll.config.js --mode production --hide-modules --progress\"{{#Carefree}},{{/Carefree}}"
     },{
-        "find":"\"@nutui/carefree\": \"^0.2.0\",",
+        "find":"\"@nutui/carefree\": \"\",",
         "replace":"{{#Carefree}}\"@nutui/carefree\": \"{{carefreeVersion}}\",{{/Carefree}}"
     },{
         "find":"const Carefree             = require('@nutui/carefree');",
@@ -31,16 +31,16 @@
         "find":"const Smock                = require('smock-webpack-plugin');",
         "replace":"{{#Smock}}const Smock                = require('smock-webpack-plugin');{{/Smock}}"
     },{
-        "find":"\"smock-webpack-plugin\": \"^1.0.1\",",
+        "find":"\"smock-webpack-plugin\": \"\",",
         "replace":"{{#Smock}}\"smock-webpack-plugin\": \"{{smockVersion}}\",{{/Smock}}"
     },{
         "find":"new Smock(config.smock)",
         "replace":"{{#Smock}}new Smock(config.smock){{/Smock}}"
     },{
-        "find":"\"@nutui/nutui\": \"^2.0.0-beta.2\",",
+        "find":"\"@nutui/nutui\": \"\",",
         "replace":"\"@nutui/nutui\": \"{{nutuiVersion}}\","
     },{
-        "find":"\"@nutui/babel-plugin-separate-import\": \"^0.1.8\",",
+        "find":"\"@nutui/babel-plugin-separate-import\": \"\",",
         "replace":"\"@nutui/babel-plugin-separate-import\": \"{{nutuiSeparateVersion}}\","
     },{
         "find":"vue,qs,axios,vue-router",
