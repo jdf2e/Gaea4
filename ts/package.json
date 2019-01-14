@@ -41,7 +41,7 @@
     "@babel/polyfill": "7.0.0",
     "@babel/preset-env": "7.1.0",
     "@nutui/babel-plugin-separate-import": "{{nutuiSeparateVersion}}",
-    "@nutui/carefree": "0.2.0",
+    {{#Carefree}}"@nutui/carefree": "{{carefreeVersion}}",{{/Carefree}}
     "@types/node": "10.12.2",
     "@nutui/nutui": "{{nutuiVersion}}",
     "@nutui/upload": "0.1.3",

@@ -43,7 +43,10 @@
         "find":"\"@nutui/babel-plugin-separate-import\": \"\",",
         "replace":"\"@nutui/babel-plugin-separate-import\": \"{{nutuiSeparateVersion}}\","
     },{
-        "find":"vue,qs,axios,vue-router",
-        "replace":"{{bucket}}"
+        "find":"\"vue,qs,axios,vue-router\"",
+        "replace":"\"{{bucket}}\""
+    },{
+        "find":"\"vue,qs,axios,vue-router,vuex\"",
+        "replace":"\"{{bucket}}\""
     }]
 }
