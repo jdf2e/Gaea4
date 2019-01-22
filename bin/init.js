@@ -164,16 +164,15 @@ async function go(){
         latestVersion('@nutui/nutui'),
         latestVersion('@nutui/babel-plugin-separate-import')
     ])
-   
-    if(answer.Carefree){
+  
+    if(answer.features.indexOf('Carefree')!=-1){
         answer.carefreeVersion = version[0];
     }
-    if(answer.Smock){
+    if(answer.features.indexOf('Smock')!=-1){
         answer.smockVersion =version[1];
     }
     answer.nutuiVersion = version[2];
     answer.nutuiSeparateVersion =version[3];
-    
     
     const target = await new Promise((resolve,reject)=> {
         for(let a of answer.bucket){
