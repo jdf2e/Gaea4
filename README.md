@@ -51,7 +51,7 @@ npm run skeleton
 *  支持 [CareFree](https://carefree.jd.com)  ✔️ 
 *  支持 Skeleton  ✔️ 
 *  支持 PWA   
-*  支持 ESlint、Prettier
+*  支持 ESlint、Prettier ✔️
 *  支持 活动页（CSS3动画、SVG动画、Canvas动画等）
 *  支持 图片压缩   
 
