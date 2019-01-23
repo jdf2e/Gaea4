@@ -2,33 +2,28 @@
     <div
         class="vue-skeleton-column"
         :style="{
-            width:width,
-            padding:padding,
-        }"    
+            width: width,
+            padding: padding
+        }"
     >
         <slot></slot>
-
     </div>
-
 </template>
 <script>
-    export default{
-        name:'column',
-        data(){
-            return{
-            }
+export default {
+    name: "column",
+    props: {
+        width: {
+            type: String,
+            width: "auto"
         },
-        props:{
-            width:{
-                type:String,
-                width:'auto'
-            },
-            padding:{
-                type:String,
-                default:"0 0 0 0"
-            }
-        },
+        padding: {
+            type: String,
+            default: "0 0 0 0"
+        }
+    },
+    data() {
+        return {};
     }
+};
 </script>
-
-

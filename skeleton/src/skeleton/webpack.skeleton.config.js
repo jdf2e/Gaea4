@@ -1,52 +1,37 @@
-const path = require('path');
-const webpack = require('webpack');
-const nodeExternals = require('webpack-node-externals');
-const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
-const autoprefixer = require('autoprefixer');
-const { VueLoaderPlugin }    = require('vue-loader');
+const path = require("path");
+const nodeExternals = require("webpack-node-externals");
+const VueSSRServerPlugin = require("vue-server-renderer/server-plugin");
+const autoprefixer = require("autoprefixer");
+const { VueLoaderPlugin } = require("vue-loader");
 
-module.exports ={
-    target:'node',
-    entry:{
-        skeleton:'./src/skeleton/skeleton.entry.js'
+module.exports = {
+    target: "node",
+    entry: {
+        skeleton: "./src/skeleton/skeleton.entry.js"
     },
-    output:{
-        path:path.resolve(__dirname,'.'),
-        filename:'[name].js',
-        libraryTarget:'commonjs2'
+    output: {
+        path: path.resolve(__dirname, "."),
+        filename: "[name].js",
+        libraryTarget: "commonjs2"
     },
-    module:{
-        rules:[
+    module: {
+        rules: [
             {
-                test:/\.css$/,
-                use: [
-                    'vue-style-loader',
-                    "css-loader",
-                    "postcss-loader"
-                ]
+                test: /\.css$/,
+                use: ["vue-style-loader", "css-loader", "postcss-loader"]
             },
             {
                 test: /\.scss$/,
-                use: [
-                    'vue-style-loader',
-                    "css-loader",
-                    "sass-loader",
-                    "postcss-loader"
-                ],
-            
+                use: ["vue-style-loader", "css-loader", "sass-loader", "postcss-loader"]
             },
             {
-                test:/\.vue$/,
-                use:[
+                test: /\.vue$/,
+                use: [
                     {
-                        loader:'vue-loader',
-                        options:{
-                            loaders:{
-                                scss:[
-                                    'vue-style-loader',
-                                    'css-loader',
-                                    'sass-loader'
-                                ]
+                        loader: "vue-loader",
+                        options: {
+                            loaders: {
+                                scss: ["vue-style-loader", "css-loader", "sass-loader"]
                             },
                             postcss: [autoprefixer()]
                         }
@@ -55,16 +40,16 @@ module.exports ={
             }
         ]
     },
-    externals:nodeExternals({
-        whilelist:/\.css$/
+    externals: nodeExternals({
+        whilelist: /\.css$/
     }),
-    resolve:{
-        extensions:['.js','.vue','.json']
+    resolve: {
+        extensions: [".js", ".vue", ".json"]
     },
-    plugins:[
+    plugins: [
         new VueLoaderPlugin(),
         new VueSSRServerPlugin({
-            filename:'skeleton.json'
+            filename: "skeleton.json"
         })
     ]
-}
+};

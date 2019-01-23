@@ -1,40 +1,36 @@
 <template>
-    <div class="vue-skeleton-circle"
-         ref="vueSkeletonCircle"
-         :style="{
-             'backgroundColor':backColor,
-             'width':diameter,
-             'height':diameter,
-             'border-radius':'50%',
-             'margin':margin
-         }"
-    >
-    </div>
+    <div
+        ref="vueSkeletonCircle"
+        class="vue-skeleton-circle"
+        :style="{
+            backgroundColor: backColor,
+            width: diameter,
+            height: diameter,
+            'border-radius': '50%',
+            margin: margin
+        }"
+    ></div>
 </template>
 
 <script>
-    export default{
-        name:'skeletonCircle',
-        data(){
-            return{
-            }
+export default {
+    name: "skeletonCircle",
+    props: {
+        backColor: {
+            type: String,
+            default: "#efefef"
         },
-        props:{
-            backColor:{
-                type:String,
-                default:'#efefef'
-            },
-            diameter:{
-                type:String,
-                default:'50px'
-            },
-            margin:{
-                type:String,
-                default:'0 0 0 0'
-            }
+        diameter: {
+            type: String,
+            default: "50px"
+        },
+        margin: {
+            type: String,
+            default: "0 0 0 0"
         }
+    },
+    data() {
+        return {};
     }
+};
 </script>
-
-
-
