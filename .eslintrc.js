@@ -63,7 +63,8 @@ module.exports = {
         "vue/html-end-tags":"off",
         "vue/require-valid-default-prop":"off",
         "vue/no-shared-component-data":"off",
-        "vue/no-dupe-keys":"off"
+        "vue/no-dupe-keys":"off",
+        "vue/singleline-html-element-content-newline":"off"
 
     }
 }
