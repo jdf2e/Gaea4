@@ -31,6 +31,10 @@ npm run build
 ```bash   
 npm run upload
 ```
+eslint代码检查、格式化
+```
+npm run lint
+```
 真机调试        
 ```bash   
 npm run carefree
