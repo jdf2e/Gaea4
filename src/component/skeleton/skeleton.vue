@@ -8,15 +8,10 @@
 </template>
 
 <script>
-    
-    export default {
-        name:'nut-skeleton',
-        data(){
-            return{
-                
-            }
-        },
-        
+export default {
+    name: "nut-skeleton",
+    data() {
+        return {};
     }
+};
 </script>
-
