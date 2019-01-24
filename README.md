@@ -134,10 +134,13 @@ new Carefree({
 比如搜索页/search 是不存在后端服务器上的。所以需要你让后端把其余的单页面的路由都重定指向首页的vm。
 
 对于carefree，上传到测试服务器page.jd.com 默认是hash路由，方便大家进行测试
+
+```bash
 const router = new VueRouter({
     mode:carefree?'hash':'history',
     routes
 });
+```
 
 ### 骨架屏篇
 
