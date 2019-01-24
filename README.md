@@ -127,6 +127,18 @@ new Carefree({
 
 ## 辅助功能
 
+### 路由篇
+
+文件router.js 配置了脚手架的相关路由信息，推荐使用【history】路由。脚手架支持history路由和hash路由。在 router.js 中默认是history路由。它是真实的路由地址，所以需要后台那帮你配置重定向，
+比如首页的路由是 http://telink.jd.com/index。那么你的路由的首页也是/index 。
+比如搜索页/search 是不存在后端服务器上的。所以需要你让后端把其余的单页面的路由都重定指向首页的vm。
+
+对于carefree，上传到测试服务器page.jd.com 默认是hash路由，方便大家进行测试
+const router = new VueRouter({
+    mode:carefree?'hash':'history',
+    routes
+});
+
 ### 骨架屏篇
 
 脚手架提供了vue的骨架屏注入方案，在命令行工具选择骨架屏，就会下载骨架屏相对应的模板。
