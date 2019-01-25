@@ -137,7 +137,8 @@ module.exports = (env,argv)=> {
         webpackConfig.plugins = (webpackConfig.plugins || []).concat([
             new HtmlWebpackPlugin({
                 template:'./src/index.html',
-                filename:path.resolve(__dirname,'build/index.html')
+                filename:path.resolve(__dirname,'build/index.html'),
+                chunksSortMode:'none'
             }),
             new webpack.DllReferencePlugin({
                 context:__dirname,
@@ -175,7 +176,8 @@ module.exports = (env,argv)=> {
     }else{
         webpackConfig.plugins = (webpackConfig.plugins || []).concat([
             new HtmlWebpackPlugin({
-                template:'./src/index.html'
+                template:'./src/index.html',
+                chunksSortMode:'none'
             }),
             new webpack.DllReferencePlugin({
                 context:__dirname,
