@@ -1,5 +1,3 @@
-
-
 const program = require('commander');
 const path = require('path');
 const fs = require('fs');
@@ -17,8 +15,6 @@ if(!projectName){
     program.help()
     return
 }
-
-
 
  go().then(()=>{
     console.log(logSymbols.success,chalk.green('创建成功:)'));
@@ -41,7 +37,16 @@ async function go(){
             let rootName = path.basename(process.cwd());
             let next;
             //判断是否存在该目录
-            if(list.length){
+            if(projectName === rootName){
+                next = inquirer.prompt({
+                    name:'buildInCurrent',
+                    message:'在当前目录下创建新项目？',
+                    type:'confirm',
+                    default:true
+                }).then(answer=>{
+                    resolve(answer.buildInCurrent ? '.': projectName);
+                })
+            }else if(list.length){
                 if(list.filter(name =>{
                     const fileName = path.resolve(process.cwd(),path.join('.',name));
                     const isDir = fs.statSync(fileName).isDirectory();
@@ -51,15 +56,6 @@ async function go(){
                 }else{
                      resolve(projectName);
                 }
-            }else if(projectName == rootName){
-                next = inquirer.prompt({
-                    name:'buildInCurrent',
-                    message:'当前目录为空，且项目名称和目录名称相同，在当前目录下创建新项目？',
-                    type:'confirm',
-                    default:true
-                }).then(answer=>{
-                    resolve(answer.buildInCurrent ? '.': projectName);
-                })
             }else{
                 resolve(projectName);
             }
