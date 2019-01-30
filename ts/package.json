@@ -6,9 +6,9 @@
   "ftpServer": "static.360buyimg.com",
   "ftpTarget": "exploit/gaea",
   "typings": "./types/index.d.ts",
-  "vendorVersion":"",
-
+  "vendorVersion": "",
   "scripts": {
+    "compress": "node .tinypng.js",
     "dev": " webpack-dev-server --mode development   -d --open --hide-modules --progress",
     "build": "webpack --mode production --hide-modules --progress",
     "upload": "webpack --mode production --env.upload --hide-modules --progress",
@@ -22,6 +22,7 @@
     "domain": "",
     "projectName": ""
   },
+  "tinypngkey": "",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jdf2e/Gaea4.git"
@@ -61,13 +62,14 @@
     "file-loader": "2.0.0",
     "html-webpack-include-assets-plugin": "1.0.6",
     "html-webpack-plugin": "3.2.0",
+    "imagemin": "6.1.0",
+    "imagemin-webp": "5.0.0",
     "mini-css-extract-plugin": "0.4.4",
     "moment": "2.22.2",
     "node-sass": "4.9.4",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "postcss-import": "12.0.1",
     "postcss-loader": "3.0.0",
-    "progress-bar-webpack-plugin": "1.11.0",
     "qs": "6.5.2",
     "sass-loader": "7.1.0",
     {{#Smock}}"smock-webpack-plugin": "{{smockVersion}}",{{/Smock}}
@@ -77,6 +79,7 @@
     "tslint-config-standard": "8.0.1",
     "tslint-loader": "3.5.4",
     "typescript": "3.1.6",
+    "tinify": "1.6.0-beta.2",
     "svg-sprite-loader": "^3.7.3",
     "url-loader": "1.1.2",
     "vue": "2.5.17",
