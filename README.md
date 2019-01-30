@@ -1,7 +1,6 @@
 # Gaea
-<div align=center><img src="https://img14.360buyimg.com/uba/jfs/t1/14029/6/4518/6382/5c32dd25Ed88527f2/55e60f2080cc6d6b.png">
-<p>Vue技术栈单页面构建工具</p>
-</div>
+![Gaea](https://img14.360buyimg.com/uba/jfs/t1/14029/6/4518/6382/5c32dd25Ed88527f2/55e60f2080cc6d6b.png)
+> Vue技术栈单页面构建工具
 
 ## Getting Started
 Gaea构建工具是基于Node.js、Webpack模版工程等的Vue技术栈的整套解决方案，包含了开发、调试、打包上线完整的工作流程
