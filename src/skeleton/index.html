@@ -11,6 +11,13 @@
 
 </head> 
   <body>
+    <script>
+        window.supportWebp = false;
+        if(document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') == 0){
+            document.body.classList.add('webp');
+            window.supportWebp = true;
+        }  
+    </script>
     <div id="app">
         <!--vue-ssr-outlet-->
     </div>
