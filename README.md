@@ -75,7 +75,6 @@ new Carefree({
 目前的第三方库有 vue、qs、axios、vue-router等，如果增加和删除的话，可以更改字符串："vue,qs,axios,vue-router" ;重新执行npm run dll 
 
 ### `package.json` 配置项目信息
-
 * name 项目名称
 * version 项目版本，控制上线静态资源版本 例如： `https://static.360buyimg.com/exploit/mtelink/1.0.0/js/app.js`
 * publicPath  项目上线 html 中静态资源的路径地址前缀 例如：`//static.360buyimg.com/exploit/mtelink` 如果是html和静态资源都交给后端，那么这个值设置成空就行。
@@ -85,8 +84,7 @@ new Carefree({
 * vendorVersion  第三方依赖库的版本控制，提供第三库在上线后，也需要加版本号上线兜底方案 例如：`https://static.360buyimg.com/exploit/mtelink/lib/vendor.dll.js` |  `https://static.360buyimg.com/exploit/mtelink/lib/1.0.0/vendor.dll.js`
 
 
-## Catalog 
-
+## Project Catalog 
 1. src目录下的文件功能如下：
 * index.html  页面模板
 * app.js  入口文件
@@ -109,7 +107,6 @@ new Carefree({
 `tinypngkey`字段。每个账号每个月有500次的免费上传压缩限制。
 
 ### 路由篇
-
 文件router.js 配置了脚手架的相关路由信息，推荐使用【history】路由。脚手架支持history路由和hash路由。在 router.js 中默认是history路由。它是真实的路由地址，所以需要后台那帮你配置重定向。
 
 比如首页的路由是 http://telink.jd.com/index。那么你的路由的首页也是/index 。
@@ -124,7 +121,6 @@ const router = new VueRouter({
 ```
 
 ### 骨架屏篇
-
 脚手架提供了vue的骨架屏注入方案，在命令行工具选择骨架屏，就会下载骨架屏相对应的模板。
 
 src/skeleton 就是基于[vue-server-renderer](https://github.com/vuejs/vue/tree/dev/packages/vue-server-renderer)服务端渲染，抽取手写骨架屏的css 和 html 注入到 打包的html中。
@@ -134,7 +130,6 @@ npm run skeleton 就会将src/skeleton/index.html  生成到外层src/index.html
 注入完成后，就可以后续正常开发
 
 ### SMOCK篇
-
 smock 是开发阶段基于swagger的自动化mock假数据工具，需要配置参数如下：
 修改package.json 中字段，具体可以[参看](https://smock.jd.com/)
 
