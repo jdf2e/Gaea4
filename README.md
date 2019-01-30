@@ -7,7 +7,7 @@ Vue技术栈单页面构建工具
 Gaea构建工具是基于Node.js、Webpack模版工程等的Vue技术栈的整套解决方案，包含了开发、调试、打包上线完整的工作流程
 
 ### Prerequisites
-请先安装node，版本大于8.9.0,[安装](https://nodejs.org/zh-cn/)
+请先安装node，版本大于8.9.0，如果没有安装，请前往[安装](https://nodejs.org/zh-cn/)
 
 ### Installing
 1. `npm i gaea-cli -g` 全局安装
