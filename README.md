@@ -1,5 +1,5 @@
 # Gaea
-<div style="text-align:center"><img src="https://img14.360buyimg.com/uba/jfs/t1/14029/6/4518/6382/5c32dd25Ed88527f2/55e60f2080cc6d6b.png">
+<div align=center><img src="https://img14.360buyimg.com/uba/jfs/t1/14029/6/4518/6382/5c32dd25Ed88527f2/55e60f2080cc6d6b.png">
 <p>Vue技术栈单页面构建工具</p>
 </div>
 
