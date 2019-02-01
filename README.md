@@ -18,7 +18,7 @@ Gaea构建工具是基于Node.js、Webpack模版工程等的Vue技术栈的整�
 - `npm run dev` 开发
 - `npm run build` 打包编译
 - `npm run upload` 上传
-- `npm run lint` 代码格式
+- `npm run lint` 代码检查、格式化
 - `npm run carefree` 真机调试
 - `npm run skeleton` 骨架屏注入
 
