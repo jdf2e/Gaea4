@@ -26,6 +26,8 @@ async function compress(){
 						console.log(chalk.red(`${file} 压缩失败`));
 						reject(err);
 					}else{
+						let fileSize = fs.statSync(filePathAll).size;
+
 						tinify.fromBuffer(sourceData).toBuffer((err,resultData)=>{
 							if(err){
 								console.log(chalk.red(`${file} 压缩失败`));
@@ -33,7 +35,8 @@ async function compress(){
 							}
 							//将压缩后的文件保存覆盖
 							fs.writeFile(filePathAll,resultData,err=>{
-								console.log(chalk.green(`${file} 压缩成功`));
+								let compressFileSize = fs.statSync(filePathAll).size;
+								console.log(chalk.green(`${file} ${(fileSize/1024).toFixed(2)}kb 压缩成功 ${(compressFileSize/1024).toFixed(2)}kb ${((compressFileSize-fileSize)*100/fileSize).toFixed(1)}%`));
 								resolve();
 							})
 						})
