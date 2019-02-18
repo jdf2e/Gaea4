@@ -25,6 +25,8 @@ if(!projectName){
     console.log(logSymbols.info,'编译 npm run build');
     console.log(logSymbols.info,'上传 npm run upload');
     console.log(logSymbols.info,'真机调试 npm run carefree');
+    console.log(logSymbols.info,'代码检查和格式化 npm run lint');
+    console.log(logSymbols.info,'图片压缩和webp转换 npm run compress');
     console.log('');
 }).catch((err)=>{
     console.log(logSymbols.error,chalk.red(`创建失败：${err.message}`));
