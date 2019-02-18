@@ -15,7 +15,6 @@ if(!projectName){
     program.help()
     return
 }
-
  go().then(()=>{
     console.log(logSymbols.success,chalk.green('创建成功:)'));
     console.log(logSymbols.info,`cd ${projectName}`);
@@ -179,6 +178,7 @@ async function go(){
         for(let b of answer.features){
             answer[b] = true;
         }
+       
         return resolve(download(projectRoot));
     })
     const context = {
