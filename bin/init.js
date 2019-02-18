@@ -178,7 +178,6 @@ async function go(){
         for(let b of answer.features){
             answer[b] = true;
         }
-       
         return resolve(download(projectRoot));
     })
     const context = {
