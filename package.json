@@ -7,9 +7,8 @@
   "ftpTarget": "exploit/gaea",
   "vendorVersion": "",
   "smock": {
-    "host":"",
-    "domain":"",
-    "projectName":""
+    "docPath": "10.182.30.155",
+    "realHostName": "m-svc.jd.com"
   },
   "scripts": {
     "compress": "node .tinypng.js",
@@ -19,11 +18,6 @@
     "upload": "webpack --mode production --env.upload --hide-modules --progress",
     "dll": "webpack --config ./webpack.dll.config.js --mode production --hide-modules --progress",
     "carefree": "cross-env NODE_ENV=carefree carefree_env=dev webpack  --mode development --env.carefree -w --colors --progress"
-  },
-  "smock": {
-    "host": "",
-    "domain": "",
-    "projectName": ""
   },
   "tinypngkey": "",
   "repository": {
@@ -82,7 +76,7 @@
     "prettier": "1.16.0",
     "qs": "6.5.2",
     "sass-loader": "7.1.0",
-    "smock-webpack-plugin": "",
+    "smock-webpack-plugin": "2.0.0",
     "style-loader": "0.23.1",
     "svg-sprite-loader": "3.7.3",
     "tinify": "1.6.0-beta.2",
