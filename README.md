@@ -136,10 +136,9 @@ smock 是开发阶段基于swagger的自动化mock假数据工具，需要配置
 
 ```bash
 "smock": {
-      "host": "",
-      "domain": "",
-      "projectName": ""
-}
+    "docPath": "", //ip地址
+    "realHostName": "" //域名
+  },
 ```
 
 ## Note
