@@ -142,7 +142,9 @@ smock 是开发阶段基于swagger的自动化mock假数据工具，需要配置
 ```
 
 ### eslint 和 prettier篇
-脚手架支持`npm run lint` 一键检查src目录下的业务`.js`,`.vue`文件，遵循[standard](https://standardjs.com/),(https://eslint.vuejs.org/)标准。关闭了一些严格的要求，如果有个性化需求可以在Webpack模版工程下的`.eslintrc.js`文件设置规则。重点是，由于加了eslintrc相关文件，`Vscode`等编辑器会提示报错，体验比较查，为了不影响开发心情，可以关闭Vscode的提示，只在需要的时候执行一遍命令，就可以自动修改和提示需要修复的报错。
+脚手架支持`npm run lint` 一键检查src目录下的业务`.js`,`.vue`文件，遵循[standard](https://standardjs.com/),[eslint-plugin-vue](https://eslint.vuejs.org/)标准。关闭了一些严格的要求，如果有个性化需求可以在Webpack模版工程下的`.eslintrc.js`文件设置规则。
+
+重点是，由于加了eslintrc相关文件，`Vscode`等编辑器会提示报错，体验比较查，为了不影响开发心情，可以关闭Vscode的提示，只在需要的时候执行一遍命令，就可以自动修改和提示需要修复的报错。
 
 ## Note
 * 上线逻辑，前后端分离上线，lib/vendor.js 属于第三方库会发生变动机会比较小，所以在后续迭代可以不需要上线，只需要上线1.0.0/或者1.0.1/版本的文件
