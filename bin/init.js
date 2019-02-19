@@ -71,7 +71,7 @@ async function go(){
             {
                 name:'projectName',
                 message:'项目名称',
-                default:'gaea-init'
+                default:projectRoot
             },
             {
                 name:'projectVersion',
