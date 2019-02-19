@@ -16,9 +16,8 @@
     "carefree": "cross-env NODE_ENV=carefree carefree_env=dev webpack  --mode development --env.carefree -w --colors --progress"
   },
   "smock": {
-    "host": "",
-    "domain": "",
-    "projectName": ""
+    "docPath": "",
+    "realHostName": "m-svc.jd.com"
   },
   "tinypngkey": "",
   "repository": {
