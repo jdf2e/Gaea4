@@ -21,9 +21,8 @@
 {{/Carefree}}
   },
   "smock": {
-    "host": "",
-    "domain": "",
-    "projectName": ""
+    "docPath": "",
+    "realHostName": "m-svc.jd.com"
   },
   "tinypngkey": "",
   "repository": {
