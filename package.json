@@ -7,7 +7,7 @@
   "ftpTarget": "exploit/gaea",
   "vendorVersion": "",
   "smock": {
-    "docPath": "10.182.30.155",
+    "docPath": "",
     "realHostName": "m-svc.jd.com"
   },
   "scripts": {
