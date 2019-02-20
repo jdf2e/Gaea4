@@ -81,7 +81,7 @@ async function go(){
             {
                 name:'projectDescription',
                 message:'项目简介',
-                default:`A project named gaea-init`
+                default:`A project named ${projectRoot}`
             },
             {
                 name:'uploadHost',
