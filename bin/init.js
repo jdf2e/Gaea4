@@ -36,7 +36,6 @@ async function go(){
     const projectRoot = await  new Promise((resolve,reject)=>{
             const list = glob.sync('*');
             let rootName = path.basename(process.cwd());
-            let next;
             //判断是否存在该目录
             if(projectName === rootName){
                 next = inquirer.prompt({
@@ -64,6 +63,7 @@ async function go(){
         
 
     const answer = await  new Promise((resolve,reject)=>{
+       
         if(projectRoot != '.'){
             fs.mkdirSync(projectRoot);
         }
@@ -71,7 +71,7 @@ async function go(){
             {
                 name:'projectName',
                 message:'项目名称',
-                default:projectRoot
+                default:projectName
             },
             {
                 name:'projectVersion',
@@ -81,7 +81,7 @@ async function go(){
             {
                 name:'projectDescription',
                 message:'项目简介',
-                default:`A project named ${projectRoot}`
+                default:`A project named ${projectName}`
             },
             {
                 name:'uploadHost',
