@@ -1,7 +1,3 @@
-线上分支
-master  gaea-cli 构建工具node脚本代码
-dev     gaea-cli webpack模版代码
+## vue webpack工程测试源码
 
-开发分支
-trunk.master  
-trunk.dev
+用于测试～
