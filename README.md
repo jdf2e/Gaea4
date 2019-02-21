@@ -1,3 +1,2 @@
-##webpack工程测试源码
+webpack 模版
 
-用于测试～
