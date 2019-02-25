@@ -97,6 +97,15 @@ async function go(){
                 name:'bucket',
                 type:'checkbox',
                 message:'第三方依赖库(多选)',
+                validate:(bucketstr)=>{
+                    return new Promise((resolve,reject)=>{
+                        if(bucketstr.indexOf('vue') === -1){
+                            reject('vue 必选！');
+                        }else{
+                            resolve(true);
+                        }
+                    })
+                },
                 choices:
                 [{
                     name:'vue',
