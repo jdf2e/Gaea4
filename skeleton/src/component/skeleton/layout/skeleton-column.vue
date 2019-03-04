@@ -3,7 +3,8 @@
         class="vue-skeleton-column"
         :style="{
             width: width,
-            padding: padding
+            padding: padding,
+            'align-items':center
         }"
     >
         <slot></slot>
@@ -20,6 +21,10 @@ export default {
         padding: {
             type: String,
             default: "0 0 0 0"
+        },
+        center:{
+            type:String,
+             default:"flex-start"
         }
     },
     data() {

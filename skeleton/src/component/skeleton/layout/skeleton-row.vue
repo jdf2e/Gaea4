@@ -3,7 +3,9 @@
         class="vue-skeleton-row"
         :style="{
             width: width,
-            padding: padding
+            padding: padding,
+            'justify-content': center
+            
         }"
     >
         <slot></slot>
@@ -15,11 +17,15 @@ export default {
     props: {
         width: {
             type: String,
-            default: "100%"
+            default: "auto"
         },
         padding: {
             type: String,
             default: "0 0 0 0"
+        },
+        center:{
+            type:String,
+            default:"flex-start"
         }
     },
     data() {
@@ -27,3 +33,4 @@ export default {
     }
 };
 </script>
+
