@@ -20,7 +20,7 @@ export default {
     props: {
         backColor: {
             type: String,
-            default: "#efefef"
+            default: "#f1f1f1"
         },
         width: {
             type: String,
