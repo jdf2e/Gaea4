@@ -13,7 +13,6 @@ const CopyWebpackPlugin    = require('copy-webpack-plugin');
 const moment               = require('moment');
 const Carefree             = require('@nutui/carefree');
 const WebpackUploadPlugin  = require('@nutui/upload/webpackUploadPlugin');
-const Smock                = require('smock-webpack-plugin');
 
 module.exports = (env,argv)=> {
     
@@ -172,8 +171,7 @@ module.exports = (env,argv)=> {
                 filepath: require.resolve('./static/vendordev.dll.js'),
                 includeSourcemap: false
     
-            }),
-            new Smock(config.smock)
+            })
         ]);
         if(env && env.carefree){
             webpackConfig.plugins = (webpackConfig.plugins || []).concat([

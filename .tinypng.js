@@ -3,8 +3,8 @@ const path =  require('path');
 const fs = require('fs');
 const tinify = require("tinify");
 const config = require("./package.json");
-const imagemin = require('imagemin');
-const imageminWebp = require('imagemin-webp');
+// const imagemin = require('imagemin');
+// const imageminWebp = require('imagemin-webp');
 const chalk = require('chalk');
 if(config.tinypngkey === ""){
 	console.log(chalk.red('请在package.json 文件配置tinypng的key，如果没有key，请前往【https://tinypng.com/developers】申请'));
@@ -50,13 +50,13 @@ async function compress(){
 		}
 	}
 
-	imagemin(['./src/asset/img/*.{jpg,png}'],'src/asset/img/webp',{
-		use:[
-			imageminWebp()
-		]
-	}).then(()=>{
-		console.log(chalk.green(`webp转换已完成～`));
-	})
+	// imagemin(['./src/asset/img/*.{jpg,png}'],'src/asset/img/webp',{
+	// 	use:[
+	// 		imageminWebp()
+	// 	]
+	// }).then(()=>{
+	// 	console.log(chalk.green(`webp转换已完成～`));
+	// })
 
 
 }
