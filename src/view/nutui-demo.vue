@@ -12,10 +12,10 @@
            
             
             <div class="sub-title">评分组件</div>
-            <nut-rating 
+            <nut-rate 
                 @click="onRating"
             >
-            </nut-rating>
+            </nut-rate>
             
         </div>
 
@@ -34,19 +34,18 @@
 <script>
 import axios from 'axios';
 import Qs from 'qs';
-import {DatePicker,Button,Rating} from '@nutui/nutui';
+import { DatePicker,Button, Rate } from '@nutui/nutui';
 export default {
     data(){
         return{
              isVisible: false,
-             date:null,
-
+             date:null
         }
     },
     components: {
         'nut-button':Button,
-        'nut-rating':Rating,
-        'nut-datepicker':DatePicker
+        'nut-rate':Rate,
+        'nut-datepicker': DatePicker
     },
     methods:{
         switchPicker(param) {

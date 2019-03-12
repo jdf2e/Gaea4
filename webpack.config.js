@@ -31,7 +31,7 @@ module.exports = (env,argv)=> {
             children: false
         },
         resolve:{
-            extensions:['.js','.vue','.json','.ts', '.tsx'],
+            extensions:['.js','.vue','.json','.ts']
         },
         
         module:{
@@ -107,6 +107,22 @@ module.exports = (env,argv)=> {
                       }
                     ]
                 }
+                // {
+                //     test: /\.ts$/,
+                //     exclude: /node_modules/,
+                //     enforce: 'pre',
+                //     use: [{
+                //         loader: "tslint-loader"
+                //     }]
+                // },
+                // {
+                //     test: /\.tsx$/,
+                //     exclude: /node_modules/,
+                //     use: [{
+                //         loader: "ts-loader",
+                //         options: { appendTsxSuffixTo: [/\.vue$/] }
+                //     }]
+                // }
            ]
         },
         plugins:[
@@ -137,7 +153,8 @@ module.exports = (env,argv)=> {
         webpackConfig.plugins = (webpackConfig.plugins || []).concat([
             new HtmlWebpackPlugin({
                 template:'./src/index.html',
-                filename:path.resolve(__dirname,'build/index.html')
+                filename:path.resolve(__dirname,'build/index.html'),
+                chunksSortMode:'none'
             }),
             new webpack.DllReferencePlugin({
                 context:__dirname,
@@ -175,7 +192,8 @@ module.exports = (env,argv)=> {
     }else{
         webpackConfig.plugins = (webpackConfig.plugins || []).concat([
             new HtmlWebpackPlugin({
-                template:'./src/index.html'
+                template:'./src/index.html',
+                chunksSortMode:'none'
             }),
             new webpack.DllReferencePlugin({
                 context:__dirname,
@@ -195,7 +213,7 @@ module.exports = (env,argv)=> {
                 }),
                 new Carefree({
                     justUseWifi: false,
-                    publicPath: '//page.jd.com/exploit/'+config.ftpTarget+'/'+config.version+'/',
+                    publicPath: '//page.jd.com/'+config.ftpTarget+'/'+config.version+'/',
                     ftp: {
                         host: '测试服务器地址',
                         port: 3000,
