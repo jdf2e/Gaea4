@@ -8,7 +8,7 @@
             </nut-cell>
             <nut-cell title="跳转按需加载方式(NPM版本)" :isLink="true" linkUrl="https://www.npmjs.com/package/@nutui/babel-plugin-separate-import"  :showIcon = "true"></nut-cell>
             <nut-cell title="跳转更多的NutUI2.0 DEMO" :isLink="true" linkUrl="https://nutui.jd.com/demo.html#/index"  :showIcon = "true"></nut-cell>
-             <nut-cell title="跳转NutUI2.0 使用指南(PC版本)" :isLink="true" linkUrl="https://nutui.jd.com"  :showIcon = "true"></nut-cell>
+            <nut-cell title="跳转NutUI2.0 使用指南(PC版本)" :isLink="true" linkUrl="https://nutui.jd.com"  :showIcon = "true"></nut-cell>
            
             
             <div class="sub-title">评分组件</div>
@@ -34,7 +34,7 @@
 <script>
 import axios from 'axios';
 import Qs from 'qs';
-import { DatePicker,Button,Rating } from '@nutui/nutui';
+import {DatePicker,Button,Rating} from '@nutui/nutui';
 export default {
     data(){
         return{
@@ -44,9 +44,9 @@ export default {
         }
     },
     components: {
-        'nut-datepicker':DatePicker,
         'nut-button':Button,
-        'nut-rating':Rating
+        'nut-rating':Rating,
+        'nut-datepicker':DatePicker
     },
     methods:{
         switchPicker(param) {
