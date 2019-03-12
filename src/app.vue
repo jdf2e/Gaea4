@@ -26,6 +26,8 @@
                     起步
                 </a>
             </p>
+
+            <div class="music" :class="{'music-start':musicStart && !musicStop,'music-stop':musicStop}" @click="musicClick"></div>
             
         </div>
     </div>
@@ -34,6 +36,7 @@
 <script>
 import "./asset/css/common.scss";
 import common from './asset/js/common.js';
+import {Howl,Howler} from  'howler';
 export default {
     components: {},
     data() {
@@ -41,18 +44,68 @@ export default {
             percentage:0,
             currIndex:0,
             timer:null,
+            timer2:null,
+            sound:null,
+            musicStart:false,
+            musicStop:false,
         };
     },
     created() {
         this.initPage();
     },
     mounted() {
-       
+       this.visibility();
+       this.$nextTick(()=>{
+          
+       })
     },
     destroyed() {
         this.timer = null;
+        this.timer2 = null;
+        this.sound.unload();
+    },
+    watch:{
     },
     methods: {
+        visibility(){
+            document.addEventListener('visibilitychange',()=>{
+                if(document.hidden){
+                    this.sound.pause();
+                }else {
+                    this.timer2 = setTimeout(()=>{
+                        this.sound.play();
+                    },2000)
+                    
+                    
+                }
+            })
+        },
+        musicClick(){
+            if(!this.musicStop){
+                this.sound.pause();
+                this.musicStop = true;
+            }else{
+                this.sound.play();
+                this.musicStop = false;
+            }
+
+        },
+        initMusic(){
+            this.sound = new Howl({
+                src:['https://h5.m.jd.com/babelDiy/Zeus/2846ykuM7PwipD9E2RzMj2BGEQpA/plugin/KTbgm64.mp3'],
+                loop:true,
+                
+            })
+            this.sound.once('load',()=>{
+                if(!document.hidden){
+                    this.sound.play();
+                    this.musicStart = true;
+                }
+            })
+            this.sound.on('end',()=>{
+                console.log('Finished!');
+            })
+        },
         initPage(){
             let imgList = [
                 'https://h5.m.jd.com/babelDiy/Zeus/2846ykuM7PwipD9E2RzMj2BGEQpA/plugin/loading_bg2.jpg',
@@ -76,57 +129,57 @@ export default {
                '//img20.360buyimg.com/uba/jfs/t1/20131/9/2417/463640/5c1ca308Ed3728aa1/90c6e32887118a9c.png.webp',
                '//img20.360buyimg.com/uba/jfs/t1/26657/37/2423/11120/5c1ca354E074baebf/9186b0038c901d77.png.webp',
 
-               '//img12.360buyimg.com/imagetools/jfs/t1/17155/33/2597/24927/5c1f2e83E341c3ba1/a8b14ebec4665785.png.webp',
-               '//img12.360buyimg.com/imagetools/jfs/t1/26035/2/2602/12297/5c1f23c0E54ba1b50/86ae262769c667b6.png.webp',
-               '//img10.360buyimg.com/imagetools/jfs/t1/7040/7/10222/11847/5c1f23c6E16934389/fcfd4d5ee5ede772.png.webp',
-               '//img13.360buyimg.com/imagetools/jfs/t1/29297/12/2540/199139/5c1f22abE7fe11159/221dd9526a072528.png.webp',
-               '//img12.360buyimg.com/imagetools/jfs/t1/19974/40/2606/164078/5c1f20b3E656972ea/880b016d4fd6922f.png.webp',
-               '//img13.360buyimg.com/imagetools/jfs/t1/15017/1/2705/57861/5c1f1b0eE8bd4871e/496a7478c97b8f6d.png.webp',
-               '//img13.360buyimg.com/imagetools/jfs/t1/26977/18/2741/147253/5c1f1f05Ef0c4e863/6d1fea74ac3a1940.png.webp',
-               '//img30.360buyimg.com/uba/jfs/t1/20111/35/2421/388982/5c1ca3bdEa46ca5a5/aca0ba87b8430d15.png.webp',
-               '//img14.360buyimg.com/uba/jfs/t1/24659/10/2394/366/5c1ca436E5b109fe6/64ec462773b4903d.png.webp',
-               '//img10.360buyimg.com/uba/jfs/t1/23060/11/2416/346/5c1ca462E3bb08453/4591845430d7c3f5.png.webp',
-               '//img20.360buyimg.com/uba/jfs/t1/17968/9/2464/53477/5c1ca516E0532e911/acde74140cbc9420.png.webp',
-               '//img11.360buyimg.com/uba/jfs/t1/19252/9/2476/60673/5c1ca55aE552971e0/f40d29f97464ad35.png.webp',
-               '//img12.360buyimg.com/uba/jfs/t1/24765/26/2441/25026/5c1ca590E062ea524/f53a2f4bef74fd4d.png.webp',
-               '//img13.360buyimg.com/uba/jfs/t1/21695/26/2448/29241/5c1ca5bcE51a4e0db/42b332936a18b2a4.png.webp',
-               '//img12.360buyimg.com/uba/jfs/t1/22525/20/2412/70451/5c1ca5e7E2b608c2f/7a8a642e820bff19.png.webp',
-               '//img20.360buyimg.com/uba/jfs/t1/21601/35/2512/306727/5c1ca668E00b42e01/f986ec063516be68.png.webp',
-               '//img14.360buyimg.com/uba/jfs/t1/23319/36/2468/16711/5c1ca692E2c4d8756/9ca911383690a890.png.webp',
-               '//img10.360buyimg.com/uba/jfs/t1/17541/35/2370/8177/5c1ca6b9E0c0da803/3675d2e17e70ca87.png.webp',
-               '//img30.360buyimg.com/uba/jfs/t1/9207/9/10002/3155/5c1ca6e2E46b6554a/03ab2de0a731e034.png.webp',
-               '//img12.360buyimg.com/uba/jfs/t1/27701/13/2478/222811/5c1ca712Ebf4b0578/fe5147128c9d0940.png.webp',
-               '//img11.360buyimg.com/uba/jfs/t1/12265/6/2414/851/5c1ca733Ead427527/fa16338473148f9b.png.webp',
-               '//img20.360buyimg.com/uba/jfs/t1/11995/27/3220/350699/5c1ca7ccE513813a9/d2a5a2adf82ec306.png.webp',
-               '//img14.360buyimg.com/uba/jfs/t1/9767/11/10081/295011/5c1ca7f8E6153a4ab/57d7792ce445c78e.png.webp',
-               '//img20.360buyimg.com/uba/jfs/t1/28384/19/2411/83530/5c1ca824E46672788/f0042e7679e616d5.png.webp',
-               '//img12.360buyimg.com/uba/jfs/t1/11202/26/3199/260793/5c1ca843E85133c41/5b79e0ff1ba02632.png.webp',
-               '//img11.360buyimg.com/uba/jfs/t1/9134/3/9998/421888/5c1ca865E801b6d16/2f0e0ff71cdb3e35.png.webp',
-               '//img12.360buyimg.com/uba/jfs/t1/29742/9/2496/168727/5c1ca894E51923875/a6782aa1a070e1d5.png.webp',
-               '//img10.360buyimg.com/uba/jfs/t1/27463/30/2424/136714/5c1caa47E16c53060/efafcbfb91681f0b.png.webp',
-               '//img11.360buyimg.com/imagetools/jfs/t1/8658/36/10082/61140/5c1cdf64E88b4cb69/4f7cbbc8831ff237.png.webp',
-               '//img20.360buyimg.com/uba/jfs/t1/9083/26/10088/10135/5c1caa64E4f87e2dd/dedd2da613b8b741.png.webp',
-               '//img30.360buyimg.com/uba/jfs/t1/27751/15/2508/12004/5c1caa81E18605c32/ad8fabcfb9a4c0af.png.webp',
-               '//img20.360buyimg.com/uba/jfs/t1/14259/20/2478/16489/5c1caa9eE9d2bba75/7201e4b41864e8e8.png.webp',
-               '//img13.360buyimg.com/uba/jfs/t1/20189/3/2456/58497/5c1caadbE4f47498c/68295cdb28a22085.png.webp',
-               '//img12.360buyimg.com/uba/jfs/t1/28656/8/2483/94921/5c1cab54E93b0f579/8b5cb73a5c932512.png.webp',
-               '//img14.360buyimg.com/uba/jfs/t1/17024/23/2460/293/5c1cab82Ea41a0560/02d66f521be09909.png.webp',
-               '//img14.360buyimg.com/uba/jfs/t1/19513/29/2431/274988/5c1cabc8E7e5eb033/293fa9bcb109e60e.png.webp',
-               '//img14.360buyimg.com/uba/jfs/t1/9368/19/10012/1857/5c1cac2dEc62adb6f/ae62ecefe4bccc70.png.webp',
-               '//img14.360buyimg.com/uba/jfs/t1/23612/19/2482/153871/5c1cad2eE4b42320c/954853409020266d.png.webp',
-               '//img12.360buyimg.com/uba/jfs/t1/26101/11/2427/19333/5c1cad76E75cb4737/cc36536ed6fd1e0e.png.webp',
-               '//img14.360buyimg.com/uba/jfs/t1/26638/23/2383/170083/5c1cad55E94f7b124/c918562f943a5eeb.png.webp',
-               '//img20.360buyimg.com/uba/jfs/t1/6729/14/10290/190607/5c1cad97E5f44a742/2dfc972fbcc9aa03.png.webp',
-               '//img11.360buyimg.com/uba/jfs/t1/27660/36/2451/9714/5c1cada8Ed4101c00/d74b4332c23374e2.png.webp',
-               '//img20.360buyimg.com/uba/jfs/t1/8667/24/10130/11279/5c1cadbbEb8b1175f/dcbe1bcb4743721c.png.webp',
-               '//img30.360buyimg.com/uba/jfs/t1/20450/11/2418/182187/5c1cae98Ec010322a/f03d0914ff9b03e8.png.webp',
-               '//img30.360buyimg.com/uba/jfs/t1/28062/32/2443/8090/5c1caec0E174c972a/d596cca7f47e4d9e.png.webp',
-               '//img14.360buyimg.com/uba/jfs/t1/16772/39/2455/31591/5c1caed8Eeebd07c3/ab40ad7cba9d34c9.png.webp',
-               '//img12.360buyimg.com/uba/jfs/t1/14145/21/2486/41196/5c1caef1E48ac14fd/5636a591a28857c6.png.webp',
-               '//img13.360buyimg.com/uba/jfs/t1/20003/16/2415/9227/5c1caf05Ef52d5254/58113fb98599a839.png.webp',
-               'https://h5.m.jd.com/babelDiy/Zeus/2846ykuM7PwipD9E2RzMj2BGEQpA/plugin/result_bg_640.png',
-               'https://h5.m.jd.com/babelDiy/Zeus/2846ykuM7PwipD9E2RzMj2BGEQpA/plugin/result_bg.png',
-               'https://h5.m.jd.com/babelDiy/Zeus/2846ykuM7PwipD9E2RzMj2BGEQpA/plugin/HYRunYuan.ttf',
+            //    '//img12.360buyimg.com/imagetools/jfs/t1/17155/33/2597/24927/5c1f2e83E341c3ba1/a8b14ebec4665785.png.webp',
+            //    '//img12.360buyimg.com/imagetools/jfs/t1/26035/2/2602/12297/5c1f23c0E54ba1b50/86ae262769c667b6.png.webp',
+            //    '//img10.360buyimg.com/imagetools/jfs/t1/7040/7/10222/11847/5c1f23c6E16934389/fcfd4d5ee5ede772.png.webp',
+            //    '//img13.360buyimg.com/imagetools/jfs/t1/29297/12/2540/199139/5c1f22abE7fe11159/221dd9526a072528.png.webp',
+            //    '//img12.360buyimg.com/imagetools/jfs/t1/19974/40/2606/164078/5c1f20b3E656972ea/880b016d4fd6922f.png.webp',
+            //    '//img13.360buyimg.com/imagetools/jfs/t1/15017/1/2705/57861/5c1f1b0eE8bd4871e/496a7478c97b8f6d.png.webp',
+            //    '//img13.360buyimg.com/imagetools/jfs/t1/26977/18/2741/147253/5c1f1f05Ef0c4e863/6d1fea74ac3a1940.png.webp',
+            //    '//img30.360buyimg.com/uba/jfs/t1/20111/35/2421/388982/5c1ca3bdEa46ca5a5/aca0ba87b8430d15.png.webp',
+            //    '//img14.360buyimg.com/uba/jfs/t1/24659/10/2394/366/5c1ca436E5b109fe6/64ec462773b4903d.png.webp',
+            //    '//img10.360buyimg.com/uba/jfs/t1/23060/11/2416/346/5c1ca462E3bb08453/4591845430d7c3f5.png.webp',
+            //    '//img20.360buyimg.com/uba/jfs/t1/17968/9/2464/53477/5c1ca516E0532e911/acde74140cbc9420.png.webp',
+            //    '//img11.360buyimg.com/uba/jfs/t1/19252/9/2476/60673/5c1ca55aE552971e0/f40d29f97464ad35.png.webp',
+            //    '//img12.360buyimg.com/uba/jfs/t1/24765/26/2441/25026/5c1ca590E062ea524/f53a2f4bef74fd4d.png.webp',
+            //    '//img13.360buyimg.com/uba/jfs/t1/21695/26/2448/29241/5c1ca5bcE51a4e0db/42b332936a18b2a4.png.webp',
+            //    '//img12.360buyimg.com/uba/jfs/t1/22525/20/2412/70451/5c1ca5e7E2b608c2f/7a8a642e820bff19.png.webp',
+            //    '//img20.360buyimg.com/uba/jfs/t1/21601/35/2512/306727/5c1ca668E00b42e01/f986ec063516be68.png.webp',
+            //    '//img14.360buyimg.com/uba/jfs/t1/23319/36/2468/16711/5c1ca692E2c4d8756/9ca911383690a890.png.webp',
+            //    '//img10.360buyimg.com/uba/jfs/t1/17541/35/2370/8177/5c1ca6b9E0c0da803/3675d2e17e70ca87.png.webp',
+            //    '//img30.360buyimg.com/uba/jfs/t1/9207/9/10002/3155/5c1ca6e2E46b6554a/03ab2de0a731e034.png.webp',
+            //    '//img12.360buyimg.com/uba/jfs/t1/27701/13/2478/222811/5c1ca712Ebf4b0578/fe5147128c9d0940.png.webp',
+            //    '//img11.360buyimg.com/uba/jfs/t1/12265/6/2414/851/5c1ca733Ead427527/fa16338473148f9b.png.webp',
+            //    '//img20.360buyimg.com/uba/jfs/t1/11995/27/3220/350699/5c1ca7ccE513813a9/d2a5a2adf82ec306.png.webp',
+            //    '//img14.360buyimg.com/uba/jfs/t1/9767/11/10081/295011/5c1ca7f8E6153a4ab/57d7792ce445c78e.png.webp',
+            //    '//img20.360buyimg.com/uba/jfs/t1/28384/19/2411/83530/5c1ca824E46672788/f0042e7679e616d5.png.webp',
+            //    '//img12.360buyimg.com/uba/jfs/t1/11202/26/3199/260793/5c1ca843E85133c41/5b79e0ff1ba02632.png.webp',
+            //    '//img11.360buyimg.com/uba/jfs/t1/9134/3/9998/421888/5c1ca865E801b6d16/2f0e0ff71cdb3e35.png.webp',
+            //    '//img12.360buyimg.com/uba/jfs/t1/29742/9/2496/168727/5c1ca894E51923875/a6782aa1a070e1d5.png.webp',
+            //    '//img10.360buyimg.com/uba/jfs/t1/27463/30/2424/136714/5c1caa47E16c53060/efafcbfb91681f0b.png.webp',
+            //    '//img11.360buyimg.com/imagetools/jfs/t1/8658/36/10082/61140/5c1cdf64E88b4cb69/4f7cbbc8831ff237.png.webp',
+            //    '//img20.360buyimg.com/uba/jfs/t1/9083/26/10088/10135/5c1caa64E4f87e2dd/dedd2da613b8b741.png.webp',
+            //    '//img30.360buyimg.com/uba/jfs/t1/27751/15/2508/12004/5c1caa81E18605c32/ad8fabcfb9a4c0af.png.webp',
+            //    '//img20.360buyimg.com/uba/jfs/t1/14259/20/2478/16489/5c1caa9eE9d2bba75/7201e4b41864e8e8.png.webp',
+            //    '//img13.360buyimg.com/uba/jfs/t1/20189/3/2456/58497/5c1caadbE4f47498c/68295cdb28a22085.png.webp',
+            //    '//img12.360buyimg.com/uba/jfs/t1/28656/8/2483/94921/5c1cab54E93b0f579/8b5cb73a5c932512.png.webp',
+            //    '//img14.360buyimg.com/uba/jfs/t1/17024/23/2460/293/5c1cab82Ea41a0560/02d66f521be09909.png.webp',
+            //    '//img14.360buyimg.com/uba/jfs/t1/19513/29/2431/274988/5c1cabc8E7e5eb033/293fa9bcb109e60e.png.webp',
+            //    '//img14.360buyimg.com/uba/jfs/t1/9368/19/10012/1857/5c1cac2dEc62adb6f/ae62ecefe4bccc70.png.webp',
+            //    '//img14.360buyimg.com/uba/jfs/t1/23612/19/2482/153871/5c1cad2eE4b42320c/954853409020266d.png.webp',
+            //    '//img12.360buyimg.com/uba/jfs/t1/26101/11/2427/19333/5c1cad76E75cb4737/cc36536ed6fd1e0e.png.webp',
+            //    '//img14.360buyimg.com/uba/jfs/t1/26638/23/2383/170083/5c1cad55E94f7b124/c918562f943a5eeb.png.webp',
+            //    '//img20.360buyimg.com/uba/jfs/t1/6729/14/10290/190607/5c1cad97E5f44a742/2dfc972fbcc9aa03.png.webp',
+            //    '//img11.360buyimg.com/uba/jfs/t1/27660/36/2451/9714/5c1cada8Ed4101c00/d74b4332c23374e2.png.webp',
+            //    '//img20.360buyimg.com/uba/jfs/t1/8667/24/10130/11279/5c1cadbbEb8b1175f/dcbe1bcb4743721c.png.webp',
+            //    '//img30.360buyimg.com/uba/jfs/t1/20450/11/2418/182187/5c1cae98Ec010322a/f03d0914ff9b03e8.png.webp',
+            //    '//img30.360buyimg.com/uba/jfs/t1/28062/32/2443/8090/5c1caec0E174c972a/d596cca7f47e4d9e.png.webp',
+            //    '//img14.360buyimg.com/uba/jfs/t1/16772/39/2455/31591/5c1caed8Eeebd07c3/ab40ad7cba9d34c9.png.webp',
+            //    '//img12.360buyimg.com/uba/jfs/t1/14145/21/2486/41196/5c1caef1E48ac14fd/5636a591a28857c6.png.webp',
+            //    '//img13.360buyimg.com/uba/jfs/t1/20003/16/2415/9227/5c1caf05Ef52d5254/58113fb98599a839.png.webp',
+            //    'https://h5.m.jd.com/babelDiy/Zeus/2846ykuM7PwipD9E2RzMj2BGEQpA/plugin/result_bg_640.png',
+            //    'https://h5.m.jd.com/babelDiy/Zeus/2846ykuM7PwipD9E2RzMj2BGEQpA/plugin/result_bg.png',
+            //    'https://h5.m.jd.com/babelDiy/Zeus/2846ykuM7PwipD9E2RzMj2BGEQpA/plugin/HYRunYuan.ttf',
             ];
 ;
             common.preLoading(imgList,(percentage)=>{
@@ -136,11 +189,12 @@ export default {
                 this.percentage = 100;
                 console.log('next page');
                 this.timer = setTimeout(()=>{
-                     this.currIndex = 1;
+                    this.currIndex = 1;
+                    this.initMusic();
                 },1000)
 
             });
-        }
+        },
 
     }
 };
@@ -184,7 +238,16 @@ export default {
     }
 }
 .item-2{
-    
+    background:url('./asset/img/loading.png') 0 0 no-repeat;
+    height:100%;
+    width:100%;
+    background-size:100% 100%;
+    .logo-wrap{
+        padding-top:100px;
+    }
+    .intro{
+        color:#fff;
+    }
 }
 .intro {
     font-size: 0.36rem;
@@ -238,6 +301,34 @@ export default {
         background:url('./asset/img/logo.png') 0 0 no-repeat;
         background-size:100% 100%;
 
+    }
+}
+.music{
+    display: inline-block;
+    background:url('./asset/img/music.png') 0 0 no-repeat;
+    height:0.64rem;
+    width:0.64rem;
+    background-size:100% 100%;
+    position: absolute;
+    right:20px;
+    top:20px;
+}
+.music-start{
+    animation:musicRote 10s linear infinite;
+}
+.music-stop{
+    background:url('./asset/img/close_music.png') 0 0 no-repeat;
+    background-size:100% 100%;
+
+}
+
+@keyframes musicRote {
+    from {
+        transform: rotate(0);
+    }
+    to{
+        transform: rotate(360deg);
+        animation-fill-mode:forwards;
     }
 }
 

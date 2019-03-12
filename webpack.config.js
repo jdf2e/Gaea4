@@ -182,7 +182,7 @@ module.exports = (env,argv)=> {
                     justUseWifi: false,
                     publicPath: '//page.jd.com/'+config.ftpTarget+'/'+config.version+'/',
                     ftp: {
-                        host: '测试服务器地址',
+                        host: '192.168.181.73',
                         port: 3000,
                         source: 'build',
                         target: '/var/www/html/page.jd.com/'+config.ftpTarget+'/'
