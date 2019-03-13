@@ -31,44 +31,35 @@
     </div>
 </template>
 
-<script>
-import axios from 'axios';
-import Qs from 'qs';
-import { DatePicker,Button, Rate } from '@nutui/nutui';
-export default {
-    data(){
-        return{
-             isVisible: false,
-             date:null
-        }
-    },
+<script  lang = "ts" >
+import { DatePicker,Button, Rate } from '@nutui/nutui'
+import Vue from 'vue'
+import Component from 'vue-class-component'
+@Component({
     components: {
         'nut-button':Button,
         'nut-rate':Rate,
         'nut-datepicker': DatePicker
-    },
-    methods:{
-        switchPicker(param) {
-            this[`${param}`] = !this[`${param}`];
-        },
-        setChooseValue(param) {
-            this.date = param[3];
-        },
-        openDatePicker(){
-            this.isVisible = true;
-        },
-        onRating(val){
-            console.log(val);
-        }
-    },
-    created(){
+    }
+})
+export default class Demo extends Vue {
+    isVisible: boolean = true
+    date: any = null
 
-    },
-    mounted(){
-        
-    },
-    destroyed(){
+    switchPicker(param: Array<String>): void {
+        this[`${param}`] = !this[`${param}`]
+    }
 
+    setChooseValue(param: Array<String>): void {
+        this.date = param[3]
+    }
+
+    openDatePicker(): void {
+        this.isVisible = true
+    }
+
+    onRating(val): void {
+        console.log(val)
     }
 }
 </script>

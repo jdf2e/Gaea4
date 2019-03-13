@@ -61,7 +61,6 @@ export default class Index extends Vue {
         a{
             color:#333;
         }
-        
     }
     .intro{
         font-size:0.36rem;
