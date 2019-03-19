@@ -31,7 +31,7 @@ module.exports = (env,argv)=> {
             children: false
         },
         resolve:{
-            extensions:['.js','.vue','.json','.ts']
+            extensions:['.js','.vue','.json','.ts','.tsx']
         },
         
         module:{
@@ -45,15 +45,18 @@ module.exports = (env,argv)=> {
                     ]
                 },
                 {
-                    test: /\.scss$/,
+                    test: /\.(sa|sc)ss$/,
                     use: [
                         argv.mode==='development'?'style-loader': MinicssExtractPlugin.loader,
                         "css-loader",
                         "postcss-loader",
-                        "sass-loader"
-                       
-                    ],
-                
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                data: `@import "@nutui/nutui/dist/styles/index.scss"; `,
+                            }
+                        }
+                    ]
                 },
                 {
                     test: /\.(png|jpg|gif|webp|woff|eot|ttf)$/,

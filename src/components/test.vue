@@ -1,8 +1,6 @@
-<template>
-    <div class="jdc-logo"><s></s></div>
-</template>
-<script lang="ts">
-import { Vue, Component, Prop, Emit, Watch } from 'vue-property-decorator'
+<script lang="tsx">
+import Vue, { CreateElement } from 'vue'
+import { Component, Prop, Emit, Watch } from 'vue-property-decorator'
 @Component
 export default class TestComponent extends Vue {
     test: string = 'test'
@@ -10,10 +8,12 @@ export default class TestComponent extends Vue {
     @Prop({ default: 'default value' }) readonly propB!: string
     @Prop([String, Boolean]) readonly propC!: string | boolean
 
-    @Watch('propA')
-    onChildChanged (val: number, oldVal: number) {
-        // 
+    render(h: CreateElement) {
+        return (<div class='jdc-logo'><s></s></div>)
     }
+
+    @Watch('propA')
+    onChildChanged (val: number, oldVal: number) {}
 
     @Emit()
     addToCount (n: number) {
