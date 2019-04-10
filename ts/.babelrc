@@ -12,7 +12,7 @@
     ],
     "plugins": [
             "transform-vue-jsx",
-            ["@nutui/babel-plugin-separate-import",{"style":"css"}],
+            ["@nutui/babel-plugin-separate-import",{"style":"scss"}],
             "@babel/plugin-syntax-dynamic-import"
             
         ]

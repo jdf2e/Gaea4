@@ -14,6 +14,8 @@ const moment               = require('moment');
 {{#Carefree}}const Carefree             = require('@nutui/carefree');{{/Carefree}}
 const WebpackUploadPlugin  = require('@nutui/upload/webpackUploadPlugin');
 {{#Smock}}const Smock                = require('smock-webpack-plugin');{{/Smock}}
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 
 module.exports = (env,argv)=> {
     
@@ -31,7 +33,7 @@ module.exports = (env,argv)=> {
             children: false
         },
         resolve:{
-            extensions:['.js','.vue','.json','.ts', '.tsx'],
+            extensions:['.js','.vue','.json','.ts','.tsx']
         },
         
         module:{
@@ -45,15 +47,18 @@ module.exports = (env,argv)=> {
                     ]
                 },
                 {
-                    test: /\.scss$/,
+                    test: /\.(sa|sc)ss$/,
                     use: [
                         argv.mode==='development'?'style-loader': MinicssExtractPlugin.loader,
                         "css-loader",
                         "postcss-loader",
-                        "sass-loader"
-                       
-                    ],
-                
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                data: `@import "@nutui/nutui/dist/styles/index.scss"; `,
+                            }
+                        }
+                    ]
                 },
                 {
                     test: /\.(png|jpg|gif|webp|woff|eot|ttf)$/,
@@ -107,6 +112,22 @@ module.exports = (env,argv)=> {
                       }
                     ]
                 }
+                // {
+                //     test: /\.ts$/,
+                //     exclude: /node_modules/,
+                //     enforce: 'pre',
+                //     use: [{
+                //         loader: "tslint-loader"
+                //     }]
+                // },
+                // {
+                //     test: /\.tsx$/,
+                //     exclude: /node_modules/,
+                //     use: [{
+                //         loader: "ts-loader",
+                //         options: { appendTsxSuffixTo: [/\.vue$/] }
+                //     }]
+                // }
            ]
         },
         plugins:[

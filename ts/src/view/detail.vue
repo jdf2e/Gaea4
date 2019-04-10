@@ -10,12 +10,18 @@
 <script lang = "ts" >
 import Vue from 'vue'
 import Component from 'vue-class-component'
-
 @Component
 export default class Detail extends Vue {
      // 生命周期
     mounted () {
         console.log('detail1')
+    }
+    go (val: number): void {
+        if (val === 1) {
+            this.$router.push({ path: '/detail2' })
+        } else if (val === 2) {
+            this.$router.push({ path: '/nutui' })
+        }
     }
 }
 </script>

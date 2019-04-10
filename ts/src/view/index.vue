@@ -1,33 +1,29 @@
 <template>
     <div>
         <div class="wrapper">
-            
-           <div class="logo-wrap"><span class="logo"></span></div>
-           <p class="intro">Vue技术栈单页面构建工具</p>
-           <p class="link">
-               <a href="https://github.com/jdf2e/Gaea4" class="btn">GITHUB</a>
-               <a href="https://www.npmjs.com/package/gaea-cli" class="btn">NPM</a>
-               <router-link to="/detail" class="btn btn-start">起步</router-link>
-              
-           </p>
-            <div class="jdc-logo"><s></s></div>
+            <div class="logo-wrap"><span class="logo"></span></div>
+            <p class="intro">Vue技术栈单页面构建工具</p>
+            <p class="link">
+                <a href="https://github.com/jdf2e/Gaea4" class="btn">GITHUB</a>
+                <a href="https://www.npmjs.com/package/gaea-cli" class="btn">NPM</a>
+                <router-link to="/detail" class="btn btn-start">起步</router-link>
+            </p>
+            <test-component :prop-a="1"/>
         </div>
     </div>
 </template>
 <script lang = "ts" >
 import Vue from 'vue'
-import Component, { mixins } from 'vue-class-component'
-import TestMixin from '../mixins/test'
+import Component from 'vue-class-component'
 import TestComponent from '../components/test.vue'
 import axios from 'axios'
 import Qs from 'qs'
-
 @Component({
     components: {
-        TC: TestComponent
+        'test-component': TestComponent
     }
 })
-export default class Index extends mixins(TestMixin) {
+export default class Index extends Vue {
 
     // 初始化数据
     spread: number[] = [1, 2, 3, 4]
@@ -39,12 +35,6 @@ export default class Index extends mixins(TestMixin) {
     // 生命周期
     mounted () {
         this.init()
-        let m = [3, 4]
-        console.log([...this.spread, ...m])
-        let obj = Object.assign({}, this.obj)
-        for (let a of m) {
-            console.log(a)
-        }
     }
 
     // 计算属性
@@ -52,10 +42,15 @@ export default class Index extends mixins(TestMixin) {
         return this.obj.name + this.obj.age
     }
 
-    // 组件的方法
+    // methods
     init (): void {
-        console.log(this.testMixinValue)
-        this.testMixinFun()
+        let m = [3, 4]
+        console.log([...this.spread, ...m])
+
+        let obj = Object.assign({}, this.obj)
+        for (let a of m) {
+            console.log(a)
+        }
     }
 }
 </script>
@@ -66,7 +61,6 @@ export default class Index extends mixins(TestMixin) {
         a{
             color:#333;
         }
-        
     }
     .intro{
         font-size:0.36rem;

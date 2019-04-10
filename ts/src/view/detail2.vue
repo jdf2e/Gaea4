@@ -18,6 +18,13 @@ export default class Detail2 extends Vue {
     mounted () {
         console.log('detail2')
     }
+    go (val: number): void {
+        if (val === 1) {
+            this.$router.push({ path: '/detail' })
+        } else if (val === 2) {
+            this.$router.push({ path: '/nutui' })
+        }
+    }
 }
 </script>
 

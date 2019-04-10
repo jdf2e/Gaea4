@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import App from './app.vue'
 import router from './router'
-import { Cell,Dialog } from '@nutui/nutui'
+
+import { Cell, Dialog } from '@nutui/nutui'
 Vue.use(Cell)
 Vue.use(Dialog)
 
