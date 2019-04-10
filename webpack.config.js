@@ -14,6 +14,8 @@ const moment               = require('moment');
 const Carefree             = require('@nutui/carefree');
 const WebpackUploadPlugin  = require('@nutui/upload/webpackUploadPlugin');
 const Smock                = require('smock-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 
 module.exports = (env,argv)=> {
     
