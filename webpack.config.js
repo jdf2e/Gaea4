@@ -13,6 +13,8 @@ const CopyWebpackPlugin    = require('copy-webpack-plugin');
 const moment               = require('moment');
 const Carefree             = require('@nutui/carefree');
 const WebpackUploadPlugin  = require('@nutui/upload/webpackUploadPlugin');
+const UglifyJsPlugin       = require('uglifyjs-webpack-plugin');
+
 
 module.exports = (env,argv)=> {
     
@@ -117,6 +119,22 @@ module.exports = (env,argv)=> {
         let vendorTarget ='/lib/vendor.dll.js';
         if(vendorVersion!=''){
             vendorTarget = '/lib/'+vendorVersion+'/vendor.dll.js';
+        }
+        webpackConfig.optimization = {
+            minimizer: [
+                //压缩js
+                  new UglifyJsPlugin({
+                    uglifyOptions: {
+                        compress: {
+                          warnings: false,
+                          drop_debugger: true, // console
+                          drop_console: true
+                        },
+                      },
+                      sourceMap: false,
+                      parallel: true,
+                  })
+            ]
         }
         webpackConfig.plugins = (webpackConfig.plugins || []).concat([
             new HtmlWebpackPlugin({
