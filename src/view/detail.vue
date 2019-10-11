@@ -41,13 +41,13 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-    color: #333;
-    font-size: 0.24rem;
+color: #333;
+font-size: 0.24rem;
 }
 h4 {
-    text-align: center;
-    padding: 0.4rem 0.1rem;
-    font-size: 0.36rem;
-    color: #848689;
+text-align: center;
+padding: 0.4rem 0.1rem;
+font-size: 0.36rem;
+color: #848689;
 }
 </style>

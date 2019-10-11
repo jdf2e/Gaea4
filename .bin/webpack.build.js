@@ -18,16 +18,16 @@ let buildCongfig = Object.assign(web_base,{
     optimization:{
         minimize:true,
             minimizer:[            
-             new UglifyJsPlugin({
-                test: /\.js(\?.*)?$/i,
-                extractComments: false,               
-                uglifyOptions:{
+                new UglifyJsPlugin({
+                    test: /\.js(\?.*)?$/i,
+                    extractComments: false,               
+                    uglifyOptions:{
                         compress: {
                             drop_console: true,
                             drop_debugger: true, 
                         }                              
-                }            
-            })
+                    }            
+                })
             ]
     },
     module:{
@@ -37,7 +37,15 @@ let buildCongfig = Object.assign(web_base,{
                 include: path.resolve(__dirname, "../src"),
                 exclude: /node_modules/,
                 use: [
-                    MiniCssExtractPlugin.loader, 'happypack/loader?id=css'     
+                    MiniCssExtractPlugin.loader,'happypack/loader?id=css',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            config: {
+                                path: path.resolve(__dirname)
+                            }
+                        }
+                    }   
                 ]
             },               
             {
@@ -73,7 +81,15 @@ let buildCongfig = Object.assign(web_base,{
                                     'happypack/loader?id=css'     
                                 ]
                             },
-                            postcss: [autoprefixer()]
+                            postcss: [require('autoprefixer')({
+                                "overrideBrowserslist" : [
+                                    "> 1%",
+                                    "last 7 versions",
+                                    "not ie <= 8",
+                                    "ios >= 8",
+                                    "android >= 4.0"
+                                  ]
+                            })]
                         },
                     }
                 ]
