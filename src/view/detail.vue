@@ -22,7 +22,7 @@
 export default {
     components: {},
     data() {
-        return {};
+        return {}
     },
     created() {},
     mounted() {},
@@ -30,13 +30,13 @@ export default {
     methods: {
         go(val) {
             if (val == 1) {
-                this.$router.push({ path: "/detail2" });
+                this.$router.push({ path: '/detail2' })
             } else if (val == 2) {
-                this.$router.push({ path: "/nutui" });
+                this.$router.push({ path: '/nutui' })
             }
         }
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>

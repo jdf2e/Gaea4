@@ -5,6 +5,7 @@ const path = require('path');
 const HappyPack = require('happypack');
 const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+const config               = require('./../package.json');
 let devConfig = {};
 devConfig = Object.assign(web_base,{
     mode:"development",
@@ -53,6 +54,7 @@ devConfig = Object.assign(web_base,{
     ]},     
     devServer:{
         open:true,      
+        contentBase:path.resolve(__dirname, "../build")+ '/'+config.version+'/' ,
         proxy:{
             "/workshop/*":{
                 target:"https://***.com",               

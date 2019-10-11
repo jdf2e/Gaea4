@@ -30,24 +30,24 @@ export default {
         return {
             spread: [1, 2, 3, 4],
             obj: {
-                name: "wangnan",
-                age: "30"
+                name: 'wangnan',
+                age: '30'
             }
-        };
+        }
     },
     created() {},
     mounted() {
-        let m = [3, 4];
-        console.log([...this.spread, ...m]);
-        let obj = Object.assign({}, this.obj);
-        console.log("23232323:" + obj);
-        for (let a of m) {
-            console.log(a);
+        const m = [3, 4]
+        console.log([...this.spread, ...m])
+        const obj = Object.assign({}, this.obj)
+        console.log('23232323:' + obj)
+        for (const a of m) {
+            console.log(a)
         }
     },
     destroyed() {},
     methods: {}
-};
+}
 </script>
 
 <style lang="scss" scoped>

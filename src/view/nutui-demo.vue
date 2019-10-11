@@ -45,36 +45,36 @@
 </template>
 
 <script>
-import { DatePicker, Rate } from "@nutui/nutui";
+import { DatePicker, Rate } from '@nutui/nutui'
 export default {
     components: {
-        "nut-datepicker": DatePicker,
-        "nut-rate": Rate
+        'nut-datepicker': DatePicker,
+        'nut-rate': Rate
     },
     data() {
         return {
             isVisible: false,
             date: null
-        };
+        }
     },
     created() {},
     mounted() {},
     destroyed() {},
     methods: {
         switchPicker(param) {
-            this[`${param}`] = !this[`${param}`];
+            this[`${param}`] = !this[`${param}`]
         },
         setChooseValue(param) {
-            this.date = param[3];
+            this.date = param[3]
         },
         openDatePicker() {
-            this.isVisible = true;
+            this.isVisible = true
         },
         onRating(val) {
-            console.log(val);
+            console.log(val)
         }
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>

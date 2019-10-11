@@ -10,11 +10,10 @@
     "compress": "node .tinypng.js",
     "lint": "eslint --fix --ext  .js,.vue src",
     "dev": "webpack-dev-server --colors --config .bin/webpack.dev.js",
-    "dev:low": "webpack-dev-server --colors --config .bin/webpack.dev.js",   
-    "build":"webpack --progress --colors  --press  --config .bin/webpack.build.js",
-    "build:local": "webpack --progress --colors  --press  --config .bin/webpack.build.js",    
-    "upload": "webpack --progress --colors  --press  --config .bin/webpack.upload.js",
-    "upload:local": "webpack --progress --colors  --press  --config .bin/webpack.upload.js"
+    "dev:low": "webpack-dev-server --colors --config .bin/webpack.dev.js",
+    "build": "webpack --progress --colors  --press  --config .bin/webpack.build.js",
+    "build:local": "webpack --progress --colors  --press --local=true  --config .bin/webpack.build.js",
+    "upload": "webpack --progress --colors  --press  --config .bin/webpack.upload.js"
   },
   "repository": {
     "type": "git",
@@ -72,9 +71,10 @@
     "@nutui/upload": "^0.1.4",
     "autoprefixer": "^9.6.4",
     "cache-loader": "^4.1.0",
-    "chalk": "^2.4.2",   
+    "chalk": "^2.4.2",
     "express": "^4.17.1",
     "happypack": "^5.0.1",
+    "html-webpack-include-assets-plugin": "^2.0.0",
     "os": "^0.1.1",
     "postcss-loader": "^3.0.0",
     "progress-bar-webpack-plugin": "^1.12.1",

@@ -5,11 +5,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const optimizeCss = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const htmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 const autoprefixer         = require('autoprefixer');
 const config               = require('./../package.json');
 const argv = require('yargs').argv;
 const path = require('path');
-
 const HappyPack = require('happypack');
 const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
@@ -20,7 +20,7 @@ let buildCongfig = Object.assign(web_base,{
             minimizer:[            
              new UglifyJsPlugin({
                 test: /\.js(\?.*)?$/i,
-                extractComments: true,               
+                extractComments: false,               
                 uglifyOptions:{
                         compress: {
                             drop_console: true,
@@ -126,7 +126,11 @@ buildCongfig.plugins = [
     new HtmlWebpackPlugin({
         template: path.join(__dirname, '../src/index.html'),
         filename: 'index.html',    
-    }),       
+    }), 
+    new htmlWebpackIncludeAssetsPlugin({
+        publicPath:argv.local?"":config.publicPath,
+        append:false
+    }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
       chunkFilename:'css/[id].css'    
