@@ -15,7 +15,6 @@
 * dev 不在对css增加前缀 和js 进行es6转es5 ok
 * dev:low 增加css前缀 和js 进行转换 对低版本进行兼容
 * build:local 打包路径为本地路径，即不增加域名
-* upload:view 上传路径为测试环境 ，但是 文件相对路径不变
 * cdn:vue 不在对vue 进行打包，直接引用公司服务器中的vue
 * 增加构建完成提示 ok
 * 增加代码格式化功能 并有详细注释 ok
