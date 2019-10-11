@@ -9,6 +9,7 @@ const config               = require('./../package.json');
 let devConfig = {};
 devConfig = Object.assign(web_base,{
     mode:"development",
+    devtool: "source-map",
     module:{
         rules:[
             {
@@ -53,8 +54,7 @@ devConfig = Object.assign(web_base,{
             }           
     ]},     
     devServer:{
-        open:true,      
-        
+        open:true,  
         proxy:{
             "/workshop/*":{
                 target:"https://***.com",               
