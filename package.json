@@ -9,7 +9,7 @@
   "scripts": {
     "compress": "node .tinypng.js",
     "lint": "eslint --fix --ext  .js,.vue src",
-    "dev": "webpack-dev-server --colors --config .bin/webpack.dev.js",
+    "dev": "webpack-dev-server --colors --local=true --config  .bin/webpack.dev.js",
     "dev:low": "webpack-dev-server --colors --config .bin/webpack.dev.js",
     "build": "webpack --progress --colors  --press  --config .bin/webpack.build.js",
     "build:local": "webpack --progress --colors  --press --local=true  --config .bin/webpack.build.js",

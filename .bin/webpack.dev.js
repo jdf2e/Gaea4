@@ -54,7 +54,7 @@ devConfig = Object.assign(web_base,{
     ]},     
     devServer:{
         open:true,      
-        contentBase:path.resolve(__dirname, "../build")+ '/'+config.version+'/' ,
+        
         proxy:{
             "/workshop/*":{
                 target:"https://***.com",               
