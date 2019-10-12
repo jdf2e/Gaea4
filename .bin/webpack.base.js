@@ -23,7 +23,7 @@ module.exports = {
       new ProgressBarPlugin({
         format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',      
         clear: false, 
-        width: 60
+        width: 100
       }),
       new WebpackBuildNotifierPlugin({
         title: "My Project Webpack Build",        
