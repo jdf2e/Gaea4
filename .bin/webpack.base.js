@@ -3,7 +3,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const chalk= require('chalk');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 var WebpackBuildNotifierPlugin = require('webpack-build-notifier');
-const config               = require('./../package.json');
+const config = require('./../package.json');
 const argv = require('yargs').argv;
 module.exports = {    
   entry: './src/app.ts',
