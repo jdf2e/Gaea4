@@ -15,6 +15,9 @@ const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 let buildCongfig = Object.assign(web_base,{
     mode:'production',
+    externals:{
+        vue:'Vue'
+    },
     optimization:{
         minimize:true,
             minimizer:[            
