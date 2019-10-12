@@ -7,7 +7,7 @@
   "ftpServer": "static.360buyimg.com",
   "ftpTarget": "testGaea5.0",
   "scripts": {
-    "compress": "node .tinypng.js",
+    "compress": "node .bin/tinypng.js",
     "lint": "eslint --fix --ext  .js,.vue src",
     "dev": "webpack-dev-server --colors --local=true --config  .bin/webpack.dev.js",
     "dev:low": "webpack-dev-server --colors --config .bin/webpack.dev.js",
