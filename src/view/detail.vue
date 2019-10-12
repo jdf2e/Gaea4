@@ -50,4 +50,9 @@ padding: 0.4rem 0.1rem;
 font-size: 0.36rem;
 color: #848689;
 }
+.test{
+    display: flex;
+    transform: translate(30px,40px);
+    font:12px;
+}
 </style>

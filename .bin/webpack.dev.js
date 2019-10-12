@@ -10,6 +10,7 @@ let devConfig = {};
 devConfig = Object.assign(web_base,{
     mode:"development",
     devtool: "source-map",
+    stats: 'errors-only',
     module:{
         rules:[
             {
@@ -75,7 +76,7 @@ devConfig.plugins = [...devConfig.plugins,
          //共享进程池
         threadPool: happyThreadPool,
         //允许 HappyPack 输出日志
-        verbose: true,
+        verbose: false,
     }),  
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
