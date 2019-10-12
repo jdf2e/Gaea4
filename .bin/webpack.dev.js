@@ -55,7 +55,7 @@ devConfig = Object.assign(web_base,{
             }           
     ]},     
     devServer:{
-        open:true,  
+        open:true,         
         proxy:{
             "/workshop/*":{
                 target:"https://***.com",               

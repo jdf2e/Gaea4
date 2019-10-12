@@ -140,8 +140,8 @@ buildCongfig.plugins = [
       }),     
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-        template: path.join(__dirname, '../src/index.html'),
-        filename: 'index.html',    
+        template: path.join(__dirname, '../src/index.html'),       
+        filename:path.resolve(__dirname,'../build/index.html')
     }), 
     new htmlWebpackIncludeAssetsPlugin({
         publicPath:argv.local?"":config.publicPath,
