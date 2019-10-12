@@ -8,13 +8,18 @@ const argv = require('yargs').argv;
 module.exports = {    
   entry: './src/app.ts',
   output:argv.local?{
-	filename: 'js/[name].js',
-	path: path.resolve(__dirname, '../build'+ '/' + config.version), 
-  }: {
-    filename: 'js/[name].js',
-	path: path.resolve(__dirname, '../build'+ '/' + config.version), 
-	publicPath: config.publicPath + '/'+config.version+'/' 
+      filename: 'js/[name].js',
+      path: path.resolve(__dirname, '../build'+ '/' + config.version), 
+    }: {
+      filename: 'js/[name].js',
+      path: path.resolve(__dirname, '../build'+ '/' + config.version), 
+      publicPath: config.publicPath + '/'+config.version+'/' 
   }, 
+  externals:{
+     vue:'Vue',
+    'vue-router':'VueRouter',
+    'axios':'axios'
+  },
   resolve: {
     extensions: [ '.tsx', '.ts', '.js', '.vue','.svg' ]
   },  

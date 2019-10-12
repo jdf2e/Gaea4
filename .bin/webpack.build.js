@@ -14,10 +14,7 @@ const HappyPack = require('happypack');
 const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 let buildCongfig = Object.assign(web_base,{
-    mode:'production',
-    externals:{
-        vue:'Vue'
-    },
+    mode:'production',    
     optimization:{
         minimize:true,
             minimizer:[            
@@ -148,8 +145,8 @@ buildCongfig.plugins = [
     }), 
     new htmlWebpackIncludeAssetsPlugin({
         publicPath:argv.local?"":config.publicPath,
-        append:false
-    }),
+        append:true, 
+    }),   
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
       chunkFilename:'css/[id].css'    
