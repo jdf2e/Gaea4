@@ -14,7 +14,13 @@ devConfig = Object.assign(web_base,{
     module:{
         rules:[
             {
-                test: /\.(sa|sc|c)ss$/,
+                test:/\.css$/,
+                use: [                  
+                    "css-loader",                   
+                ]
+            },
+            {
+                test: /\.(sa|sc)ss$/,
                 include: path.resolve(__dirname, "../src"),
                 exclude: /node_modules/,
                 use: [
@@ -26,7 +32,7 @@ devConfig = Object.assign(web_base,{
                 include: path.resolve(__dirname, "../src"),
                 exclude: /node_modules/,
                 use:[
-                    'cache-loader',                
+                    'cache-loader','happypack/loader?id=happyBabel',                
                     {                  
                         loader:'ts-loader',
                         options: {
@@ -78,7 +84,19 @@ devConfig.plugins = [...devConfig.plugins,
         threadPool: happyThreadPool,
         //允许 HappyPack 输出日志
         verbose: false,
-    }),  
+    }), 
+    new HappyPack({
+        //用id来标识 happypack处理那里类文件
+      id: 'happyBabel',
+      //如何处理  用法和loader 的配置一样
+      loaders: [{
+        loader: 'babel-loader?cacheDirectory=true',
+      }],
+      //共享进程池
+      threadPool: happyThreadPool,
+      //允许 HappyPack 输出日志
+      verbose: true,
+    }), 
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
           title:"vue_stage",

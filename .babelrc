@@ -12,6 +12,9 @@
         "regenerator": true,
         "useESModules": false
       }
-    ]
+    ],
+    ["@nutui/babel-plugin-separate-import", {
+        "style": "css"
+    }]
   ]
 } 
