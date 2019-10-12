@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Index from "./view/index.vue";
-import Detail from "./view/detail.vue";
+const Index = () => import("./view/index.vue") ;
+const Detail = ()=> import("./view/detail.vue");
 const Detail2 = () => import("./view/detail2.vue");
 
 Vue.use(VueRouter)
