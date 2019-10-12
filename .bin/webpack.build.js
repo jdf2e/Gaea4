@@ -15,6 +15,7 @@ const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 let buildCongfig = Object.assign(web_base,{
     mode:'production',    
+    stats: 'errors-only',
     optimization:{
         minimize:true,
             minimizer:[            
@@ -127,7 +128,7 @@ buildCongfig.plugins = [
       //共享进程池
       threadPool: happyThreadPool,
       //允许 HappyPack 输出日志
-      verbose: true,
+      verbose: false,
     }),
     new HappyPack({
         id: 'css',
@@ -136,7 +137,7 @@ buildCongfig.plugins = [
          //共享进程池
         threadPool: happyThreadPool,
         //允许 HappyPack 输出日志
-        verbose: true,
+        verbose: false,
       }),     
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
