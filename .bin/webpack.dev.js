@@ -24,7 +24,12 @@ devConfig = Object.assign(web_base,{
                 include: path.resolve(__dirname, "../src"),
                 exclude: /node_modules/,
                 use: [
-                    'cache-loader', 'style-loader','happypack/loader?id=css'            
+                     'style-loader','happypack/loader?id=css' ,{
+                        loader: 'sass-loader',
+                        options: {
+                            data: `@import "@nutui/nutui/dist/styles/index.scss"; `
+                        }
+                    }           
                 ]
             },  
             {
@@ -78,8 +83,8 @@ devConfig.plugins = [...devConfig.plugins,
         id: 'css',
         // 如何处理 .css 文件，用法和 Loader 配置中一样
         loaders: [ 
-        'css-loader',    
-        'sass-loader'],
+        'css-loader'
+        ],
          //共享进程池
         threadPool: happyThreadPool,
         //允许 HappyPack 输出日志
