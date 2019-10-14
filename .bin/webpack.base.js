@@ -9,7 +9,7 @@ module.exports = {
   entry: './src/app.ts',
   output:argv.local?{
       filename: 'js/[name].js',
-      path: path.resolve(__dirname, '../build'+ '/' + config.version), 
+      path: path.resolve(__dirname, '../build'), 
     }: {
       filename: 'js/[name].js',
       path: path.resolve(__dirname, '../build'+ '/' + config.version), 
