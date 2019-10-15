@@ -24,12 +24,12 @@ devConfig = Object.assign(web_base,{
                 include: path.resolve(__dirname, "../src"),
                 exclude: /node_modules/,
                 use: [
-                    'cache-loader', 'style-loader',{
+                    'cache-loader', 'style-loader','happypack/loader?id=css' ,{
                         loader: 'sass-loader',
                         options: {
                             data: `@import "@nutui/nutui/dist/styles/index.scss"; `
                         }
-                    },'happypack/loader?id=css' ,
+                    }
                 ]
             },  
             {
