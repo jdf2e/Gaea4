@@ -1,11 +1,10 @@
 const web_base = require('./webpack.base.js');
 const webpack = require('webpack');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const htmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 const path = require('path');
-const HappyPack = require('happypack');
-const os = require('os');
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
-const config               = require('./../package.json');
+const vendordev = './../static/vendor.dll.js';
 let devConfig = {};
 devConfig = Object.assign(web_base,{
     mode:"development",
@@ -21,15 +20,8 @@ devConfig = Object.assign(web_base,{
             },
             {
                 test: /\.(sa|sc)ss$/,
-                include: path.resolve(__dirname, "../src"),
-                exclude: /node_modules/,
                 use: [
-                    'cache-loader', 'style-loader','happypack/loader?id=css' ,{
-                        loader: 'sass-loader',
-                        options: {
-                            data: `@import "@nutui/nutui/dist/styles/index.scss"; `
-                        }
-                    }
+                    'cache-loader', 'style-loader','happypack/loader?id=css'
                 ]
             },  
             {
@@ -38,7 +30,7 @@ devConfig = Object.assign(web_base,{
                 exclude: /node_modules/,
                 use:[
                     'cache-loader','happypack/loader?id=happyBabel',                
-                    {                  
+                    {
                         loader:'ts-loader',
                         options: {
                             appendTsSuffixTo: [/\.vue$/],
@@ -66,7 +58,7 @@ devConfig = Object.assign(web_base,{
             }           
     ]},     
     devServer:{
-        open:true,  
+        // open:true,  
         noInfo: true,       
         proxy:{
             "/workshop/*":{
@@ -79,34 +71,22 @@ devConfig = Object.assign(web_base,{
 });
 
 devConfig.plugins = [...devConfig.plugins,
-    new HappyPack({
-        id: 'css',
-        // 如何处理 .css 文件，用法和 Loader 配置中一样
-        loaders: [ 
-        'css-loader'
-        ],
-         //共享进程池
-        threadPool: happyThreadPool,
-        //允许 HappyPack 输出日志
-        verbose: false,
-    }), 
-    new HappyPack({
-        //用id来标识 happypack处理那里类文件
-      id: 'happyBabel',
-      //如何处理  用法和loader 的配置一样
-      loaders: [{
-        loader: 'babel-loader?cacheDirectory=true',
-      }],
-      //共享进程池
-      threadPool: happyThreadPool,
-      //允许 HappyPack 输出日志
-      verbose: true,
-    }), 
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
           title:"vue_stage",
           template:'./src/index.html'
-    })   
+    })
 ];
+
+if(fs.existsSync(path.join(__dirname,vendordev))) {
+    devConfig.plugins = [
+        ...devConfig.plugins,
+        new htmlWebpackIncludeAssetsPlugin({
+            assets: vendordev,
+            publicPath: false,
+            append:false
+        })
+    ];
+}
 
 module.exports= devConfig;
