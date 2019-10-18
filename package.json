@@ -13,10 +13,10 @@
     "dev": "webpack-dev-server --colors --local=true --config  .bin/webpack.dev.js",
     "dev:low": "webpack-dev-server --colors --config .bin/webpack.dev.js",
     "dll": "webpack --config .bin/webpack.dll.config.js",
-    "build": "webpack --colors  --press  --config .bin/webpack.build.js",
-    "build:local": "webpack  --colors  --press --local=true  --config .bin/webpack.build.js",
-    "upload": "webpack  --colors  --press  --config .bin/webpack.upload.js",
-    "upload:local": "webpack  --colors  --press --local=true  --config .bin/webpack.upload.js"
+    "build": "webpack --colors    --config .bin/webpack.build.js",
+    "build:local": "webpack  --colors   --local=true  --config .bin/webpack.build.js",
+    "upload": "webpack  --colors    --config .bin/webpack.upload.js",
+    "upload:local": "webpack  --colors   --local=true  --config .bin/webpack.upload.js"
   },
   "repository": {
     "type": "git",
