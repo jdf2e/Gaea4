@@ -7,3 +7,5 @@ yarn-error.log
 package-lock.json
 npm-debug.log*
 myproject/
+yarn.lock
+.vscode/launch.json
