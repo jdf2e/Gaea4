@@ -60,7 +60,7 @@ let baseConfig = Object.assign({},{
         //共享进程池
         threadPool: happyThreadPool,
         //允许 HappyPack 输出日志
-        verbose: true,
+        verbose: false,
       }), 
       new VueLoaderPlugin(),
       new ProgressBarPlugin({
