@@ -26,7 +26,8 @@ let baseConfig = Object.assign({},{
     externals:{
        vue:'Vue',
       'vue-router':'VueRouter',
-      'axios':'axios'
+      'axios':'axios',   
+      'vuex':'Vuex'  
     },
     resolve: {
       extensions: [ '.tsx', '.ts', '.js', '.vue','.svg' ]

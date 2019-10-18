@@ -27,23 +27,12 @@
 export default {
     components: {},
     data() {
-        return {
-            spread: [1, 2, 3, 4],
-            obj: {
-                name: 'wangnan',
-                age: '30'
-            }
+        return {            
+           
         }
     },
     created() {},
-    mounted() {
-        const m = [3, 4]
-        console.log([...this.spread, ...m])
-        const obj = Object.assign({}, this.obj)
-        console.log('23232323:' + obj)
-        for (const a of m) {
-            console.log(a)
-        }
+    mounted() {           
     },
     destroyed() {},
     methods: {}
