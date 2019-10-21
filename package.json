@@ -22,6 +22,7 @@
     "vuex": "node index.js -U vuex",
     "ts": "node index.js -U ts",
     "skeleton": "node index.js -U skeleton",
+    "vuef" : "node index.js -U fast-vue",
     "all": "npm run vue && npm run vuex && npm run ts && npm run skeleton"
   },
   "repository": {
