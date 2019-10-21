@@ -15,7 +15,7 @@ devConfig = Object.assign(web_base,{
             {
                 test:/\.css$/,
                 use: [                  
-                    "css-loader",                   
+                    'cache-loader',"css-loader",                   
                 ]
             },
             {
@@ -58,7 +58,7 @@ devConfig = Object.assign(web_base,{
             }           
     ]},     
     devServer:{
-        // open:true,  
+        open:true,  
         noInfo: true,       
         proxy:{
             "/workshop/*":{

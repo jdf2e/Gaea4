@@ -3,3 +3,5 @@ dist
 build
 yarn.lock
 
+.vscode/launch.json
+.DS_Store
