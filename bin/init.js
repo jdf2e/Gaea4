@@ -16,6 +16,7 @@ if(!projectName){
     return
 }
  go().then((res)=>{   
+    console.log('')
     console.log(logSymbols.success,chalk.green('创建成功:)'));
     console.log(logSymbols.info,`cd ${projectName}`);
     console.log(logSymbols.info,`安装npm install`);
@@ -179,16 +180,15 @@ async function go(){
             }
         ]))
     });
-    if(anser2.isneedfast === '默认配置'){
-        
+    if(anser2.isneedfast === '默认配置'){        
         let options = Object.assign(answer,{
             target:projectRoot
-        })        
-        downloadFast(options)
-        
-        return 'fast'
-    }
-    
+        })    
+        await new Promise((resolve,reject)=>{
+            resolve(downloadFast(options))
+        })    
+        return 'fast';
+    }    
     let anser3 =  await new Promise((resolve,reject)=>{
         return resolve(inquirer.prompt([{	
             name:'bucket',
