@@ -171,16 +171,16 @@ async function go(){
         return resolve( inquirer.prompt([
             {
                 name:'isneedfast',
-                message:`是否选择推荐配置？\n`,
+                message:`是否选择推荐配置？`,
                 type:'rawlist',
                 choices:[
-                    { name: '推荐配置集成了 vue、vuex、vue-router、axios、TypeScript、NutUI2开发速度更快！', value: '默认配置' },
-                    { name: '自定的配置可以选择是否使用vuex、TypeScript、 NutUI2、 Carefree、 Smock', value: '自定义配置' }                   
+                    { name: '推荐配置集成了 vue、vuex、vue-router、axios、TypeScript、NutUI2开发速度更快！', value: '是' },
+                    { name: '自定的配置可以选择是否使用vuex、TypeScript、 NutUI2、 Carefree、 Smock', value: '否' }                   
                 ]
             }
         ]))
     });
-    if(anser2.isneedfast === '默认配置'){        
+    if(anser2.isneedfast === '是'){        
         let options = Object.assign(answer,{
             target:projectRoot
         })    
