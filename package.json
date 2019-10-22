@@ -1,7 +1,7 @@
 {
-  "name": "vue_stage_1.0.1",
-  "version": "1.0.0",
-  "description": "vue编译工具",
+  "name": "{{projectName}}",
+  "version": "{{projectVersion}}",
+  "description": "{{projectDescription}}",
   "main": "index.js",
   "publicPath": "//static.360buyimg.com/testGaea5.0",
   "ftpServer": "static.360buyimg.com",
