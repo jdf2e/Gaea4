@@ -15,21 +15,29 @@ if(!projectName){
     program.help()
     return
 }
- go().then(()=>{
+ go().then((res)=>{   
     console.log(logSymbols.success,chalk.green('创建成功:)'));
     console.log(logSymbols.info,`cd ${projectName}`);
     console.log(logSymbols.info,`安装npm install`);
-    console.log(logSymbols.info,'先编译第三方依赖库 npm run dll');
-    console.log(logSymbols.info,'开发 npm run dev');
-    console.log(logSymbols.info,'编译 npm run build');
-    console.log(logSymbols.info,'上传 npm run upload');
-    console.log(logSymbols.info,'真机调试 npm run carefree');
-    console.log(logSymbols.info,'代码检查和格式化 npm run lint');
-    console.log(logSymbols.info,'图片压缩和webp转换 npm run compress');
-    console.log('');
-}).catch((err)=>{
-    console.log(logSymbols.error,chalk.red(`创建失败：${err.message}`));
+    if(res === 'fast'){        
+        console.log(logSymbols.info,'开发 npm run dev');
+        console.log(logSymbols.info,'编译 npm run build');
+        console.log(logSymbols.info,'编译到本地路径 npm run build:local');
+        console.log(logSymbols.info,'上传 npm run upload');              
+        console.log(logSymbols.info,'代码检查和格式化 npm run lint');
+        console.log(logSymbols.info,'图片压缩和webp转换 npm run compress');  
+    }else{       
+        console.log(logSymbols.info,'先编译第三方依赖库 npm run dll');
+        console.log(logSymbols.info,'开发 npm run dev');
+        console.log(logSymbols.info,'编译 npm run build');
+        console.log(logSymbols.info,'上传 npm run upload');
+        console.log(logSymbols.info,'真机调试 npm run carefree');
+        console.log(logSymbols.info,'代码检查和格式化 npm run lint');
+        console.log(logSymbols.info,'图片压缩和webp转换 npm run compress');       
+    }
     
+}).catch((err)=>{
+    console.log(logSymbols.error,chalk.red(`创建失败：${err.message}`));    
 });
 
 async function go(){
@@ -165,20 +173,20 @@ async function go(){
                 message:`是否选择推荐配置？\n`,
                 type:'rawlist',
                 choices:[
-                    { name: '推荐配置集成了 vue、vuex、vue-router、axios、TypeScript、NutUI2开发速度更快！', value: 'y' },
-                    { name: '自定的配置可以选择是否使用vuex、TypeScript、 NutUI2、 Carefree、 Smock', value: 'n' }                   
+                    { name: '推荐配置集成了 vue、vuex、vue-router、axios、TypeScript、NutUI2开发速度更快！', value: '默认配置' },
+                    { name: '自定的配置可以选择是否使用vuex、TypeScript、 NutUI2、 Carefree、 Smock', value: '自定义配置' }                   
                 ]
             }
         ]))
     });
-    if(anser2.isneedfast === 'y'){
+    if(anser2.isneedfast === '默认配置'){
         
         let options = Object.assign(answer,{
             target:projectRoot
-        })
-       
+        })        
         downloadFast(options)
-        return
+        
+        return 'fast'
     }
     
     let anser3 =  await new Promise((resolve,reject)=>{
