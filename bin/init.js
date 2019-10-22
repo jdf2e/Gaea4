@@ -8,7 +8,7 @@ const logSymbols = require('log-symbols');
 const chalk = require('chalk');
 const latestVersion = require('latest-version');
 const inquirer = require('inquirer');
-
+const downloadFast = require('../lib/downloadfast');
 program.usage('<name>').parse(process.argv)
 let projectName = program.args[0]
 if(!projectName){
@@ -29,7 +29,7 @@ if(!projectName){
     console.log('');
 }).catch((err)=>{
     console.log(logSymbols.error,chalk.red(`创建失败：${err.message}`));
-    console.log('');
+    
 });
 
 async function go(){
@@ -62,7 +62,7 @@ async function go(){
         })
         
 
-    const answer = await  new Promise((resolve,reject)=>{
+    let answer = await  new Promise((resolve,reject)=>{
        
         if(projectRoot != '.'){
             fs.mkdirSync(projectRoot);
@@ -92,8 +92,11 @@ async function go(){
                 name:'author',
                 message:'作者',
                 default:`佚名`
-            },
-            {	
+            }            
+        ]))
+        
+        /**
+         * {	
                 name:'bucket',
                 type:'checkbox',
                 message:'第三方依赖库(多选)',
@@ -153,9 +156,94 @@ async function go(){
                     // }
                 ]
             }
-        ]))
+         */
     })
+    let anser2 = await new Promise((resolve,reject)=>{
+        return resolve( inquirer.prompt([
+            {
+                name:'isneedfast',
+                message:`是否选择推荐配置？\n`,
+                type:'rawlist',
+                choices:[
+                    { name: '推荐配置集成了 vue、vuex、vue-router、axios、TypeScript、NutUI2开发速度更快！', value: 'y' },
+                    { name: '自定的配置可以选择是否使用vuex、TypeScript、 NutUI2、 Carefree、 Smock', value: 'n' }                   
+                ]
+            }
+        ]))
+    });
+    if(anser2.isneedfast === 'y'){
+        
+        let options = Object.assign(answer,{
+            target:projectRoot
+        })
+       
+        downloadFast(options)
+        return
+    }
     
+    let anser3 =  await new Promise((resolve,reject)=>{
+        return resolve(inquirer.prompt([{	
+            name:'bucket',
+            type:'checkbox',
+            message:'第三方依赖库(多选)',
+            validate:(bucketstr)=>{
+                return new Promise((resolve,reject)=>{
+                    if(bucketstr.indexOf('vue') === -1){
+                        reject('vue 必选！');
+                    }else{
+                        resolve(true);
+                    }
+                })
+            },
+            choices:
+            [{
+                name:'vue',
+                checked:true
+            },{
+                name:'axios',
+                checked:true
+            },{
+                name:'vue-router',
+                checked:true
+            },{
+                name:'qs',
+                checked:true
+            },{
+                name:'vuex',
+                checked:false
+            }]
+        },{
+            name:'features',
+            type:'checkbox',
+            message:'支持的功能选择',
+            choices:[
+                {
+                    name:'NutUI2',
+                    checked:true,
+                },
+                {
+                    name:'Carefree',
+                    checked:true
+                },
+                {
+                    name:'Skeleton',
+                    checked:false,
+                },
+                {
+                    name:'TypeScript',
+                    checked:false,
+                },{
+                    name:'Smock',
+                    checked:false,
+                }
+                // ,{
+                //     name:'PWA',
+                //     checked:false
+                // }
+            ]
+        }]))
+    });
+    answer = Object.assign(answer,anser3)  
     const version = await Promise.all([latestVersion('@nutui/carefree'),
         latestVersion('smock-webpack-plugin'),
         latestVersion('@nutui/nutui'),
