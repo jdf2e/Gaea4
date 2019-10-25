@@ -1,7 +1,7 @@
 {
-  "name": "gaea-cli",
-  "version": "0.8.0",
-  "description": "gaea-cli",
+  "name": "gaea-cmd",
+  "version": "1.0.0",
+  "description": "gaea-cmd",
   "dependencies": {
     "chalk": "^2.4.1",
     "commander": "^2.19.0",
