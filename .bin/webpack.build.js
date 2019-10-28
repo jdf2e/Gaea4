@@ -9,6 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const htmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 const CopyWebpackPlugin    = require('copy-webpack-plugin');
 const config               = require('./../package.json');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const argv = require('yargs').argv;
 const path = require('path');
 const vendor = 'lib/vendor.dll.js';
@@ -21,7 +22,9 @@ let buildCongfig = Object.assign(web_base,{
             minimizer:[    
                 new UglifyJsPlugin({
                     test: /\.js(\?.*)?$/i,
-                    extractComments: false,               
+                    extractComments: false, 
+                    cache: true,
+                    parallel: true,              
                     uglifyOptions:{
                         compress: {
                             drop_console: true,
@@ -128,6 +131,11 @@ buildCongfig.plugins = [
     new optimizeCss(),
     new webpack.BannerPlugin('Build time : '+new Date().toString())
 ];
+if(argv.aly){
+    buildCongfig.plugins.push(new BundleAnalyzerPlugin())
+}
+    
+
 
 //判断dll文件是否存在
 if(fs.existsSync(path.join(__dirname,vendordev))) {

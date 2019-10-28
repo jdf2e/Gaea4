@@ -14,6 +14,7 @@
     "dev:low": "webpack-dev-server --colors --config .bin/webpack.dev.js",
     "dll": "webpack --config .bin/webpack.dll.config.js",
     "build": "webpack --colors    --config .bin/webpack.build.js",
+    "build:aly": "webpack --colors --aly    --config .bin/webpack.build.js",
     "build:local": "webpack  --colors   --local=true  --config .bin/webpack.build.js",
     "upload": "webpack  --colors    --config .bin/webpack.upload.js",
     "upload:local": "webpack  --colors   --local=true  --config .bin/webpack.upload.js"
@@ -41,6 +42,7 @@
     "axios": "^0.19.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "compression-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
     "eslint": "^6.5.1",
     "eslint-plugin-vue": "^5.2.3",
