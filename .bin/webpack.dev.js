@@ -14,14 +14,22 @@ devConfig = Object.assign(web_base,{
         rules:[
             {
                 test:/\.css$/,
-                use: [                  
-                    'cache-loader',"css-loader",                   
+                use: [     
+                    'cache-loader', "css-loader",                       
                 ]
             },
             {
                 test: /\.(sa|sc)ss$/,
                 use: [
-                    'cache-loader', 'style-loader','happypack/loader?id=css'
+                    'cache-loader',
+                    'style-loader',
+                    "css-loader",                      
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            data: `@import "@nutui/nutui/dist/styles/index.scss"; `,
+                        }
+                    }
                 ]
             },  
             {
