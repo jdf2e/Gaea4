@@ -65,15 +65,7 @@ let buildCongfig = Object.assign(web_base,{
                         },
                     }
                 ]
-            },               
-            {
-            test: /\.svg$/,
-                loader: 'svg-sprite-loader',
-                include:[path.resolve('src/asset/svgSprite')],
-                options:{
-                    symbolId:'icon-[name]'
-                }
-            },
+            },     
             {
             test: /\.(png|jpg|gif|webp|woff|eot|ttf|svg)$/,
                 use:{
@@ -82,8 +74,7 @@ let buildCongfig = Object.assign(web_base,{
                         name:'img/[name].[ext]',
                         limit:3000
                     }
-                },
-                exclude:[path.resolve('src/asset/svgSprite')]            
+                }
             },
             {
                 test:/\.vue$/,
@@ -158,8 +149,7 @@ buildCongfig.plugins = [
     }),   
     new optimizeCss({
             assetNameRegExp: /\.css$/g,
-            cssProcessor: require('cssnano'),
-            // cssProcessorOptions: cssnanoOptions,
+            cssProcessor: require('cssnano'),           
             cssProcessorPluginOptions: {
             preset: ['default', {
                 discardComments: {
@@ -170,7 +160,8 @@ buildCongfig.plugins = [
         },
         canPrint: true
     }), 
-    new webpack.BannerPlugin('JDC  Build time : '+new Date().toString()+'/\n')
+    new webpack.BannerPlugin(`\n JDC ${config.name} ${config.version} Build time : `+new Date().toString()+'\n'),
+   
 ];
 if(argv.aly){
     buildCongfig.plugins.push(new BundleAnalyzerPlugin())
