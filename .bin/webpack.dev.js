@@ -5,7 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const htmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 const path = require('path');
 const vendordev = './../static/vendor.dll.js';
+const HappyPack = require('happypack');
 let devConfig = {};
+const cpus = require('os').cpus().length - 1;
 devConfig = Object.assign(web_base,{
     mode:"development",
     devtool: "source-map",
@@ -15,7 +17,13 @@ devConfig = Object.assign(web_base,{
             {
                 test:/\.css$/,
                 use: [     
-                    'cache-loader', "css-loader",                       
+                    'cache-loader', "css-loader", 
+                    {
+                        loader: 'thread-loader',
+                        options: {
+                            workers: cpus,
+                        },
+                    },                 
                 ]
             },
             {
@@ -29,22 +37,37 @@ devConfig = Object.assign(web_base,{
                         options: {
                             data: `@import "@nutui/nutui/dist/styles/index.scss"; `,
                         }
-                    }
+                    },
+                    {
+                        loader: 'thread-loader',
+                        options: {
+                            workers: cpus,
+                        },
+                    },  
                 ]
             },  
             {
-                test: /\.tsx?$/,              
+                test: /\.ts?$/,              
                 include: path.resolve(__dirname, "../src"),
                 exclude: /node_modules/,
                 use:[
-                    'cache-loader','happypack/loader?id=happyBabel',                
+                    'cache-loader',
+                    'babel-loader',
+                    {
+                        loader: 'thread-loader',
+                        options: {
+                            workers: cpus,
+                        },
+                    },       
                     {
                         loader:'ts-loader',
                         options: {
+                            happyPackMode: true ,      
                             appendTsSuffixTo: [/\.vue$/],
                             appendTsxSuffixTo: [/\.vue$/]
                         }
                     }
+                    // 'happypack/loader?id=ts'
                 ]              
             },  
             {
@@ -62,7 +85,12 @@ devConfig = Object.assign(web_base,{
                 test:/\.vue$/,
                 include: path.resolve(__dirname, "../src"),
                 exclude: /node_modules/,
-                use:['cache-loader','vue-loader']
+                use:['cache-loader','vue-loader',{
+                    loader: 'thread-loader',
+                    options: {
+                        workers: cpus,
+                    },
+                }]
             }           
     ]},     
     devServer:{
@@ -70,13 +98,6 @@ devConfig = Object.assign(web_base,{
         noInfo: true,       
         hot: true,
         hotOnly:true,
-        proxy:{
-            "/workshop/*":{
-                target:"https://***.com",               
-                changeOrigin: true,
-                secure: false
-            }
-        }     
     }  
 });
 

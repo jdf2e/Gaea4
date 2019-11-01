@@ -14,6 +14,9 @@ const argv = require('yargs').argv;
 const path = require('path');
 const vendor = 'lib/vendor.dll.js';
 const vendordev = './../static/vendor.dll.js';
+const autoprefixer = require('./postcss.config');
+
+const cpus = require('os').cpus().length - 1;
 let buildCongfig = Object.assign(web_base,{
     mode:'production', 
     stats: 'errors-only',
@@ -38,8 +41,15 @@ let buildCongfig = Object.assign(web_base,{
         rules:[
             {
                 test: /\.(sa|sc|c)ss$/,
-                use: [
-                    MiniCssExtractPlugin.loader,'happypack/loader?id=css',
+                use: [                    
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",                      
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            data: `@import "@nutui/nutui/dist/styles/index.scss"; `,
+                        }
+                    },
                     {
                         loader: 'postcss-loader',
                         options: {
@@ -47,6 +57,12 @@ let buildCongfig = Object.assign(web_base,{
                                 path: path.resolve(__dirname)
                             }
                         }
+                    },
+                    {
+                        loader: 'thread-loader',
+                        options: {
+                            workers: cpus,
+                        },
                     }
                 ]
             },               
@@ -74,24 +90,29 @@ let buildCongfig = Object.assign(web_base,{
                 include: path.resolve(__dirname, "../src"),
                 exclude: /node_modules/,
                 use:[
+                    'cache-loader',
                     {
                         loader:'vue-loader',
                         options: {
                             loaders:{
                                 scss:[
                                     MiniCssExtractPlugin.loader,
-                                    'happypack/loader?id=css'     
+                                    "css-loader",                      
+                                    {
+                                        loader: 'sass-loader',
+                                        options: {
+                                            data: `@import "@nutui/nutui/dist/styles/index.scss"; `,
+                                        }
+                                    } 
                                 ]
                             },
-                            postcss: [require('autoprefixer')({
-                                "overrideBrowserslist" : [
-                                    "> 1%",
-                                    "last 7 versions",
-                                    "not ie <= 8",
-                                    "ios >= 8",
-                                    "android >= 4.0"
-                                  ]
-                            })]
+                            postcss: [autoprefixer.plugins[0]]
+                        },
+                    },
+                    {
+                        loader: 'thread-loader',
+                        options: {
+                            workers: cpus,
                         },
                     }
                 ]
@@ -100,7 +121,8 @@ let buildCongfig = Object.assign(web_base,{
                 test: /\.tsx?$/,              
                 include: path.resolve(__dirname, "../src"),
                 exclude: /node_modules/,
-                use:[        
+                use:[     
+                    'cache-loader',   
                     'happypack/loader?id=happyBabel',        
                     {                  
                         loader:'ts-loader',
@@ -108,12 +130,18 @@ let buildCongfig = Object.assign(web_base,{
                             appendTsSuffixTo: [/\.vue$/],
                             appendTsxSuffixTo: [/\.vue$/]
                         }
+                    },
+                    {
+                        loader: 'thread-loader',
+                        options: {
+                            workers: cpus,
+                        },
                     }
                 ]              
             }, 
             {
                 test:/\.js$/,
-                use:'happypack/loader?id=happyBabel',               
+                use:['cache-loader','happypack/loader?id=happyBabel'],               
             }           
     ]}
 })
