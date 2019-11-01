@@ -68,6 +68,8 @@ devConfig = Object.assign(web_base,{
     devServer:{
         open:true,  
         noInfo: true,       
+        hot: true,
+        hotOnly:true,
         proxy:{
             "/workshop/*":{
                 target:"https://***.com",               
@@ -79,6 +81,7 @@ devConfig = Object.assign(web_base,{
 });
 
 devConfig.plugins = [...devConfig.plugins,
+    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
           title:"vue_stage",
