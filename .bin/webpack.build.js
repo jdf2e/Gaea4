@@ -34,7 +34,7 @@ let buildCongfig = Object.assign(web_base,{
                             drop_debugger: true, 
                         }                              
                     }            
-                })
+                })                
             ]
     },
     module:{
@@ -155,9 +155,22 @@ buildCongfig.plugins = [
     new MiniCssExtractPlugin({
         filename: 'css/[name].css',
         chunkFilename:'css/[id].css' 
-    }),
-    new optimizeCss(),
-    new webpack.BannerPlugin('Build time : '+new Date().toString())
+    }),   
+    new optimizeCss({
+            assetNameRegExp: /\.css$/g,
+            cssProcessor: require('cssnano'),
+            // cssProcessorOptions: cssnanoOptions,
+            cssProcessorPluginOptions: {
+            preset: ['default', {
+                discardComments: {
+                    removeAll: true,
+                },
+                normalizeUnicode: false
+            }]
+        },
+        canPrint: true
+    }), 
+    new webpack.BannerPlugin('JDC  Build time : '+new Date().toString()+'/\n')
 ];
 if(argv.aly){
     buildCongfig.plugins.push(new BundleAnalyzerPlugin())
