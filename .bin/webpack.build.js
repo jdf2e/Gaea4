@@ -43,7 +43,8 @@ let buildCongfig = Object.assign(web_base,{
                 test: /\.(sa|sc|c)ss$/,
                 use: [                    
                     MiniCssExtractPlugin.loader,
-                    "css-loader",                      
+                    "css-loader",       
+                    'resolve-url-loader',                  
                     {
                         loader: 'sass-loader',
                         options: {
