@@ -6,6 +6,7 @@ const htmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plug
 const path = require('path');
 const vendordev = './../static/vendor.dll.js';
 const HappyPack = require('happypack');
+const autoprefixer = require('./postcss.config');
 let devConfig = {};
 const cpus = require('os').cpus().length - 1;
 devConfig = Object.assign(web_base,{
@@ -36,6 +37,14 @@ devConfig = Object.assign(web_base,{
                         loader: 'sass-loader',
                         options: {
                             data: `@import "@nutui/nutui/dist/styles/index.scss"; `,
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            config: {
+                                path: path.resolve(__dirname)
+                            }
                         }
                     },
                     {
@@ -85,7 +94,24 @@ devConfig = Object.assign(web_base,{
                 test:/\.vue$/,
                 include: path.resolve(__dirname, "../src"),
                 exclude: /node_modules/,
-                use:['cache-loader','vue-loader',{
+                use:['cache-loader', {
+                    loader:'vue-loader',
+                    options: {
+                        loaders:{
+                            scss:[ 
+                                'style-loader',                              
+                                "css-loader",                      
+                                {
+                                    loader: 'sass-loader',
+                                    options: {
+                                        data: `@import "@nutui/nutui/dist/styles/index.scss"; `,
+                                    }
+                                } 
+                            ]
+                        },
+                        postcss: [autoprefixer.plugins[0]]
+                    },
+                },,{
                     loader: 'thread-loader',
                     options: {
                         workers: cpus,
