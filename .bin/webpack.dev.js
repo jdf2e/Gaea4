@@ -6,7 +6,7 @@ const htmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plug
 const path = require('path');
 const vendordev = './../static/vendor.dll.js';
 const HappyPack = require('happypack');
-const autoprefixer = require('./postcss.config');
+const CopyWebpackPlugin    = require('copy-webpack-plugin');
 let devConfig = {};
 const cpus = require('os').cpus().length - 1;
 devConfig = Object.assign(web_base,{
@@ -32,19 +32,13 @@ devConfig = Object.assign(web_base,{
                 use: [
                     'cache-loader',
                     'style-loader',
-                    "css-loader",                      
+                    "css-loader",
+                    'resolve-url-loader',                
                     {
                         loader: 'sass-loader',
                         options: {
                             data: `@import "@nutui/nutui/dist/styles/index.scss"; `,
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            config: {
-                                path: path.resolve(__dirname)
-                            }
+                            sourceMap: true
                         }
                     },
                     {
@@ -80,7 +74,7 @@ devConfig = Object.assign(web_base,{
                 ]              
             },  
             {
-            test: /\.(png|jpg|gif|webp|woff|eot|ttf|svg)$/,
+            test: /\.(png|jpg|gif|webp|woff|otf|eot|ttf|svg)$/,
                 use:{
                     loader:'url-loader',
                     options:{
@@ -91,27 +85,8 @@ devConfig = Object.assign(web_base,{
                 exclude:['/node_modules/']            
             },     
             {
-                test:/\.vue$/,
-                include: path.resolve(__dirname, "../src"),
-                exclude: /node_modules/,
-                use:['cache-loader', {
-                    loader:'vue-loader',
-                    options: {
-                        loaders:{
-                            scss:[ 
-                                'style-loader',                              
-                                "css-loader",                      
-                                {
-                                    loader: 'sass-loader',
-                                    options: {
-                                        data: `@import "@nutui/nutui/dist/styles/index.scss"; `,
-                                    }
-                                } 
-                            ]
-                        },
-                        postcss: [autoprefixer.plugins[0]]
-                    },
-                },,{
+                test:/\.vue$/,               
+                use:['cache-loader','vue-loader',{
                     loader: 'thread-loader',
                     options: {
                         workers: cpus,

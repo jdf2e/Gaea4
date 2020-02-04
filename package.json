@@ -1,7 +1,7 @@
 {
-  "name": "{{projectName}}",
-  "version": "{{projectVersion}}",
-  "description": "{{projectDescription}}",
+  "name": "abcdd",
+  "version": "1.0.0",
+  "description": "aaa",
   "main": "index.js",
   "publicPath": "//static.360buyimg.com/testGaea5.0",
   "ftpServer": "static.360buyimg.com",
