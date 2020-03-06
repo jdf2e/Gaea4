@@ -1,7 +1,0 @@
-node_modules
-dist
-build
-yarn.lock
-
-.vscode/launch.json
-.DS_Store
